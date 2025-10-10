@@ -6,5 +6,6 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/icon',
     '@nuxtjs/tailwindcss',
-  ]
+  ],
+  css: ['~/assets/css/theme.css'],
 })
