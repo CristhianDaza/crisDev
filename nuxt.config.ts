@@ -5,13 +5,24 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
     '@nuxt/icon',
-    '@nuxtjs/tailwindcss',
+    [
+      '@nuxtjs/i18n',
+      {
+        defaultLocale: 'es',
+        locales: [
+          { code: 'es', name: 'Español', file: 'es.json' },
+          { code: 'en', name: 'English', file: 'en.json' },
+        ],
+      },
+
+    ],
+    '@nuxtjs/tailwindcss'
   ],
   css: ['~/assets/css/theme.css'],
   components: [
     {
       path: '~/components/global',
-      prefix: 'Cv',
+      prefix: 'Cv'
     }
-  ],
+  ]
 })

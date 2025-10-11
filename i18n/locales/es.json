@@ -1,0 +1,9 @@
+{
+  "menu":{
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "experience": "Experiencia",
+    "skills": "Habilidades",
+    "contact": "Contacto"
+  }
+}

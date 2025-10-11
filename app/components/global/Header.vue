@@ -102,7 +102,7 @@ onMounted(() => {
               ]"
               :aria-current="hydrated && isActive(id) ? 'page' : undefined"
             >
-              <span class="text-primary font-bold">&lt;</span> {{ name }} <span class="text-primary font-bold">/&gt;</span>
+              <span class="text-primary font-bold">&lt;</span> {{ $t(name) }} <span class="text-primary font-bold">/&gt;</span>
             </NuxtLink>
           </li>
         </ul>
@@ -144,7 +144,7 @@ onMounted(() => {
                 :aria-current="hydrated && isActive(id) ? 'page' : undefined"
                 @click="closeMenu"
               >
-                <span class="text-primary font-bold">&lt;</span> {{ name }} <span class="text-primary font-bold">/&gt;</span>
+                <span class="text-primary font-bold">&lt;</span> {{ $t(name) }} <span class="text-primary font-bold">/&gt;</span>
               </NuxtLink>
             </li>
           </ul>
