@@ -8,4 +8,10 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
   ],
   css: ['~/assets/css/theme.css'],
+  components: [
+    {
+      path: '~/components/global',
+      prefix: 'Cv',
+    }
+  ],
 })

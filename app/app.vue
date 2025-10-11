@@ -1,9 +1,3 @@
-<template>
-  <div>
-    <h1>Cris Dev</h1>
-  </div>
-</template>
-
 <script setup>
 useHead({
   htmlAttrs: {
@@ -11,3 +5,7 @@ useHead({
   }
 })
 </script>
+
+<template>
+  <CvHeader :menus="mainMenu" />
+</template>
