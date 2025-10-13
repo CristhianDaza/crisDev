@@ -1,4 +1,6 @@
 <script setup>
+import logoUrl from '../../assets/images/main-logo-cris-dev.png'
+
 defineProps({
   menus: {
     type: Array,
@@ -64,7 +66,7 @@ onMounted(() => {
     <header class="flex items-center justify-between max-w-screen-xl m-auto">
       <div class="flex items-center gap-3">
         <img
-          src="/assets/images/main-logo-cris-dev.png"
+          :src="logoUrl"
           alt="Cris Dev - Main Logo"
           class="h-7 w-9 drop-shadow-sm"
         >
@@ -102,7 +104,7 @@ onMounted(() => {
               ]"
               :aria-current="hydrated && isActive(id) ? 'page' : undefined"
             >
-              <span class="text-primary font-bold">&lt;</span> {{ $t(name) }} <span class="text-primary font-bold">/&gt;</span>
+              <span class="text-primary font-bold">&lt;</span> {{ $t(name) }} <span class="text-primary font-bold" >/&gt;</span>
             </NuxtLink>
           </li>
         </ul>
@@ -118,7 +120,7 @@ onMounted(() => {
       >
         <div class="absolute inset-x-0 top-0 flex items-center justify-between p-4">
           <div class="flex items-center gap-2">
-            <img src="/assets/images/main-logo-cris-dev.png" alt="Cris Dev - Main Logo" class="h-7 w-9 drop-shadow-sm">
+            <img :src="logoUrl" alt="Cris Dev - Main Logo" class="h-7 w-9 drop-shadow-sm">
             <span class="font-bold text-lg">&lt;<span class="text-white">Cris</span><span class="text-primary">Dev</span> /&gt;</span>
           </div>
           <button
@@ -144,7 +146,7 @@ onMounted(() => {
                 :aria-current="hydrated && isActive(id) ? 'page' : undefined"
                 @click="closeMenu"
               >
-                <span class="text-primary font-bold">&lt;</span> {{ $t(name) }} <span class="text-primary font-bold">/&gt;</span>
+                <span class="text-primary font-bold">&lt;</span> {{ $t(name) }} <span class="text-primary font-bold" >/&gt;</span>
               </NuxtLink>
             </li>
           </ul>

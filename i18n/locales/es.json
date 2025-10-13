@@ -5,5 +5,12 @@
     "experience": "Experiencia",
     "skills": "Habilidades",
     "contact": "Contacto"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "role": "Desarrollador Frontend",
+    "description": "Desarrollador Frontend especializado en crear experiencias web rápidas, accesibles y elegantes con Nuxt, Vue y Tailwind.",
+    "contactButton": "Hablemos",
+    "projectsButton": "Ver proyectos"
   }
 }

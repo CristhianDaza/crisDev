@@ -5,5 +5,12 @@
     "experience": "Experience",
     "skills": "Skills",
     "contact": "Contact"
-  }
+  },
+    "hero": {
+      "greeting": "Hi, I'm",
+      "role": "Frontend Developer",
+      "description": "Frontend developer specialized in building fast, accessible and elegant web experiences with Nuxt, Vue and Tailwind.",
+      "contactButton": "Let's Talk",
+      "projectsButton": "See Projects"
+    }
 }
