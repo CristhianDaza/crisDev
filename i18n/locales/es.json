@@ -23,6 +23,18 @@
     "resume": "Ver Currículum"
   },
   "global": {
+    "close": "Cerrar",
     "upToTop": "Volver arriba"
+  },
+  "projects": {
+    "description": "Explora algunos de los proyectos en los que he trabajado. Haz clic en cualquier tarjeta para ver más detalles.",
+    "featured": "Destacado",
+    "featuredProject": "Proyecto Destacado",
+    "highlights": "Características destacadas",
+    "technologiesUsed": "Tecnologías utilizadas",
+    "title": "Proyectos Destacados",
+    "viewCodeInGitHub": "Ver Código en GitHub",
+    "viewProject": "Ver Proyecto",
+    "viewProjectLive": "Ver Proyecto en Vivo"
   }
 }

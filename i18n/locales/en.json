@@ -23,6 +23,18 @@
     "resume": "View Resume"
   },
   "global": {
+    "close": "Close",
     "upToTop": "Back to top"
+  },
+  "projects": {
+    "description": "Explore some of the projects I have worked on. Click any card to see more details.",
+    "featured": "Featured",
+    "featuredProject": "Featured Project",
+    "highlights": "Highlights",
+    "technologiesUsed": "Technologies Used",
+    "title": "Featured Projects",
+    "viewCodeInGitHub": "View Code in GitHub",
+    "viewProject": "View Project",
+    "viewProjectLive": "View Project Live"
   }
 }

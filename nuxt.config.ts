@@ -23,6 +23,10 @@ export default defineNuxtConfig({
     {
       path: '~/components/global',
       prefix: 'Cd'
+    },
+    {
+      path: '~/components/projects',
+      prefix: 'CdPr'
     }
   ]
 })

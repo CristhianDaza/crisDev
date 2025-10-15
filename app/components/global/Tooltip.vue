@@ -55,8 +55,8 @@ const tooltipContent = computed(() => props.content || props.text)
 
 const calculatePosition = () => {
   if (!triggerRef.value || !tooltipRef.value) return
-
-  const triggerRect = triggerRef.value.getBoundingClientRect()
+  const triggerElement = triggerRef.value.children[0] || triggerRef.value
+  const triggerRect = triggerElement.getBoundingClientRect()
   const tooltipRect = tooltipRef.value.getBoundingClientRect()
 
   let top = 0
@@ -174,7 +174,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="tooltip-wrapper inline-block relative">
+  <div class="tooltip-wrapper">
     <div
       ref="triggerRef"
       @mouseenter="showTooltip"
@@ -234,6 +234,10 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
+.tooltip-wrapper {
+  display: contents;
+}
+
 .tooltip-top-enter-active,
 .tooltip-top-leave-active,
 .tooltip-bottom-enter-active,

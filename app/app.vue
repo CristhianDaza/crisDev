@@ -12,7 +12,13 @@ const { locales, setLocale } = useI18n()
   <main id="home">
     <CdHeader :menus="mainMenu"/>
   </main>
-  <CdHero />
+
+  <section id="projects" class="min-h-screen">
+    <CdHero />
+  </section>
+  <section id="projects" class="mx-auto max-w-7xl px-6 py-20 min-h-screen">
+    <CdProjects />
+  </section>
 
   <button
     v-for="locale in locales"
@@ -22,11 +28,6 @@ const { locales, setLocale } = useI18n()
   >
     {{ locale.name }}
   </button>
-
-  <section id="projects" class="mx-auto max-w-7xl px-6 py-20 min-h-screen">
-    <h2 class="mb-4 text-2xl font-semibold">Proyectos</h2>
-    <p class="text-[var(--muted)]">Aquí podrás listar tus trabajos destacados.</p>
-  </section>
 
   <section id="experience" class="mx-auto max-w-7xl px-6 py-20 min-h-screen">
     <h2 class="mb-4 text-2xl font-semibold">Experiencia</h2>

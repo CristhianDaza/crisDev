@@ -31,8 +31,8 @@ const sortedSocialMedia = computed(() =>
 </script>
 
 <template>
-  <section
-    class="relative overflow-hidden min-h-[80vh] flex items-center"
+  <div
+    class="relative overflow-hidden min-h-screen flex items-center"
     style="background: radial-gradient(ellipse 1400px 800px at 60% 20%, color-mix(in srgb, var(--primary) 15%, transparent), transparent);"
   >
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
@@ -179,7 +179,7 @@ const sortedSocialMedia = computed(() =>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <style scoped>
