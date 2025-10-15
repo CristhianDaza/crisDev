@@ -171,3 +171,70 @@ export const experiences = [
     type: 'full-time',
   },
 ];
+
+function experienceYears(startYear, startMonth = 1, endYear = null, endMonth = null) {
+  const start = new Date(startYear, startMonth - 1)
+  const end = endYear ? new Date(endYear, (endMonth || 1) - 1) : new Date()
+  const diff = (end - start) / (1000 * 60 * 60 * 24 * 365.25)
+  return Math.max(0, Math.floor(diff))
+}
+
+export const skillCategories = [
+  {
+    id: 'frontend',
+    name:'skills.categories.frontend',
+    icon: 'mdi:code-tags',
+    color: 'var(--primary)',
+    skills: [
+      { name: 'JavaScript', icon: 'mdi:language-javascript', years: experienceYears(2018) },
+      { name: 'Vue.js', icon: 'mdi:vuejs', years: experienceYears(2018) },
+      { name: 'LitElement', icon: 'mdi:web', years: experienceYears(2022) },
+      { name: 'Web Components', icon: 'mdi:puzzle', years: experienceYears(2022) },
+      { name: 'TypeScript', icon: 'mdi:language-typescript', years: experienceYears(2021) },
+      { name: 'Vuetify', icon: 'mdi:vuetify', years: experienceYears(2020, 1, 2022, 6) },
+    ],
+  },
+  {
+    id: 'styling',
+    name: 'skills.categories.styling',
+    icon: 'mdi:palette',
+    color: 'var(--accent)',
+    skills: [
+      { name: 'CSS', icon: 'mdi:palette-outline', years: experienceYears(2018) },
+      { name: 'Tailwind CSS', icon: 'mdi:tailwind', years: experienceYears(2021, 12, 2025, 6) },
+    ],
+  },
+  {
+    id: 'tools',
+    name: 'skills.categories.tools',
+    icon: 'mdi:tools',
+    color: '#f59e0b',
+    skills: [
+      { name: 'Git', icon: 'mdi:git', years: experienceYears(2020) },
+      { name: 'Firebase', icon: 'mdi:firebase', years: experienceYears(2018, 6, 2021, 7) },
+      { name: 'Vue Test Utils', icon: 'mdi:test-tube', years: experienceYears(2021, 8, 2025, 11) },
+    ],
+  },
+  {
+    id: 'mobile',
+    name: 'skills.categories.mobile',
+    icon: 'mdi:cellphone',
+    color: '#8b5cf6',
+    skills: [
+      { name: 'NativeScript',  icon: 'mdi:cellphone-cog', years: experienceYears(2021, 1, 2022, 12) },
+      { name: 'Responsive Design', icon: 'mdi:monitor-cellphone', years: experienceYears(2018) },
+    ],
+  },
+  {
+    id: 'practices',
+    name: 'skills.categories.practices',
+    icon: 'mdi:target',
+    color: '#10b981',
+    skills: [
+      { name: 'Accessibility', icon: 'mdi:accessibility', years: experienceYears(2022) },
+      { name: 'Performance', icon: 'mdi:speedometer', years: experienceYears(2021) },
+      { name: 'Testing', icon: 'mdi:flask', years: experienceYears(2021, 8, 2025, 11) },
+      { name: 'Clean Code', icon: 'mdi:check-decagram', years: experienceYears(2018) },
+    ],
+  },
+]

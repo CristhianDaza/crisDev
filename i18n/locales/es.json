@@ -124,5 +124,17 @@
       "position": "Web Developer",
       "description": "Desarrollo de un sistema de gestión de inventarios y módulos e-commerce con Firebase, carrito de compras y pasarela de pagos. Automatización de reportes que mejoraron la eficiencia operativa en un 30%."
     }
+  },
+  "skills": {
+    "title": "Habilidades Técnicas",
+    "description": "Tecnologías y herramientas que domino para crear experiencias web excepcionales",
+    "technologies": "tecnologías",
+    "categories": {
+      "frontend": "Frontend Frameworks",
+      "styling": "Estilos & Diseño",
+      "tools": "Herramientas",
+      "mobile": "Mobile & PWA",
+      "practices": "Buenas Prácticas"
+    }
   }
 }

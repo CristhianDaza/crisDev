@@ -124,5 +124,17 @@
       "position": "Web Developer",
       "description": "Development of an inventory management system and e-commerce modules using Firebase, shopping cart, and payment gateway integration. Automated reporting improved operational efficiency by 30%."
     }
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "description": "Technologies and tools I master to create exceptional web experiences",
+    "technologies": "technologies",
+    "categories": {
+      "frontend": "Frontend Frameworks",
+      "styling": "Styling & Design",
+      "tools": "Tools",
+      "mobile": "Mobile & PWA",
+      "practices": "Best Practices"
+    }
   }
 }

@@ -24,6 +24,15 @@ const { locales, setLocale } = useI18n()
     <CdExperience />
   </section>
 
+  <section id="skills" class="mx-auto max-w-7xl px-6 py-20 min-h-screen">
+    <CdSkills />
+  </section>
+
+  <section id="contact" class="mx-auto max-w-7xl px-6 pb-24 min-h-screen">
+    <h2 class="mb-4 text-2xl font-semibold">Contacto</h2>
+    <p class="text-[var(--muted)]">Incluye un formulario o tus enlaces de contacto.</p>
+  </section>
+
   <button
     v-for="locale in locales"
     :key="locale.code"
@@ -32,15 +41,6 @@ const { locales, setLocale } = useI18n()
   >
     {{ locale.name }}
   </button>
-  <section id="skills" class="mx-auto max-w-7xl px-6 py-20 min-h-screen">
-    <h2 class="mb-4 text-2xl font-semibold">Habilidades</h2>
-    <p class="text-[var(--muted)]">Tus habilidades técnicas.</p>
-  </section>
-
-  <section id="contact" class="mx-auto max-w-7xl px-6 pb-24 min-h-screen">
-    <h2 class="mb-4 text-2xl font-semibold">Contacto</h2>
-    <p class="text-[var(--muted)]">Incluye un formulario o tus enlaces de contacto.</p>
-  </section>
 
   <CdScrollToTop />
 </template>
