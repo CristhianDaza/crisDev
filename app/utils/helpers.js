@@ -19,4 +19,10 @@ export const socialMediaLinks = [
     icon: 'mdi:linkedin',
     order: 2,
   },
+  {
+    name: 'Descargar CV',
+    url: 'https://drive.google.com/file/d/1X6agz63-sDAIfsmuuitAVO1O9gjzB6wy/view?usp=sharing',
+    icon: 'mdi:file-download',
+    order: 3,
+  },
 ];
