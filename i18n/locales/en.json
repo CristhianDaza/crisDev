@@ -16,5 +16,10 @@
     "performance": "High Performance",
     "projectsButton": "See Projects",
     "role": "Frontend Developer"
+  },
+  "social": {
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "resume": "View Resume"
   }
 }

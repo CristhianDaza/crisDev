@@ -8,21 +8,21 @@ export const mainMenu = [
 
 export const socialMediaLinks = [
   {
-    name: 'GitHub',
+    name: 'social.github',
     url: 'https://github.com/CristhianDaza',
     icon: 'mdi:github',
     order: 1,
   },
   {
-    name: 'LinkedIn',
+    name: 'social.linkedin',
     url: 'https://www.linkedin.com/in/cristhiandaza',
     icon: 'mdi:linkedin',
     order: 2,
   },
   {
-    name: 'Descargar CV',
+    name: 'social.resume',
     url: 'https://drive.google.com/file/d/1X6agz63-sDAIfsmuuitAVO1O9gjzB6wy/view?usp=sharing',
-    icon: 'mdi:file-download',
+    icon: 'mdi:file-account',
     order: 3,
   },
 ];

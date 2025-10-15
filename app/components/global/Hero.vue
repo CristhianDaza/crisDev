@@ -95,26 +95,30 @@ const sortedSocialMedia = computed(() =>
           </div>
 
           <div class="flex flex-wrap gap-2.5 pt-4">
-            <a
+            <CvTooltip
               v-for="social in sortedSocialMedia"
               :key="social.name"
-              :href="social.url || '#'"
-              target="_blank"
-              rel="noopener noreferrer"
-              :title="social.name"
-              class="group relative w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 hover:scale-110 cursor-pointer animate-slide-up-delay"
-              :class="'bg-[var(--chip)] text-white/90 hover:text-white'"
+              :content="$t(social.name)"
+              variant="primary"
             >
-              <Icon
-                v-if="social.icon"
-                :name="social.icon"
-                class="w-5 h-5"
-              />
-              <span
-                class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-20 transition-opacity"
-                style="background: linear-gradient(135deg, var(--primary), var(--accent));"
-              />
-            </a>
+              <a
+                :href="social.url || '#'"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group relative w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 hover:scale-110 cursor-pointer animate-slide-up-delay"
+                :class="'bg-[var(--chip)] text-white/90 hover:text-white'"
+              >
+                <Icon
+                  v-if="social.icon"
+                  :name="social.icon"
+                  class="w-5 h-5"
+                />
+                <span
+                  class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-20 transition-opacity"
+                  style="background: linear-gradient(135deg, var(--primary), var(--accent));"
+                />
+              </a>
+            </CvTooltip>
           </div>
         </div>
 
