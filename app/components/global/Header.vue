@@ -63,24 +63,34 @@ const toggleMenu = () => {
 const scrollToSection = (href) => {
   if (import.meta.client) {
     const hash = href.startsWith('#') ? href.substring(1) : href
-    const currentScroll = scrollPosition.value
-    isMenuOpen.value = false
+    const wasMenuOpen = isMenuOpen.value
 
-    if (typeof document !== 'undefined') {
-      document.body.style.overflow = ''
-      document.body.style.position = ''
-      document.body.style.top = ''
-      document.body.style.width = ''
-      window.scrollTo(0, currentScroll)
-    }
+    if (wasMenuOpen) {
+      const currentScroll = scrollPosition.value
+      isMenuOpen.value = false
 
-    setTimeout(() => {
+      if (typeof document !== 'undefined') {
+        document.body.style.overflow = ''
+        document.body.style.position = ''
+        document.body.style.top = ''
+        document.body.style.width = ''
+        window.scrollTo(0, currentScroll)
+      }
+
+      setTimeout(() => {
+        const el = document.getElementById(hash)
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          router.push({ hash: `#${hash}` })
+        }
+      }, 250)
+    } else {
       const el = document.getElementById(hash)
       if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' })
         router.push({ hash: `#${hash}` })
       }
-    }, 250)
+    }
   }
 }
 

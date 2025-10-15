@@ -23,22 +23,22 @@ const { locales, setLocale } = useI18n()
     {{ locale.name }}
   </button>
 
-  <section id="projects" class="mx-auto max-w-7xl px-6 py-20">
+  <section id="projects" class="mx-auto max-w-7xl px-6 py-20 min-h-screen">
     <h2 class="mb-4 text-2xl font-semibold">Proyectos</h2>
     <p class="text-[var(--muted)]">Aquí podrás listar tus trabajos destacados.</p>
   </section>
 
-  <section id="experience" class="mx-auto max-w-7xl px-6 py-20">
+  <section id="experience" class="mx-auto max-w-7xl px-6 py-20 min-h-screen">
     <h2 class="mb-4 text-2xl font-semibold">Experiencia</h2>
     <p class="text-[var(--muted)]">Tu experiencia profesional.</p>
   </section>
 
-  <section id="skills" class="mx-auto max-w-7xl px-6 py-20">
+  <section id="skills" class="mx-auto max-w-7xl px-6 py-20 min-h-screen">
     <h2 class="mb-4 text-2xl font-semibold">Habilidades</h2>
     <p class="text-[var(--muted)]">Tus habilidades técnicas.</p>
   </section>
 
-  <section id="contact" class="mx-auto max-w-7xl px-6 pb-24">
+  <section id="contact" class="mx-auto max-w-7xl px-6 pb-24 min-h-screen">
     <h2 class="mb-4 text-2xl font-semibold">Contacto</h2>
     <p class="text-[var(--muted)]">Incluye un formulario o tus enlaces de contacto.</p>
   </section>
