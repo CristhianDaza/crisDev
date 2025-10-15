@@ -23,6 +23,8 @@
     "resume": "View Resume"
   },
   "global": {
+    "altImagePerfil": "Cristhian's profile picture",
+    "altLogo": "CrisDev Logo",
     "close": "Close",
     "upToTop": "Back to top"
   },

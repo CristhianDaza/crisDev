@@ -11,7 +11,7 @@ defineEmits(['openProject'])
 
 <template>
   <article
-    class="project-card group cursor-pointer overflow-hidden rounded-[var(--radius)] bg-[var(--surface)] border border-[var(--border)] transition-all duration-300 hover:shadow-[var(--shadow)] hover:-translate-y-2"
+    class="project-card group cursor-pointer overflow-hidden rounded-radius bg-surface border border-border transition-all duration-300 hover:shadow-shadow hover:-translate-y-2"
     @click="$emit('openProject', project)"
   >
     <div class="relative h-48 overflow-hidden">
@@ -23,27 +23,27 @@ defineEmits(['openProject'])
       >
       <div
         v-else
-        class="w-full h-full bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] opacity-80"
+        class="w-full h-full bg-gradient-to-br from-primary to-accent opacity-80"
       >
-        <div class="absolute inset-0 flex items-center justify-center text-6xl text-white/30 font-bold">
+        <div class="absolute inset-0 flex items-center justify-center text-6xl text-text/30 font-bold">
           {{ project.title.charAt(0) }}
         </div>
       </div>
       <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"/>
-      <div v-if="project.featured" class="absolute top-3 right-3 px-3 py-1 bg-[var(--accent)] text-white text-xs font-semibold rounded-full">
+      <div v-if="project.featured" class="absolute top-3 right-3 px-3 py-1 bg-accent text-text text-xs font-semibold rounded-full">
         {{ $t('projects.featured') }}
       </div>
     </div>
 
     <div class="p-6">
       <div class="flex items-start justify-between gap-2 mb-3">
-        <h3 class="text-xl font-bold text-[var(--text)] group-hover:text-[var(--primary)] transition-colors line-clamp-1">
+        <h3 class="text-xl font-bold text-text group-hover:text-primary transition-colors line-clamp-1">
           {{ $t(project?.title) }}
         </h3>
-        <span class="text-sm text-[var(--muted)] whitespace-nowrap">{{ project.date }}</span>
+        <span class="text-sm text-muted whitespace-nowrap">{{ project.date }}</span>
       </div>
 
-      <p class="text-[var(--muted)] text-sm mb-4 line-clamp-2 leading-relaxed">
+      <p class="text-muted text-sm mb-4 line-clamp-2 leading-relaxed">
         {{ $t(project.shortDescription) }}
       </p>
 
@@ -51,25 +51,25 @@ defineEmits(['openProject'])
         <span
           v-for="tech in project.technologies.slice(0, 3)"
           :key="tech"
-          class="px-2.5 py-1 bg-[var(--chip)] text-[var(--primary)] text-xs font-medium rounded-lg"
+          class="px-2.5 py-1 bg-chip text-primary text-xs font-medium rounded-lg"
         >
           {{ tech }}
         </span>
         <span
           v-if="project.technologies.length > 3"
-          class="px-2.5 py-1 text-[var(--muted)] text-xs font-medium"
+          class="px-2.5 py-1 text-muted text-xs font-medium"
         >
           +{{ project.technologies.length - 3 }}
         </span>
       </div>
 
-      <div class="flex gap-3 pt-4 border-t border-[var(--border)]">
+      <div class="flex gap-3 pt-4 border-t border-border">
         <a
           v-if="project.projectUrl"
           :href="project.projectUrl"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center gap-1.5 text-sm text-[var(--primary)] hover:text-[var(--accent)] transition-colors font-medium"
+          class="flex items-center gap-1.5 text-sm text-primary hover:text-accent transition-colors font-medium"
           @click.stop
         >
           <Icon name="mdi:open-in-new" />
@@ -80,7 +80,7 @@ defineEmits(['openProject'])
           :href="project.githubUrl"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center gap-1.5 text-sm text-[var(--primary)] hover:text-[var(--accent)] transition-colors font-medium"
+          class="flex items-center gap-1.5 text-sm text-primary hover:text-accent transition-colors font-medium"
           @click.stop
         >
           <Icon name="mdi:github" />
@@ -89,7 +89,7 @@ defineEmits(['openProject'])
       </div>
     </div>
 
-    <div class="absolute inset-0 border-2 border-[var(--primary)] opacity-0 group-hover:opacity-100 rounded-[var(--radius)] transition-opacity pointer-events-none" />
+    <div class="absolute inset-0 border-2 border-primary opacity-0 group-hover:opacity-100 rounded-radius transition-opacity pointer-events-none" />
   </article>
 </template>
 

@@ -68,13 +68,13 @@ onMounted(() => {
   <div id="experience-section" class="w-full">
     <div class="text-center mb-16">
       <h2
-        class="mb-4 text-4xl md:text-5xl font-bold bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent transition-all duration-700"
+        class="mb-4 text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent transition-all duration-700"
         :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
       >
         {{ t('experience.title') }}
       </h2>
       <p
-        class="text-[var(--muted)] text-lg max-w-2xl mx-auto transition-all duration-700 delay-100"
+        class="text-muted text-lg max-w-2xl mx-auto transition-all duration-700 delay-100"
         :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
       >
         {{ t('experience.description') }}
@@ -82,7 +82,7 @@ onMounted(() => {
     </div>
     <div class="relative max-w-5xl mx-auto">
       <div
-        class="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full transition-all duration-1000 bg-gradient-to-b from-[var(--primary)] to-[var(--accent)] origin-top"
+        class="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full transition-all duration-1000 bg-gradient-to-b from-primary to-accent origin-top"
         :class="isVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'"
       />
       <div
@@ -102,33 +102,33 @@ onMounted(() => {
             :style="`transition-delay: ${index * 150}ms`"
           >
             <div
-              class="p-6 rounded-2xl backdrop-blur-sm border border-[var(--border)] bg-[var(--surface)] transition-all duration-300 hover:scale-105 hover:shadow-2xl group"
+              class="p-6 rounded-2xl backdrop-blur-sm border border-border bg-surface transition-all duration-300 hover:scale-105 hover:shadow-2xl group"
               :class="index % 2 === 0 ? 'md:text-right' : 'md:text-left'"
             >
               <div class="mb-3 flex flex-col gap-2" :class="index % 2 === 0 ? 'md:items-end' : 'md:items-start'">
                 <div
-                  class="inline-block px-3 py-1 rounded-full text-sm font-medium transition-colors bg-[color-mix(in_srgb,var(--primary)_15%,transparent)] text-[var(--primary)]"
+                  class="inline-block px-3 py-1 rounded-full text-sm font-medium transition-colors bg-[color-mix(in_srgb,var(--primary)_15%,transparent)] text-primary"
                 >
                   {{ formatDate(exp.startDate) }} - {{ exp.endDate ? formatDate(exp.endDate) : t('experience.present') }}
                 </div>
                 <div
-                  class="inline-block px-3 py-1 rounded-full text-xs font-medium transition-colors bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-[var(--accent)]"
+                  class="inline-block px-3 py-1 rounded-full text-xs font-medium transition-colors bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-accent"
                 >
                   {{ calculateDuration(exp.startDate, exp.endDate) }}
                 </div>
               </div>
               <h3
-                class="text-2xl font-bold mb-2 transition-colors text-[var(--text)]"
+                class="text-2xl font-bold mb-2 transition-colors text-text"
               >
                 {{ t(exp.position) }}
               </h3>
               <h4
-                class="text-lg font-semibold mb-3 transition-colors text-[var(--primary)]"
+                class="text-lg font-semibold mb-3 transition-colors text-primary"
               >
                 {{ t(exp.company) }}
               </h4>
               <p
-                class="mb-4 leading-relaxed text-[var(--muted)]"
+                class="mb-4 leading-relaxed text-muted"
               >
                 {{ t(exp.description) }}
               </p>
@@ -136,7 +136,7 @@ onMounted(() => {
                 <span
                   v-for="tech in exp.technologies"
                   :key="tech"
-                  class="px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 hover:scale-110 bg-[var(--chip)] text-[var(--text)] opacity-90"
+                  class="px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 hover:scale-110 bg-chip text-text opacity-90"
                 >
                   {{ tech }}
                 </span>
@@ -150,10 +150,10 @@ onMounted(() => {
           :style="`transition-delay: ${index * 150 + 200}ms`"
         >
           <div
-            class="w-4 h-4 rounded-full border-4 border-[var(--primary)] bg-[var(--surface)] transition-all duration-300 hover:scale-150"
+            class="w-4 h-4 rounded-full border-4 border-primary bg-surface transition-all duration-300 hover:scale-150"
           >
             <div
-              class="absolute inset-0 rounded-full animate-ping opacity-75 text-[var(--primary)]"
+              class="absolute inset-0 rounded-full animate-ping opacity-75 text-primary"
             />
           </div>
         </div>

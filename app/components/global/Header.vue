@@ -214,7 +214,7 @@ onMounted(() => {
       >
         <img
           :src="logoUrl"
-          alt="Cris Dev - Main Logo"
+          :alt="$t('global.altLogo')"
           :class="[
             'drop-shadow-sm transition-all duration-500',
             isScrolled ? 'h-6 w-8' : 'h-7 w-9'
@@ -226,7 +226,7 @@ onMounted(() => {
             isScrolled ? 'text-lg md:text-xl' : 'text-xl md:text-2xl'
           ]"
         >
-          &lt;<span class="text-white">Cris</span><span class="text-primary">Dev</span> /&gt;
+          &lt;<span class="text-text">Cris</span><span class="text-primary">Dev</span> /&gt;
         </h2>
       </div>
 
@@ -237,15 +237,8 @@ onMounted(() => {
         aria-label="Abrir menú"
         @click="toggleMenu"
       >
-        <svg v-if="!isMenuOpen" class="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="6" x2="21" y2="6" />
-          <line x1="3" y1="12" x2="21" y2="12" />
-          <line x1="3" y1="18" x2="21" y2="18" />
-        </svg>
-        <svg v-else class="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18" />
-          <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
+        <Icon v-if="!isMenuOpen" name="mdi:menu" class="h-6 w-6" />
+        <Icon v-else name="mdi:close" class="h-6 w-6" />
       </button>
 
       <nav class="hidden md:flex flex-1 justify-end">
@@ -277,8 +270,8 @@ onMounted(() => {
       >
         <div class="flex items-center justify-between p-4 bg-border/80 backdrop-blur-sm shadow-lg flex-shrink-0">
           <div class="flex items-center gap-2">
-            <img :src="logoUrl" alt="Cris Dev - Main Logo" class="h-7 w-9 drop-shadow-sm">
-            <span class="font-bold text-lg">&lt;<span class="text-white">Cris</span><span class="text-primary">Dev</span> /&gt;</span>
+            <img :src="logoUrl" :alt="$t('global.altLogo')" class="h-7 w-9 drop-shadow-sm">
+            <span class="font-bold text-lg">&lt;<span class="text-text">Cris</span><span class="text-primary">Dev</span> /&gt;</span>
           </div>
           <button
             type="button"
@@ -286,10 +279,7 @@ onMounted(() => {
             aria-label="Cerrar menú"
             @click="toggleMenu"
           >
-            <svg class="h-7 w-7" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
+            <Icon name="mdi:close" class="h-7 w-7" />
           </button>
         </div>
 

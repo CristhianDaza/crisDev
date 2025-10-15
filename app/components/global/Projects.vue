@@ -18,10 +18,10 @@ const closeProjectDetail = () => {
 <template>
   <div>
     <div class="mb-12 text-center">
-      <h2 class="mb-4 text-4xl md:text-5xl font-bold bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent">
+      <h2 class="mb-4 text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
         {{ $t('projects.title') }}
       </h2>
-      <p class="text-[var(--muted)] text-lg max-w-2xl mx-auto">
+      <p class="text-muted text-lg max-w-2xl mx-auto">
         {{ $t('projects.description') }}
       </p>
     </div>

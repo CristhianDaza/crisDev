@@ -5,14 +5,12 @@
   <div class="relative">
     <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
       <h2
-        class="mb-4 text-4xl md:text-5xl font-bold bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent animate-fade-in"
-        style="animation-delay: 0.1s"
+        class="mb-4 text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-fade-in [animation-delay:0.1s]"
       >
         {{ $t('skills.title') }}
       </h2>
       <p
-        class="text-muted text-lg max-w-2xl mx-auto animate-fade-in"
-        style="animation-delay: 0.2s"
+        class="text-muted text-lg max-w-2xl mx-auto animate-fade-in [animation-delay:0.2s]"
       >
         {{ $t('skills.description') }}
       </p>
@@ -21,10 +19,9 @@
       <div
         v-for="(category, index) in skillCategories"
         :key="category.id"
-        class="group relative rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-6 transition-all duration-500 hover:scale-105 hover:shadow-2xl animate-slide-up"
+        class="group relative rounded-2xl border border-border bg-surface p-6 transition-all duration-500 hover:scale-105 hover:shadow-2xl animate-slide-up [animation-fill-mode:both]"
         :style="{
-          animationDelay: `${0.1 * (index + 1)}s`,
-          animationFillMode: 'both'
+          animationDelay: `${0.1 * (index + 1)}s`
         }"
       >
         <div
@@ -38,7 +35,7 @@
           >
             <Icon :name="category.icon" />
           </div>
-          <h3 class="text-xl font-semibold text-[var(--text)]">
+          <h3 class="text-xl font-semibold text-text">
             {{ $t(category.name) }}
           </h3>
         </div>
@@ -56,10 +53,10 @@
             </span>
             <div class="flex-1 min-w-0">
               <div class="flex items-baseline justify-between gap-2">
-                <span class="text-sm font-medium text-[var(--text)] truncate">
+                <span class="text-sm font-medium text-text truncate">
                   {{ $t(skill.name) }}
                 </span>
-                <span class="text-xs text-[var(--muted)] whitespace-nowrap flex items-center gap-1">
+                <span class="text-xs text-muted whitespace-nowrap flex items-center gap-1">
                   <Icon name="mdi-clock" />
                   {{ skill.years }}+ {{ skill.years === 1 ? $t('experience.year') : $t('experience.years') }}
                 </span>
@@ -78,7 +75,7 @@
           </div>
         </div>
 
-        <div class="relative mt-6 flex items-center justify-between text-xs text-[var(--muted)]">
+        <div class="relative mt-6 flex items-center justify-between text-xs text-muted">
           <span class="flex items-center gap-1">
             <Icon name="mdi-code-tags" />
             {{ category.skills.length }} {{ $t('skills.technologies') }}
@@ -91,8 +88,8 @@
       </div>
     </div>
 
-    <div class="absolute -top-20 -left-20 w-40 h-40 rounded-full opacity-10 blur-3xl pointer-events-none animate-float" style="background: radial-gradient(circle, var(--primary), transparent 70%);" />
-    <div class="absolute -bottom-20 -right-20 w-40 h-40 rounded-full opacity-10 blur-3xl pointer-events-none animate-float-delayed" style="background: radial-gradient(circle, var(--accent), transparent 70%);" />
+    <div class="absolute -top-20 -left-20 w-40 h-40 rounded-full opacity-10 blur-3xl pointer-events-none animate-float bg-[radial-gradient(circle,_var(--primary),_transparent_70%)]" />
+    <div class="absolute -bottom-20 -right-20 w-40 h-40 rounded-full opacity-10 blur-3xl pointer-events-none animate-float-delayed bg-[radial-gradient(circle,_var(--accent),_transparent_70%)]" />
   </div>
 </template>
 
@@ -155,4 +152,3 @@
   animation: float-delayed 10s ease-in-out infinite;
 }
 </style>
-

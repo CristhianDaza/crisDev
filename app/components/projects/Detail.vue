@@ -54,12 +54,12 @@ onUnmounted(() => {
         @click.self="closeModal"
       >
         <div
-          class="project-detail relative w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-[var(--radius)] bg-[var(--surface)] shadow-2xl"
+          class="project-detail relative w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-radius bg-surface shadow-2xl"
           @click.stop
         >
           <CdTooltip :content="$t('global.close')" position="left" variant="primary">
             <button
-              class="absolute top-4 right-4 z-20 p-2 w-10 h-10 flex items-center justify-center rounded-full bg-[var(--chip)] text-[var(--text)] hover:bg-[var(--primary)] hover:text-white transition-colors shadow-lg"
+              class="absolute top-4 right-4 z-20 p-2 w-10 h-10 flex items-center justify-center rounded-full bg-chip text-text hover:bg-primary hover:text-text transition-colors shadow-lg"
               @click="closeModal"
             >
               <Icon name="mdi:close" />
@@ -75,34 +75,34 @@ onUnmounted(() => {
               >
               <div
                 v-else
-                class="w-full h-full bg-gradient-to-br from-[var(--primary)] to-[var(--accent)]"
+                class="w-full h-full bg-gradient-to-br from-primary to-accent"
               >
-                <div class="absolute inset-0 flex items-center justify-center text-9xl text-white/20 font-bold">
+                <div class="absolute inset-0 flex items-center justify-center text-9xl text-text/20 font-bold">
                   {{ project.title.charAt(0) }}
                 </div>
               </div>
               <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"/>
-              <div v-if="project.featured" class="absolute top-6 left-6 px-4 py-2 bg-[var(--accent)] text-white text-sm font-semibold rounded-full shadow-lg">
+              <div v-if="project.featured" class="absolute top-6 left-6 px-4 py-2 bg-accent text-text text-sm font-semibold rounded-full shadow-lg">
                 ⭐ {{ $t('projects.featuredProject') }}
               </div>
             </div>
 
             <div class="p-8">
               <div class="flex items-start justify-between gap-4 mb-4">
-                <h2 class="text-3xl md:text-4xl font-bold text-[var(--text)]">
+                <h2 class="text-3xl md:text-4xl font-bold text-text">
                   {{ $t(project.title) }}
                 </h2>
-                <span class="px-3 py-1 bg-[var(--chip)] text-[var(--primary)] text-sm font-semibold rounded-lg whitespace-nowrap">
+                <span class="px-3 py-1 bg-chip text-primary text-sm font-semibold rounded-lg whitespace-nowrap">
                   {{ project.date }}
                 </span>
               </div>
 
-              <p class="text-[var(--muted)] text-lg leading-relaxed mb-8">
+              <p class="text-muted text-lg leading-relaxed mb-8">
                 {{ $t(project.fullDescription) }}
               </p>
 
               <div v-if="project.highlights && project.highlights.length" class="mb-8">
-                <h3 class="text-xl font-semibold text-[var(--text)] mb-4 flex items-center gap-2">
+                <h3 class="text-xl font-semibold text-text mb-4 flex items-center gap-2">
                   <Icon name="mdi:lightbulb" class="text-accent" />
                   {{ $t('projects.highlights') }}
                 </h3>
@@ -110,7 +110,7 @@ onUnmounted(() => {
                   <li
                     v-for="(highlight, index) in project.highlights"
                     :key="index"
-                    class="flex items-center gap-2 text-[var(--muted)] bg-[var(--chip)] p-3 rounded-lg"
+                    class="flex items-center gap-2 text-muted bg-chip p-3 rounded-lg"
                     :style="{ animationDelay: `${index * 0.1}s` }"
                   >
                     <Icon name="mdi:star" class="self-center text-warning" />
@@ -120,7 +120,7 @@ onUnmounted(() => {
               </div>
 
               <div class="mb-8">
-                <h3 class="text-xl font-semibold text-[var(--text)] mb-4 flex items-center gap-2">
+                <h3 class="text-xl font-semibold text-text mb-4 flex items-center gap-2">
                   <Icon name="mdi:code-tags" class="text-primary" />
                   {{ $t('projects.technologiesUsed') }}
                 </h3>
@@ -128,7 +128,7 @@ onUnmounted(() => {
                   <span
                     v-for="(tech, index) in project.technologies"
                     :key="tech"
-                    class="px-4 py-2 bg-[var(--chip)] text-[var(--primary)] text-sm font-medium rounded-lg hover:bg-[var(--primary)] hover:text-white transition-colors tech-badge"
+                    class="px-4 py-2 bg-chip text-primary text-sm font-medium rounded-lg hover:bg-primary hover:text-text transition-colors tech-badge"
                     :style="{ animationDelay: `${index * 0.05}s` }"
                   >
                     {{ tech }}
@@ -136,13 +136,13 @@ onUnmounted(() => {
                 </div>
               </div>
 
-              <div class="flex flex-wrap gap-4 pt-6 border-t border-[var(--border)]">
+              <div class="flex flex-wrap gap-4 pt-6 border-t border-border">
                 <a
                   v-if="project.projectUrl"
                   :href="project.projectUrl"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex items-center gap-2 px-6 py-3 bg-[var(--primary)] text-white font-semibold rounded-lg hover:bg-[var(--accent)] transition-all hover:scale-105 shadow-lg"
+                  class="flex items-center gap-2 px-6 py-3 bg-primary text-text font-semibold rounded-lg hover:bg-accent transition-all hover:scale-105 shadow-lg"
                 >
                   <Icon name="mdi:open-in-new" />
                   {{ $t('projects.viewProjectLive') }}
@@ -152,7 +152,7 @@ onUnmounted(() => {
                   :href="project.githubUrl"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex items-center gap-2 px-6 py-3 bg-[var(--chip)] text-[var(--primary)] font-semibold rounded-lg border-2 border-[var(--primary)] hover:bg-[var(--primary)] hover:text-white transition-all hover:scale-105"
+                  class="flex items-center gap-2 px-6 py-3 bg-chip text-primary font-semibold rounded-lg border-2 border-primary hover:bg-primary hover:text-text transition-all hover:scale-105"
                 >
                   <Icon name="mdi:github" />
                   {{ $t('projects.viewCodeInGitHub') }}

@@ -118,10 +118,10 @@ const hideTooltip = () => {
 
 const variantClasses = computed(() => {
   const variants = {
-    dark: 'bg-gray-900 dark:bg-gray-800 text-white',
+    dark: 'bg-gray-900 dark:bg-gray-800 text-text',
     light: 'bg-white dark:bg-surface text-text border border-border shadow-soft',
-    primary: 'bg-primary text-white',
-    accent: 'bg-accent text-white',
+    primary: 'bg-primary text-text',
+    accent: 'bg-accent text-text',
     code: 'bg-bg/95 backdrop-blur-sm text-text font-medium shadow-xl border border-primary/30',
     custom: props.customClass
   }
