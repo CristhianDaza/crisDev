@@ -112,9 +112,9 @@ export const projects = [
   },
   {
     id: 6,
-    title: 'projects.todoVue.title',
-    shortDescription: 'projects.todoVue.shortDescription',
-    fullDescription: 'projects.todoVue.fullDescription',
+    title: 'projects.portfolio.title',
+    shortDescription: 'projects.portfolio.shortDescription',
+    fullDescription: 'projects.portfolio.fullDescription',
     technologies: ['Vue.js', 'Nuxt', 'Tailwind CSS'],
     image: crisDev,
     projectUrl: 'https://cris-dev.netlify.app/',
@@ -122,11 +122,10 @@ export const projects = [
     featured: false,
     date: '2025',
     highlights: [
-      'projects.todoVue.highlights.highlight1',
-      'projects.todoVue.highlights.highlight2',
-      'projects.todoVue.highlights.highlight3',
-      'projects.todoVue.highlights.highlight4',
-      'projects.todoVue.highlights.highlight5',
+      'projects.portfolio.highlights.highlight1',
+      'projects.portfolio.highlights.highlight2',
+      'projects.portfolio.highlights.highlight3',
+      'projects.portfolio.highlights.highlight4'
     ],
   },
 ];

@@ -81,7 +81,7 @@
         "highlight2": "Technical blog integrated with Markdown and code highlighting",
         "highlight3": "Unique design based on Atomic Design and modular CSS",
         "highlight4": "Built with Nuxt and Vite for SSR and optimal performance",
-        "highlight5": "Progressive publishing on npm under the @todovue namespace"
+        "highlight5": "Progressive publishing on npm under the todovue namespace"
       }
     },
     "portfolio": {
