@@ -105,7 +105,7 @@ const sortedSocialMedia = computed(() =>
               v-for="social in sortedSocialMedia"
               :key="social.name"
               :content="$t(social.name)"
-              variant="primary"
+              variant="code"
             >
               <a
                 :href="social.url || '#'"

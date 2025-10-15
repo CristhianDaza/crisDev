@@ -21,5 +21,8 @@
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "resume": "Ver Currículum"
+  },
+  "global": {
+    "upToTop": "Volver arriba"
   }
 }

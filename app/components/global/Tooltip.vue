@@ -28,14 +28,23 @@ const props = defineProps({
   variant: {
     type: String,
     default: 'dark',
-    validator: (value) => ['dark', 'light', 'primary', 'accent'].includes(value)
+    validator: (value) => ['dark', 'light', 'primary', 'accent', 'code', 'custom'].includes(value)
   },
   offset: {
     type: Number,
     default: 8
+  },
+  showArrow: {
+    type: Boolean,
+    default: true
+  },
+  customClass: {
+    type: String,
+    default: ''
   }
 })
 
+const slots = useSlots()
 const isVisible = ref(false)
 const timeoutId = ref(null)
 const tooltipRef = ref(null)
@@ -86,7 +95,10 @@ const calculatePosition = () => {
 }
 
 const showTooltip = () => {
-  if (props.disabled || !tooltipContent.value) return
+  if (props.disabled) return
+
+  const hasContent = tooltipContent.value || slots.content
+  if (!hasContent) return
 
   timeoutId.value = setTimeout(() => {
     isVisible.value = true
@@ -109,7 +121,9 @@ const variantClasses = computed(() => {
     dark: 'bg-gray-900 dark:bg-gray-800 text-white',
     light: 'bg-white dark:bg-surface text-text border border-border shadow-soft',
     primary: 'bg-primary text-white',
-    accent: 'bg-accent text-white'
+    accent: 'bg-accent text-white',
+    code: 'bg-bg/95 backdrop-blur-sm text-text font-medium shadow-xl border border-primary/30',
+    custom: props.customClass
   }
   return variants[props.variant] || variants.dark
 })
@@ -119,7 +133,9 @@ const arrowVariantClass = computed(() => {
     dark: 'border-gray-900 dark:border-gray-800',
     light: 'border-white dark:border-surface',
     primary: 'border-primary',
-    accent: 'border-accent'
+    accent: 'border-accent',
+    code: 'border-bg/95',
+    custom: ''
   }
   return variants[props.variant] || variants.dark
 })
@@ -175,7 +191,7 @@ onBeforeUnmount(() => {
         @after-enter="calculatePosition"
       >
         <div
-          v-if="isVisible && tooltipContent"
+          v-if="isVisible"
           ref="tooltipRef"
           :class="[
             'tooltip-content',
@@ -191,10 +207,20 @@ onBeforeUnmount(() => {
           }"
           role="tooltip"
         >
-          <slot name="content">
-            {{ tooltipContent }}
-          </slot>
+          <template v-if="variant === 'code'">
+            <span class="text-primary">&lt;</span>
+            <slot name="content">
+              {{ tooltipContent }}
+            </slot>
+            <span class="text-primary">/&gt;</span>
+          </template>
+          <template v-else>
+            <slot name="content">
+              {{ tooltipContent }}
+            </slot>
+          </template>
           <div
+            v-if="showArrow"
             :class="[
               'absolute w-0 h-0',
               arrowPosition,

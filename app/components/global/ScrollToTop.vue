@@ -1,6 +1,5 @@
 <script setup>
 const isVisible = ref(false)
-const isHovered = ref(false)
 const scrollProgress = ref(0)
 
 const handleScroll = () => {
@@ -29,132 +28,117 @@ onBeforeUnmount(() => {
 
 <template>
   <Transition name="scroll-fade">
-    <div
-      v-if="isVisible"
-      class="fixed bottom-8 right-8 z-40"
-      @mouseenter="isHovered = true"
-      @mouseleave="isHovered = false"
-    >
-      <button
-        type="button"
-        class="group"
-        aria-label="Volver arriba"
-        @click="scrollToTop"
+    <div v-if="isVisible" class="fixed bottom-8 right-8 z-40">
+      <CdTooltip
+        position="left"
+        variant="code"
+        :delay="100"
+        :offset="12"
+        :show-arrow="false"
       >
-        <div class="relative w-14 h-14 md:w-16 md:h-16">
-          <svg
-            class="absolute inset-0 w-full h-full -rotate-90 drop-shadow-2xl"
-            viewBox="0 0 100 100"
-          >
-            <defs>
-              <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" :style="`stop-color: var(--primary); stop-opacity: 0.3`" />
-                <stop offset="100%" :style="`stop-color: var(--accent); stop-opacity: 0.3`" />
-              </linearGradient>
-              <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" :style="`stop-color: var(--primary); stop-opacity: 1`" />
-                <stop offset="50%" :style="`stop-color: var(--primary); stop-opacity: 1`" />
-                <stop offset="100%" :style="`stop-color: var(--accent); stop-opacity: 1`" />
-              </linearGradient>
-              <filter id="glow">
-                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                <feMerge>
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-              </filter>
-            </defs>
-            <circle
-              cx="50"
-              cy="50"
-              r="45"
-              fill="none"
-              stroke="url(#bgGradient)"
-              stroke-width="4"
-              class="transition-all duration-300"
-            />
-            <circle
-              cx="50"
-              cy="50"
-              r="45"
-              fill="none"
-              stroke="url(#progressGradient)"
-              stroke-width="4"
-              :stroke-dasharray="283"
-              :stroke-dashoffset="283 - (283 * scrollProgress) / 100"
-              stroke-linecap="round"
-              class="transition-all duration-300 ease-out"
-              filter="url(#glow)"
-            />
-          </svg>
-
-          <div
-            :class="[
-              'absolute inset-2 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 backdrop-blur-md',
-              'border border-primary/30 shadow-lg',
-              'flex items-center justify-center',
-              'transition-all duration-300 ease-out',
-              'group-hover:scale-110 group-hover:from-primary/30 group-hover:to-accent/30',
-              'group-hover:border-primary/50 group-hover:shadow-2xl group-hover:shadow-primary/20',
-              'group-active:scale-95'
-            ]"
-          >
+        <button
+          type="button"
+          class="group"
+          aria-label="Volver arriba"
+          @click="scrollToTop"
+        >
+          <div class="relative w-14 h-14 md:w-16 md:h-16">
             <svg
-              class="w-6 h-6 md:w-7 md:h-7 text-primary transition-all duration-300 ease-out"
-              :class="[
-                isHovered ? 'translate-y-[-3px]' : 'translate-y-0'
-              ]"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              class="absolute inset-0 w-full h-full -rotate-90 drop-shadow-2xl"
+              viewBox="0 0 100 100"
             >
-              <line x1="12" y1="19" x2="12" y2="5" />
-              <polyline points="5 12 12 5 19 12" />
+              <defs>
+                <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" :style="`stop-color: var(--primary); stop-opacity: 0.3`" />
+                  <stop offset="100%" :style="`stop-color: var(--accent); stop-opacity: 0.3`" />
+                </linearGradient>
+                <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" :style="`stop-color: var(--primary); stop-opacity: 1`" />
+                  <stop offset="50%" :style="`stop-color: var(--primary); stop-opacity: 1`" />
+                  <stop offset="100%" :style="`stop-color: var(--accent); stop-opacity: 1`" />
+                </linearGradient>
+                <filter id="glow">
+                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              <circle
+                cx="50"
+                cy="50"
+                r="45"
+                fill="none"
+                stroke="url(#bgGradient)"
+                stroke-width="4"
+                class="transition-all duration-300"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="45"
+                fill="none"
+                stroke="url(#progressGradient)"
+                stroke-width="4"
+                :stroke-dasharray="283"
+                :stroke-dashoffset="283 - (283 * scrollProgress) / 100"
+                stroke-linecap="round"
+                class="transition-all duration-300 ease-out"
+                filter="url(#glow)"
+              />
             </svg>
 
-            <span
-              v-for="i in 3"
-              :key="i"
+            <div
               :class="[
-                'absolute w-1 h-1 rounded-full bg-primary/60',
-                'transition-all duration-700 ease-out',
-                isHovered ? 'opacity-100' : 'opacity-0'
+                'absolute inset-2 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 backdrop-blur-md',
+                'border border-primary/30 shadow-lg',
+                'flex items-center justify-center',
+                'transition-all duration-300 ease-out',
+                'group-hover:scale-110 group-hover:from-primary/30 group-hover:to-accent/30',
+                'group-hover:border-primary/50 group-hover:shadow-2xl group-hover:shadow-primary/20',
+                'group-active:scale-95'
               ]"
-              :style="{
-                top: isHovered ? '-8px' : '50%',
-                left: `${30 + i * 15}%`,
-                transitionDelay: `${i * 50}ms`
-              }"
+            >
+              <svg
+                class="w-6 h-6 md:w-7 md:h-7 text-primary transition-all duration-300 ease-out group-hover:translate-y-[-3px]"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="12" y1="19" x2="12" y2="5" />
+                <polyline points="5 12 12 5 19 12" />
+              </svg>
+
+              <span
+                v-for="i in 3"
+                :key="i"
+                :class="[
+                  'absolute w-1 h-1 rounded-full bg-primary/60',
+                  'transition-all duration-700 ease-out',
+                  'opacity-0 group-hover:opacity-100'
+                ]"
+                :style="{
+                  top: '-8px',
+                  left: `${30 + i * 15}%`,
+                  transitionDelay: `${i * 50}ms`
+                }"
+              />
+            </div>
+
+            <div
+              class="absolute inset-0 rounded-full bg-primary/20 animate-ping-slow opacity-0 group-hover:opacity-100"
             />
           </div>
+        </button>
 
-          <div
-            v-if="isHovered"
-            class="absolute inset-0 rounded-full bg-primary/20 animate-ping-slow"
-          />
-        </div>
-      </button>
-
-      <Transition name="tooltip">
-        <div
-          v-if="isHovered"
-          class="absolute bottom-full right-0 mb-3 whitespace-nowrap"
-        >
-          <div
-            class="bg-bg/95 backdrop-blur-sm text-text text-sm font-medium px-4 py-2 rounded-lg shadow-xl border border-primary/30"
-          >
-            <span class="text-primary">&lt;</span>
-            Volver arriba
-            <span class="text-primary">/&gt;</span>
-          </div>
-          <div class="absolute left-1/2 -translate-x-1/2 -bottom-1">
-            <div class="w-2 h-2 rotate-45 bg-bg/95 border-r border-b border-primary/30" />
-          </div>
-        </div>
-      </Transition>
+        <template #content>
+          {{ $t('global.upToTop') }}
+        </template>
+      </CdTooltip>
     </div>
   </Transition>
 </template>
@@ -187,25 +171,6 @@ onBeforeUnmount(() => {
   to {
     opacity: 0;
     transform: translateY(20px) scale(0.8) rotate(-180deg);
-  }
-}
-
-.tooltip-enter-active {
-  animation: tooltipSlide 0.25s ease-out;
-}
-
-.tooltip-leave-active {
-  animation: tooltipSlide 0.2s ease-in reverse;
-}
-
-@keyframes tooltipSlide {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 
