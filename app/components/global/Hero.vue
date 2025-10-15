@@ -46,7 +46,7 @@ const sortedSocialMedia = computed(() =>
       />
     </div>
 
-    <div class="relative mx-auto max-w-7xl px-6 py-16 md:py-24 w-full">
+    <div class="relative mx-auto max-w-7xl px-6 py-16 w-full">
       <div
         class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16"
       >
