@@ -9,6 +9,7 @@ defineProps({
 })
 
 const route = useRoute()
+const router = useRouter()
 const hydrated = ref(false)
 const isMenuOpen = ref(false)
 
@@ -34,6 +35,17 @@ const closeMenu = () => {
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
+}
+
+const scrollToSection = (href) => {
+  if (import.meta.client) {
+    const hash = href.startsWith('#') ? href.substring(1) : href
+    const el = document.getElementById(hash)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      router.push({ hash: `#${hash}` })
+    }
+  }
 }
 
 watch(() => route.fullPath, () => {
@@ -99,10 +111,11 @@ onMounted(() => {
             <NuxtLink
               :to="ensureHash(id)"
               :class="[
-                'relative inline-block text-text transition-colors duration-300 after:content-[\'\'] after:absolute after:left-0 after:-bottom-1.5 after:w-full after:h-0.5 after:bg-primary after:origin-right after:scale-x-0 hover:after:origin-left hover:after:scale-x-100 font-bold after:transition-transform after:duration-500 after:ease-in-out uppercase',
+                'relative inline-block text-text transition-colors duration-300 after:content-[\'\'] after:absolute after:left-0 after:-bottom-1.5 after:w-full after:h-0.5 after:bg-primary after:origin-right after:scale-x-0 hover:after:origin-left hover:after:scale-x-100 font-bold after:transition-transform after:duration-500 after:ease-in-out uppercase cursor-pointer',
                 activeClassFor(id)
               ]"
               :aria-current="hydrated && isActive(id) ? 'page' : undefined"
+              @click.prevent="scrollToSection(id)"
             >
               <span class="text-primary font-bold">&lt;</span> {{ $t(name) }} <span class="text-primary font-bold" >/&gt;</span>
             </NuxtLink>
@@ -141,10 +154,10 @@ onMounted(() => {
             <li v-for="{ name, id } in menus" :key="id">
               <NuxtLink
                 :to="ensureHash(id)"
-                class="text-2xl uppercase font-extrabold tracking-wide text-text hover:text-primary transition-colors duration-200"
+                class="text-2xl uppercase font-extrabold tracking-wide text-text hover:text-primary transition-colors duration-200 cursor-pointer"
                 :class="[ hydrated && isActive(id) ? 'text-primary' : '' ]"
                 :aria-current="hydrated && isActive(id) ? 'page' : undefined"
-                @click="closeMenu"
+                @click.prevent="scrollToSection(id); closeMenu()"
               >
                 <span class="text-primary font-bold">&lt;</span> {{ $t(name) }} <span class="text-primary font-bold" >/&gt;</span>
               </NuxtLink>

@@ -1,10 +1,16 @@
 <script setup>
 import photoUrl from '../../assets/images/image-cris.png'
 
+const router = useRouter()
+
 function scrollToId(id) {
   if (import.meta.client) {
     const el = document.getElementById(id)
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      window.history.pushState({}, '', `#${id}`)
+      router.replace({ hash: `#${id}` })
+    }
   }
 }
 
@@ -76,7 +82,7 @@ const sortedSocialMedia = computed(() =>
               type="button"
               class="group relative inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-semibold shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 active:scale-95"
               :class="'bg-[var(--primary)] text-text'"
-              @click="scrollToId('contacto')"
+              @click="scrollToId('contact')"
             >
               <span class="relative z-10">{{ $t('hero.contactButton') }}</span>
               <span class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity blur-lg" style="background: var(--primary);" />
@@ -85,7 +91,7 @@ const sortedSocialMedia = computed(() =>
               type="button"
               class="inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-semibold border-2 transition-all duration-300 hover:scale-105 active:scale-95"
               :class="'border-[var(--border)] bg-[var(--surface)] text-[var(--text)] hover:border-[var(--primary)]'"
-              @click="scrollToId('proyectos')"
+              @click="scrollToId('projects')"
             >
               {{ $t('hero.projectsButton') }}
               <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" stroke="currentColor" viewBox="0 0 24 24">

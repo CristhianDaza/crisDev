@@ -21,9 +21,24 @@ const { locales, setLocale } = useI18n()
     {{ locale.name }}
   </button>
 
+  <section id="home" class="mx-auto max-w-7xl px-6 py-20">
+    <h2 class="mb-4 text-2xl font-semibold">Inicio</h2>
+    <p class="text-[var(--muted)]">Sección de inicio.</p>
+  </section>
+
   <section id="projects" class="mx-auto max-w-7xl px-6 py-20">
     <h2 class="mb-4 text-2xl font-semibold">Proyectos</h2>
     <p class="text-[var(--muted)]">Aquí podrás listar tus trabajos destacados.</p>
+  </section>
+
+  <section id="experience" class="mx-auto max-w-7xl px-6 py-20">
+    <h2 class="mb-4 text-2xl font-semibold">Experiencia</h2>
+    <p class="text-[var(--muted)]">Tu experiencia profesional.</p>
+  </section>
+
+  <section id="skills" class="mx-auto max-w-7xl px-6 py-20">
+    <h2 class="mb-4 text-2xl font-semibold">Habilidades</h2>
+    <p class="text-[var(--muted)]">Tus habilidades técnicas.</p>
   </section>
 
   <section id="contact" class="mx-auto max-w-7xl px-6 pb-24">
