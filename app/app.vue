@@ -42,4 +42,6 @@ const { locales, setLocale } = useI18n()
     <h2 class="mb-4 text-2xl font-semibold">Contacto</h2>
     <p class="text-[var(--muted)]">Incluye un formulario o tus enlaces de contacto.</p>
   </section>
+
+  <CdScrollToTop />
 </template>
