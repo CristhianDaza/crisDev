@@ -117,7 +117,6 @@ export const projects = [
     fullDescription: 'projects.portfolio.fullDescription',
     technologies: ['Vue.js', 'Nuxt', 'Tailwind CSS'],
     image: crisDev,
-    projectUrl: 'https://cris-dev.netlify.app/',
     githubUrl: 'https://github.com/CristhianDaza/crisDev',
     featured: false,
     date: '2025',
