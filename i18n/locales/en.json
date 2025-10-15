@@ -1,16 +1,20 @@
 {
   "menu":{
+    "contact": "Contact",
+    "experience": "Experience",
     "home": "Home",
     "projects": "Projects",
-    "experience": "Experience",
-    "skills": "Skills",
-    "contact": "Contact"
+    "skills": "Skills"
   },
-    "hero": {
-      "greeting": "Hi, I'm",
-      "role": "Frontend Developer",
-      "description": "Frontend developer specialized in building fast, accessible and elegant web experiences with Nuxt, Vue and Tailwind.",
-      "contactButton": "Let's Talk",
-      "projectsButton": "See Projects"
-    }
+  "hero": {
+    "UI": "UI/UX Friendly",
+    "codeQuality": "Clean Code",
+    "contactButton": "Let's Talk",
+    "description": "Frontend developer with over {years} years of experience building modern, accessible, and scalable interfaces using Vue, LitElement, and Tailwind. Passionate about clean code, modular architecture, and user-centered experiences.",
+    "greeting": "Hi, I'm",
+    "name": "Cristhian",
+    "performance": "High Performance",
+    "projectsButton": "See Projects",
+    "role": "Frontend Developer"
+  }
 }

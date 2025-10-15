@@ -5,3 +5,18 @@ export const mainMenu = [
   { name: 'menu.skills', id: '#skills', order: 4 },
   { name: 'menu.contact', id: '#contact', order: 5 },
 ];
+
+export const socialMediaLinks = [
+  {
+    name: 'GitHub',
+    url: 'https://github.com/CristhianDaza',
+    icon: 'mdi:github',
+    order: 1,
+  },
+  {
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/cristhiandaza',
+    icon: 'mdi:linkedin',
+    order: 2,
+  },
+];

@@ -1,16 +1,20 @@
 {
   "menu":{
+    "contact": "Contacto",
+    "experience": "Experiencia",
     "home": "Inicio",
     "projects": "Proyectos",
-    "experience": "Experiencia",
-    "skills": "Habilidades",
-    "contact": "Contacto"
+    "skills": "Habilidades"
   },
   "hero": {
-    "greeting": "Hola, soy",
-    "role": "Desarrollador Frontend",
-    "description": "Desarrollador Frontend especializado en crear experiencias web rápidas, accesibles y elegantes con Nuxt, Vue y Tailwind.",
+    "UI": "Amigable con UI/UX",
+    "codeQuality": "Código limpio",
     "contactButton": "Hablemos",
-    "projectsButton": "Ver proyectos"
+    "description": "Desarrollador Frontend con más de {years} años de experiencia creando experiencias web rápidas, accesibles y centradas en el usuario.",
+    "greeting": "Hola, soy",
+    "name": "Cristhian",
+    "performance": "Alto rendimiento",
+    "projectsButton": "Ver proyectos",
+    "role": "Desarrollador Frontend"
   }
 }
