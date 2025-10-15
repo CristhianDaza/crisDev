@@ -22,7 +22,7 @@ export default defineNuxtConfig({
   components: [
     {
       path: '~/components/global',
-      prefix: 'Cv'
+      prefix: 'Cd'
     }
   ]
 })

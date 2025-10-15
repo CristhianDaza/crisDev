@@ -95,7 +95,7 @@ const sortedSocialMedia = computed(() =>
           </div>
 
           <div class="flex flex-wrap gap-2.5 pt-4">
-            <CvTooltip
+            <CdTooltip
               v-for="social in sortedSocialMedia"
               :key="social.name"
               :content="$t(social.name)"
@@ -118,7 +118,7 @@ const sortedSocialMedia = computed(() =>
                   style="background: linear-gradient(135deg, var(--primary), var(--accent));"
                 />
               </a>
-            </CvTooltip>
+            </CdTooltip>
           </div>
         </div>
 

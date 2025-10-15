@@ -9,8 +9,8 @@ const { locales, setLocale } = useI18n()
 </script>
 
 <template>
-  <CvHeader :menus="mainMenu" />
-  <CvHero />
+  <CdHeader :menus="mainMenu" />
+  <CdHero />
 
   <button
     v-for="locale in locales"
