@@ -14,10 +14,22 @@ defineEmits(['openProject'])
     class="project-card group cursor-pointer overflow-hidden rounded-[var(--radius)] bg-[var(--surface)] border border-[var(--border)] transition-all duration-300 hover:shadow-[var(--shadow)] hover:-translate-y-2"
     @click="$emit('openProject', project)"
   >
-    <div class="relative h-48 overflow-hidden bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] opacity-80">
-      <div class="absolute inset-0 flex items-center justify-center text-6xl text-white/30 font-bold">
-        {{ project.title.charAt(0) }}
+    <div class="relative h-48 overflow-hidden">
+      <img
+        v-if="project.image"
+        :src="project.image"
+        :alt="$t(project.title)"
+        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+      >
+      <div
+        v-else
+        class="w-full h-full bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] opacity-80"
+      >
+        <div class="absolute inset-0 flex items-center justify-center text-6xl text-white/30 font-bold">
+          {{ project.title.charAt(0) }}
+        </div>
       </div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"/>
       <div v-if="project.featured" class="absolute top-3 right-3 px-3 py-1 bg-[var(--accent)] text-white text-xs font-semibold rounded-full">
         {{ $t('projects.featured') }}
       </div>
@@ -26,13 +38,13 @@ defineEmits(['openProject'])
     <div class="p-6">
       <div class="flex items-start justify-between gap-2 mb-3">
         <h3 class="text-xl font-bold text-[var(--text)] group-hover:text-[var(--primary)] transition-colors line-clamp-1">
-          {{ project.title }}
+          {{ $t(project?.title) }}
         </h3>
         <span class="text-sm text-[var(--muted)] whitespace-nowrap">{{ project.date }}</span>
       </div>
 
       <p class="text-[var(--muted)] text-sm mb-4 line-clamp-2 leading-relaxed">
-        {{ project.shortDescription }}
+        {{ $t(project.shortDescription) }}
       </p>
 
       <div class="flex flex-wrap gap-2 mb-4">
@@ -114,4 +126,3 @@ defineEmits(['openProject'])
   overflow: hidden;
 }
 </style>
-

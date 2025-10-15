@@ -66,10 +66,22 @@ onUnmounted(() => {
             </button>
           </CdTooltip>
           <div class="overflow-y-auto max-h-[90vh] project-detail-scroll">
-            <div class="relative h-64 bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] overflow-hidden">
-              <div class="absolute inset-0 flex items-center justify-center text-9xl text-white/20 font-bold">
-                {{ project.title.charAt(0) }}
+            <div class="relative h-64 overflow-hidden">
+              <img
+                v-if="project.image"
+                :src="project.image"
+                :alt="project.title"
+                class="w-full h-full object-cover"
+              >
+              <div
+                v-else
+                class="w-full h-full bg-gradient-to-br from-[var(--primary)] to-[var(--accent)]"
+              >
+                <div class="absolute inset-0 flex items-center justify-center text-9xl text-white/20 font-bold">
+                  {{ project.title.charAt(0) }}
+                </div>
               </div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"/>
               <div v-if="project.featured" class="absolute top-6 left-6 px-4 py-2 bg-[var(--accent)] text-white text-sm font-semibold rounded-full shadow-lg">
                 ⭐ {{ $t('projects.featuredProject') }}
               </div>
@@ -78,7 +90,7 @@ onUnmounted(() => {
             <div class="p-8">
               <div class="flex items-start justify-between gap-4 mb-4">
                 <h2 class="text-3xl md:text-4xl font-bold text-[var(--text)]">
-                  {{ project.title }}
+                  {{ $t(project.title) }}
                 </h2>
                 <span class="px-3 py-1 bg-[var(--chip)] text-[var(--primary)] text-sm font-semibold rounded-lg whitespace-nowrap">
                   {{ project.date }}
@@ -86,36 +98,30 @@ onUnmounted(() => {
               </div>
 
               <p class="text-[var(--muted)] text-lg leading-relaxed mb-8">
-                {{ project.fullDescription }}
+                {{ $t(project.fullDescription) }}
               </p>
 
               <div v-if="project.highlights && project.highlights.length" class="mb-8">
                 <h3 class="text-xl font-semibold text-[var(--text)] mb-4 flex items-center gap-2">
-                  <svg class="w-5 h-5 text-[var(--accent)]" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                  </svg>
+                  <Icon name="mdi:lightbulb" class="text-accent" />
                   {{ $t('projects.highlights') }}
                 </h3>
                 <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <li
                     v-for="(highlight, index) in project.highlights"
                     :key="index"
-                    class="flex items-start gap-2 text-[var(--muted)] bg-[var(--chip)] p-3 rounded-lg"
+                    class="flex items-center gap-2 text-[var(--muted)] bg-[var(--chip)] p-3 rounded-lg"
                     :style="{ animationDelay: `${index * 0.1}s` }"
                   >
-                    <svg class="w-5 h-5 text-[var(--accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>{{ highlight }}</span>
+                    <Icon name="mdi:star" class="self-center text-warning" />
+                    <span class="self-center">{{ $t(highlight) }}</span>
                   </li>
                 </ul>
               </div>
 
               <div class="mb-8">
                 <h3 class="text-xl font-semibold text-[var(--text)] mb-4 flex items-center gap-2">
-                  <svg class="w-5 h-5 text-[var(--primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                  </svg>
+                  <Icon name="mdi:code-tags" class="text-primary" />
                   {{ $t('projects.technologiesUsed') }}
                 </h3>
                 <div class="flex flex-wrap gap-3">

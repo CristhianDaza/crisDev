@@ -13,7 +13,7 @@ const { locales, setLocale } = useI18n()
     <CdHeader :menus="mainMenu"/>
   </main>
 
-  <section id="projects" class="min-h-screen">
+  <section id="home" class="min-h-screen">
     <CdHero />
   </section>
   <section id="projects" class="mx-auto max-w-7xl px-6 py-20 min-h-screen">

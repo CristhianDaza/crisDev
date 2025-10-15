@@ -1,3 +1,9 @@
+import TODOvue from '@/assets/images/projects/TODOvue.png';
+import crisDev from '@/assets/images/projects/crisDev.png';
+import finControl from '@/assets/images/projects/finControl.png';
+import megapromocionales from '@/assets/images/projects/megapromocionales.png';
+import redGlobalPromo from '@/assets/images/projects/redGlobalPromo.png';
+
 export const mainMenu = [
   { name: 'menu.home', id: '#home', order: 1 },
   { name: 'menu.projects', id: '#projects', order: 2 },
@@ -24,5 +30,103 @@ export const socialMediaLinks = [
     url: 'https://drive.google.com/file/d/1X6agz63-sDAIfsmuuitAVO1O9gjzB6wy/view?usp=sharing',
     icon: 'mdi:file-account',
     order: 3,
+  },
+];
+
+export const projects = [
+  {
+    id: 1,
+    title: 'projects.redGlobal.title',
+    shortDescription: 'projects.redGlobal.shortDescription',
+    fullDescription: 'projects.redGlobal.fullDescription',
+    technologies: [ 'Vue.js', 'Vite', 'TypeScript', 'Pinia', 'Tailwind CSS', 'Firebase (Auth/Firestore/Storage)', 'Cloudinary', 'EmailJS', 'XLSX'
+    ],
+    image: redGlobalPromo,
+    projectUrl: 'https://www.redglobalpromo.com.co/',
+    githubUrl: 'https://github.com/CristhianDaza/redGlobal',
+    featured: true,
+    date: '2025',
+    highlights: [
+      'projects.redGlobal.highlights.highlight1',
+      'projects.redGlobal.highlights.highlight2',
+      'projects.redGlobal.highlights.highlight3',
+      'projects.redGlobal.highlights.highlight4',
+      'projects.redGlobal.highlights.highlight5',
+    ],
+  },
+  {
+    id: 2,
+    title: 'projects.finControl.title',
+    shortDescription: 'projects.finControl.shortDescription',
+    fullDescription: 'projects.finControl.fullDescription',
+    technologies: ['Vue.js', 'Vite', 'Chart.js', 'Firebase', 'Pinia'],
+    image: finControl,
+    projectUrl: 'https://fin-control.netlify.app/',
+    featured: true,
+    date: '2025',
+    highlights: [
+      'projects.finControl.highlights.highlight1',
+      'projects.finControl.highlights.highlight2',
+      'projects.finControl.highlights.highlight3',
+      'projects.finControl.highlights.highlight4',
+      'projects.finControl.highlights.highlight5',
+    ],
+  },
+  {
+    id: 3,
+    title: 'projects.mega.title',
+    shortDescription: 'projects.mega.shortDescription',
+    fullDescription: 'projects.mega.fullDescription',
+    technologies: ['Vue.js', 'Vite', 'TodoVue Components', 'Pinia', 'Firebase', 'PrimeVue', 'Tailwind CSS', 'Lodash', 'vue3-carousel'],
+    image: megapromocionales,
+    projectUrl: 'https://megapromocionales.com.co/',
+    githubUrl: 'https://github.com/CristhianDaza/megaprom',
+    featured: false,
+    date: '2024',
+    highlights: [
+      'projects.mega.highlights.highlight1',
+      'projects.mega.highlights.highlight2',
+      'projects.mega.highlights.highlight3',
+      'projects.mega.highlights.highlight4',
+      'projects.mega.highlights.highlight5',
+    ],
+  },
+  {
+    id: 4,
+    title: 'projects.todoVue.title',
+    shortDescription: 'projects.todoVue.shortDescription',
+    fullDescription: 'projects.todoVue.fullDescription',
+    technologies: ['Vue.js', 'Nuxt', 'Vite', 'Sass', 'TodoVue Components'],
+    image: TODOvue,
+    projectUrl: 'https://tv-demo.netlify.app/',
+    githubUrl: 'https://github.com/orgs/TODOvue/repositories',
+    featured: false,
+    date: '2023',
+    highlights: [
+      'projects.todoVue.highlights.highlight1',
+      'projects.todoVue.highlights.highlight2',
+      'projects.todoVue.highlights.highlight3',
+      'projects.todoVue.highlights.highlight4',
+      'projects.todoVue.highlights.highlight5',
+    ],
+  },
+  {
+    id: 6,
+    title: 'projects.todoVue.title',
+    shortDescription: 'projects.todoVue.shortDescription',
+    fullDescription: 'projects.todoVue.fullDescription',
+    technologies: ['Vue.js', 'Nuxt', 'Tailwind CSS'],
+    image: crisDev,
+    projectUrl: 'https://cris-dev.netlify.app/',
+    githubUrl: 'https://github.com/CristhianDaza/crisDev',
+    featured: false,
+    date: '2025',
+    highlights: [
+      'projects.todoVue.highlights.highlight1',
+      'projects.todoVue.highlights.highlight2',
+      'projects.todoVue.highlights.highlight3',
+      'projects.todoVue.highlights.highlight4',
+      'projects.todoVue.highlights.highlight5',
+    ],
   },
 ];
