@@ -129,3 +129,46 @@ export const projects = [
     ],
   },
 ];
+
+export const experiences = [
+  {
+    id: 1,
+    company: 'experience.company1.name',
+    position: 'experience.company1.position',
+    description: 'experience.company1.description',
+    startDate: { month: 7, year: 2022 },
+    endDate: null,
+    technologies: ['JavaScript', 'LitElement', 'Web Components', 'Cells', 'Polymer'],
+    type: 'full-time',
+  },
+  {
+    id: 2,
+    company: 'experience.company2.name',
+    position: 'experience.company2.position',
+    description: 'experience.company2.description',
+    startDate: { month: 12, year: 2021 },
+    endDate: { month: 6, year: 2022 },
+    technologies: ['Vue.js', 'NativeScript', 'TypeScript', 'Tailwind CSS'],
+    type: 'full-time',
+  },
+  {
+    id: 3,
+    company: 'experience.company3.name',
+    position: 'experience.company3.position',
+    description: 'experience.company3.description',
+    startDate: { month: 8, year: 2021 },
+    endDate: { month: 11, year: 2021 },
+    technologies: ['Vue.js', 'MicroFrontend', 'Vuetify', 'TypeScript', 'Vue Test Utils'],
+    type: 'contract',
+  },
+  {
+    id: 4,
+    company: 'experience.company4.name',
+    position: 'experience.company4.position',
+    description: 'experience.company4.description',
+    startDate: { month: 6, year: 2018 },
+    endDate: { month: 7, year: 2021 },
+    technologies: ['Vue.js', 'Vuetify', 'Firebase'],
+    type: 'full-time',
+  },
+];

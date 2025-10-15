@@ -95,5 +95,34 @@
         "highlight4": "Developed with Vue, Nuxt, and Tailwind CSS"
       }
     }
+  },
+  "experience": {
+    "title": "Work Experience",
+    "description": "My professional journey in frontend development",
+    "present": "Present",
+    "year": "year",
+    "years": "years",
+    "month": "month",
+    "months": "months",
+    "company1": {
+      "name": "Neoris / Epam",
+      "position": "Experience Developer",
+      "description": "Development of reusable components for financial web platforms based on Web Components (LitElement). Implementation of accessibility standards, performance best practices, and participation in Cells (Polymer – LitElement) training for banking projects such as Transfiya, QR Payments, and Loan Payments."
+    },
+    "company2": {
+      "name": "Global66",
+      "position": "Front End Developer",
+      "description": "Implementation of responsive interfaces for fintech applications. Development of mobile components using NativeScript and TypeScript. Optimization of payment flows, reducing loading times and improving user experience."
+    },
+    "company3": {
+      "name": "Newshore",
+      "position": "Software Engineer (Frontend)",
+      "description": "Integration of scalable micro frontends in international projects. Implementation of unit testing with Vue Test Utils, increasing code coverage and ensuring deployment quality."
+    },
+    "company4": {
+      "name": "Megapromocionales LTDA",
+      "position": "Web Developer",
+      "description": "Development of an inventory management system and e-commerce modules using Firebase, shopping cart, and payment gateway integration. Automated reporting improved operational efficiency by 30%."
+    }
   }
 }

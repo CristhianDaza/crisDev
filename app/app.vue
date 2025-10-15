@@ -20,6 +20,10 @@ const { locales, setLocale } = useI18n()
     <CdProjects />
   </section>
 
+  <section id="experience" class="relative mx-auto max-w-full px-6 py-20 min-h-screen">
+    <CdExperience />
+  </section>
+
   <button
     v-for="locale in locales"
     :key="locale.code"
@@ -28,12 +32,6 @@ const { locales, setLocale } = useI18n()
   >
     {{ locale.name }}
   </button>
-
-  <section id="experience" class="mx-auto max-w-7xl px-6 py-20 min-h-screen">
-    <h2 class="mb-4 text-2xl font-semibold">Experiencia</h2>
-    <p class="text-[var(--muted)]">Tu experiencia profesional.</p>
-  </section>
-
   <section id="skills" class="mx-auto max-w-7xl px-6 py-20 min-h-screen">
     <h2 class="mb-4 text-2xl font-semibold">Habilidades</h2>
     <p class="text-[var(--muted)]">Tus habilidades técnicas.</p>
