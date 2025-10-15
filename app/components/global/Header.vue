@@ -1,7 +1,7 @@
 <script setup>
 import logoUrl from '../../assets/images/main-logo-cris-dev.png'
 
-defineProps({
+const props = defineProps({
   menus: {
     type: Array,
     default: () => [],
@@ -14,6 +14,7 @@ const hydrated = ref(false)
 const isMenuOpen = ref(false)
 const isScrolled = ref(false)
 const scrollPosition = ref(0)
+const isScrollingProgrammatically = ref(false)
 
 const ensureHash = (href) => {
   if (!href) return ''
@@ -60,10 +61,75 @@ const toggleMenu = () => {
   }
 }
 
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 50
+  if (!isScrollingProgrammatically.value && hydrated.value) {
+    detectCurrentSection()
+  }
+}
+
+const detectCurrentSection = () => {
+  if (typeof document === 'undefined' || !props.menus) return
+
+  const scrollY = window.scrollY
+
+  if (scrollY < 200) {
+    if (route.hash !== '#home') {
+      router.replace({ hash: '#home' })
+    }
+    return
+  }
+
+  const menuIds = props.menus.map(item => {
+    const id = item.id || ''
+    return id.startsWith('#') ? id.substring(1) : id
+  }).filter(Boolean)
+
+  if (menuIds.length === 0) return
+
+  const windowHeight = window.innerHeight
+
+  let currentSection = null
+  let maxVisibility = 0
+
+  menuIds.forEach((sectionId) => {
+    if (sectionId.startsWith('__') || sectionId === 'teleports') return
+
+    const section = document.getElementById(sectionId)
+    if (!section) return
+
+    try {
+      const rect = section.getBoundingClientRect()
+      const sectionTop = rect.top + scrollY
+      const sectionBottom = sectionTop + rect.height
+
+      const viewportTop = scrollY
+      const viewportBottom = scrollY + windowHeight
+
+      const visibleTop = Math.max(sectionTop, viewportTop)
+      const visibleBottom = Math.min(sectionBottom, viewportBottom)
+      const visibleHeight = Math.max(0, visibleBottom - visibleTop)
+
+      if (visibleHeight > maxVisibility && visibleHeight > 100) {
+        maxVisibility = visibleHeight
+        currentSection = sectionId
+      }
+    } catch {
+      console.warn('Detecting section failed for:', sectionId);
+    }
+  })
+
+  if (currentSection && route.hash !== `#${currentSection}`) {
+    router.replace({ hash: `#${currentSection}` })
+  }
+}
+
 const scrollToSection = (href) => {
   if (import.meta.client) {
     const hash = href.startsWith('#') ? href.substring(1) : href
     const wasMenuOpen = isMenuOpen.value
+
+    isScrollingProgrammatically.value = true
 
     if (wasMenuOpen) {
       const currentScroll = scrollPosition.value
@@ -82,6 +148,9 @@ const scrollToSection = (href) => {
         if (el) {
           el.scrollIntoView({ behavior: 'smooth', block: 'start' })
           router.push({ hash: `#${hash}` })
+          setTimeout(() => {
+            isScrollingProgrammatically.value = false
+          }, 1000)
         }
       }, 250)
     } else {
@@ -89,13 +158,12 @@ const scrollToSection = (href) => {
       if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' })
         router.push({ hash: `#${hash}` })
+        setTimeout(() => {
+          isScrollingProgrammatically.value = false
+        }, 1000)
       }
     }
   }
-}
-
-const handleScroll = () => {
-  isScrolled.value = window.scrollY > 50
 }
 
 watch(() => route.fullPath, () => {
@@ -110,6 +178,10 @@ onMounted(() => {
     if (e.key === 'Escape') closeMenu()
   }
   window.addEventListener('keydown', onKeydown)
+
+  setTimeout(() => {
+    detectCurrentSection()
+  }, 100)
 
   onBeforeUnmount(() => {
     window.removeEventListener('scroll', handleScroll)
