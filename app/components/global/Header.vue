@@ -13,6 +13,7 @@ const router = useRouter()
 const hydrated = ref(false)
 const isMenuOpen = ref(false)
 const isScrolled = ref(false)
+const scrollPosition = ref(0)
 
 const ensureHash = (href) => {
   if (!href) return ''
@@ -32,20 +33,54 @@ const activeClassFor = (href) => {
 
 const closeMenu = () => {
   isMenuOpen.value = false
+  if (typeof document !== 'undefined') {
+    const currentScroll = scrollPosition.value
+    document.body.style.overflow = ''
+    document.body.style.position = ''
+    document.body.style.top = ''
+    document.body.style.width = ''
+    window.scrollTo(0, currentScroll)
+  }
 }
 
 const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value
+  if (typeof document !== 'undefined') {
+    if (!isMenuOpen.value) {
+      scrollPosition.value = window.scrollY
+      isMenuOpen.value = true
+      requestAnimationFrame(() => {
+        document.body.style.position = 'fixed'
+        document.body.style.top = `-${scrollPosition.value}px`
+        document.body.style.width = '100%'
+        document.body.style.overflow = 'hidden'
+      })
+    } else {
+      closeMenu()
+    }
+  }
 }
 
 const scrollToSection = (href) => {
   if (import.meta.client) {
     const hash = href.startsWith('#') ? href.substring(1) : href
-    const el = document.getElementById(hash)
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      router.push({ hash: `#${hash}` })
+    const currentScroll = scrollPosition.value
+    isMenuOpen.value = false
+
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
+      window.scrollTo(0, currentScroll)
     }
+
+    setTimeout(() => {
+      const el = document.getElementById(hash)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        router.push({ hash: `#${hash}` })
+      }
+    }, 250)
   }
 }
 
@@ -66,16 +101,15 @@ onMounted(() => {
   }
   window.addEventListener('keydown', onKeydown)
 
-  watch(isMenuOpen, (open) => {
-    if (typeof document !== 'undefined') {
-      document.body.style.overflow = open ? 'hidden' : ''
-    }
-  }, { immediate: true })
-
   onBeforeUnmount(() => {
     window.removeEventListener('scroll', handleScroll)
     window.removeEventListener('keydown', onKeydown)
-    if (typeof document !== 'undefined') document.body.style.overflow = ''
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
+    }
   })
 })
 </script>
@@ -151,23 +185,24 @@ onMounted(() => {
       </nav>
     </header>
 
-    <Transition name="fade">
+    <Transition name="menu-fade">
       <div
         v-if="isMenuOpen"
-        class="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm"
+        class="fixed inset-0 z-[100] bg-bg/95 backdrop-blur-xl flex flex-col"
         role="dialog"
         aria-modal="true"
+        @click.self="toggleMenu"
       >
-        <div class="absolute inset-x-0 top-0 flex items-center justify-between p-4">
+        <div class="flex items-center justify-between p-4 bg-border/80 backdrop-blur-sm shadow-lg flex-shrink-0">
           <div class="flex items-center gap-2">
             <img :src="logoUrl" alt="Cris Dev - Main Logo" class="h-7 w-9 drop-shadow-sm">
             <span class="font-bold text-lg">&lt;<span class="text-white">Cris</span><span class="text-primary">Dev</span> /&gt;</span>
           </div>
           <button
             type="button"
-            class="inline-flex items-center justify-center rounded-md p-2 text-text hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+            class="inline-flex items-center justify-center rounded-md p-2 text-text hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary transition-colors duration-200"
             aria-label="Cerrar menú"
-            @click="closeMenu"
+            @click="toggleMenu"
           >
             <svg class="h-7 w-7" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="18" y1="6" x2="6" y2="18" />
@@ -176,15 +211,15 @@ onMounted(() => {
           </button>
         </div>
 
-        <nav class="h-full w-full flex items-center justify-center">
-          <ul class="flex flex-col items-center gap-6 p-6">
-            <li v-for="{ name, id } in menus" :key="id">
+        <nav class="flex-1 flex items-center justify-center overflow-y-auto">
+          <ul class="flex flex-col items-center gap-8 p-6 my-auto">
+            <li v-for="{ name, id } in menus" :key="id" class="w-full text-center">
               <NuxtLink
                 :to="ensureHash(id)"
-                class="text-2xl uppercase font-extrabold tracking-wide text-text hover:text-primary transition-colors duration-200 cursor-pointer"
-                :class="[ hydrated && isActive(id) ? 'text-primary' : '' ]"
+                class="text-3xl uppercase font-extrabold tracking-wide text-text hover:text-primary transition-all duration-300 cursor-pointer block py-3 hover:scale-110 transform"
+                :class="[ hydrated && isActive(id) ? 'text-primary scale-110' : '' ]"
                 :aria-current="hydrated && isActive(id) ? 'page' : undefined"
-                @click.prevent="scrollToSection(id); closeMenu()"
+                @click.prevent="scrollToSection(id)"
               >
                 <span class="text-primary font-bold">&lt;</span> {{ $t(name) }} <span class="text-primary font-bold" >/&gt;</span>
               </NuxtLink>
@@ -197,11 +232,16 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 200ms ease;
+.menu-fade-enter-active {
+  transition: opacity 200ms ease-out;
 }
 
-.fade-enter-from, .fade-leave-to {
+.menu-fade-leave-active {
+  transition: opacity 150ms ease-in;
+}
+
+.menu-fade-enter-from,
+.menu-fade-leave-to {
   opacity: 0;
 }
 </style>
