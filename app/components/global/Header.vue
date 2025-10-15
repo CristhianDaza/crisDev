@@ -12,6 +12,7 @@ const route = useRoute()
 const router = useRouter()
 const hydrated = ref(false)
 const isMenuOpen = ref(false)
+const isScrolled = ref(false)
 
 const ensureHash = (href) => {
   if (!href) return ''
@@ -48,12 +49,17 @@ const scrollToSection = (href) => {
   }
 }
 
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 50
+}
+
 watch(() => route.fullPath, () => {
   if (isMenuOpen.value) closeMenu()
 })
 
 onMounted(() => {
   hydrated.value = true
+  window.addEventListener('scroll', handleScroll)
 
   const onKeydown = (e) => {
     if (e.key === 'Escape') closeMenu()
@@ -67,6 +73,7 @@ onMounted(() => {
   }, { immediate: true })
 
   onBeforeUnmount(() => {
+    window.removeEventListener('scroll', handleScroll)
     window.removeEventListener('keydown', onKeydown)
     if (typeof document !== 'undefined') document.body.style.overflow = ''
   })
@@ -74,15 +81,35 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-border m-auto text-text px-4 md:px-16 py-4 shadow-lg">
+  <div
+    :class="[
+      'fixed top-0 left-0 right-0 z-50 m-auto text-text px-4 md:px-16 transition-all duration-500 ease-in-out',
+      isScrolled
+        ? 'py-2 bg-border/90 backdrop-blur-md shadow-2xl'
+        : 'py-4 bg-border shadow-lg'
+    ]"
+  >
     <header class="flex items-center justify-between max-w-screen-xl m-auto">
-      <div class="flex items-center gap-3">
+      <div
+        :class="[
+          'flex items-center gap-3 transition-all duration-500',
+          isScrolled ? 'scale-90' : 'scale-100'
+        ]"
+      >
         <img
           :src="logoUrl"
           alt="Cris Dev - Main Logo"
-          class="h-7 w-9 drop-shadow-sm"
+          :class="[
+            'drop-shadow-sm transition-all duration-500',
+            isScrolled ? 'h-6 w-8' : 'h-7 w-9'
+          ]"
         >
-        <h2 class="text-xl md:text-2xl tracking-wider text-text flex items-center font-bold">
+        <h2
+          :class="[
+            'tracking-wider text-text flex items-center font-bold transition-all duration-500',
+            isScrolled ? 'text-lg md:text-xl' : 'text-xl md:text-2xl'
+          ]"
+        >
           &lt;<span class="text-white">Cris</span><span class="text-primary">Dev</span> /&gt;
         </h2>
       </div>

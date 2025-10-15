@@ -9,7 +9,9 @@ const { locales, setLocale } = useI18n()
 </script>
 
 <template>
-  <CdHeader :menus="mainMenu" />
+  <main id="home">
+    <CdHeader :menus="mainMenu"/>
+  </main>
   <CdHero />
 
   <button
@@ -20,11 +22,6 @@ const { locales, setLocale } = useI18n()
   >
     {{ locale.name }}
   </button>
-
-  <section id="home" class="mx-auto max-w-7xl px-6 py-20">
-    <h2 class="mb-4 text-2xl font-semibold">Inicio</h2>
-    <p class="text-[var(--muted)]">Sección de inicio.</p>
-  </section>
 
   <section id="projects" class="mx-auto max-w-7xl px-6 py-20">
     <h2 class="mb-4 text-2xl font-semibold">Proyectos</h2>
