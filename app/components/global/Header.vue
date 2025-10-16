@@ -63,7 +63,7 @@ const toggleMenu = () => {
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 50
-  if (!isScrollingProgrammatically.value && hydrated.value) {
+  if (!isScrollingProgrammatically.value && !isMenuOpen.value && hydrated.value) {
     detectCurrentSection()
   }
 }
@@ -132,7 +132,6 @@ const scrollToSection = (href) => {
     isScrollingProgrammatically.value = true
 
     if (wasMenuOpen) {
-      const currentScroll = scrollPosition.value
       isMenuOpen.value = false
 
       if (typeof document !== 'undefined') {
@@ -140,7 +139,7 @@ const scrollToSection = (href) => {
         document.body.style.position = ''
         document.body.style.top = ''
         document.body.style.width = ''
-        window.scrollTo(0, currentScroll)
+        window.scrollTo(0, scrollPosition.value)
       }
 
       setTimeout(() => {
@@ -151,8 +150,10 @@ const scrollToSection = (href) => {
           setTimeout(() => {
             isScrollingProgrammatically.value = false
           }, 1000)
+        } else {
+          isScrollingProgrammatically.value = false
         }
-      }, 250)
+      }, 100)
     } else {
       const el = document.getElementById(hash)
       if (el) {
@@ -161,14 +162,12 @@ const scrollToSection = (href) => {
         setTimeout(() => {
           isScrollingProgrammatically.value = false
         }, 1000)
+      } else {
+        isScrollingProgrammatically.value = false
       }
     }
   }
 }
-
-watch(() => route.fullPath, () => {
-  if (isMenuOpen.value) closeMenu()
-})
 
 onMounted(() => {
   hydrated.value = true
@@ -286,15 +285,15 @@ onMounted(() => {
         <nav class="flex-1 flex items-center justify-center overflow-y-auto">
           <ul class="flex flex-col items-center gap-8 p-6 my-auto">
             <li v-for="{ name, id } in menus" :key="id" class="w-full text-center">
-              <NuxtLink
-                :to="ensureHash(id)"
-                class="text-3xl uppercase font-extrabold tracking-wide text-text hover:text-primary transition-all duration-300 cursor-pointer block py-3 hover:scale-110 transform"
+              <button
+                type="button"
+                class="text-3xl uppercase font-extrabold tracking-wide text-text hover:text-primary transition-all duration-300 cursor-pointer block py-3 hover:scale-110 transform w-full"
                 :class="[ hydrated && isActive(id) ? 'text-primary scale-110' : '' ]"
                 :aria-current="hydrated && isActive(id) ? 'page' : undefined"
-                @click.prevent="scrollToSection(id)"
+                @click="scrollToSection(id)"
               >
                 <span class="text-primary font-bold">&lt;</span> {{ $t(name) }} <span class="text-primary font-bold" >/&gt;</span>
-              </NuxtLink>
+              </button>
             </li>
           </ul>
         </nav>
