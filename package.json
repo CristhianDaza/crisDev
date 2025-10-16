@@ -1,5 +1,5 @@
 {
-  "name": "crisDev",
+  "name": "cris-dev",
   "type": "module",
   "private": true,
   "scripts": {
@@ -10,12 +10,17 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxt/eslint": "1.9.0",
-    "@nuxt/icon": "2.0.0",
-    "eslint": "^9.37.0",
-    "nuxt": "^4.1.3",
-    "vue": "^3.5.22",
-    "vue-router": "^4.5.1"
+    "@nuxt/eslint": "^1.0.0",
+    "@nuxt/icon": "^2.0.0",
+    "eslint": "^9.0.0",
+    "nuxt": "^4.0.0",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0"
   },
-  "packageManager": "pnpm@10.18.2+sha512.9fb969fa749b3ade6035e0f109f0b8a60b5d08a1a87fdf72e337da90dcc93336e2280ca4e44f2358a649b83c17959e9993e777c2080879f3801e6f0d999ad3dd"
+  "packageManager": "pnpm@10.18.2+sha512.9fb969fa749b3ade6035e0f109f0b8a60b5d08a1a87fdf72e337da90dcc93336e2280ca4e44f2358a649b83c17959e9993e777c2080879f3801e6f0d999ad3dd",
+  "devDependencies": {
+    "@nuxtjs/i18n": "^10.0.0",
+    "@nuxtjs/tailwindcss": "^6.0.0",
+    "autoprefixer": "^10.0.0"
+  }
 }

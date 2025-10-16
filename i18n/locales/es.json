@@ -1,0 +1,166 @@
+{
+  "menu":{
+    "contact": "Contacto",
+    "experience": "Experiencia",
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "skills": "Habilidades"
+  },
+  "hero": {
+    "UI": "Amigable con UI/UX",
+    "codeQuality": "Código limpio",
+    "contactButton": "Hablemos",
+    "description": "Desarrollador Frontend con más de {years} años de experiencia creando experiencias web rápidas, accesibles y centradas en el usuario.",
+    "greeting": "Hola, soy",
+    "name": "Cristhian",
+    "performance": "Alto rendimiento",
+    "projectsButton": "Ver proyectos",
+    "role": "Desarrollador Frontend",
+    "scrollDown": "Desplázate"
+  },
+  "social": {
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "resume": "Ver Currículum"
+  },
+  "global": {
+    "altImagePerfil": "Foto de perfil de Cristhian",
+    "altLogo": "Logo de CrisDev",
+    "close": "Cerrar",
+    "upToTop": "Volver arriba"
+  },
+  "settings": {
+    "footer": "Los cambios se guardan automáticamente",
+    "openSettings": "Abrir configuración",
+    "title": "Configuración",
+    "language": {
+      "language": "Idioma",
+      "languageDescription": "Selecciona el idioma de tu preferencia. Se guardará automáticamente."
+    }
+  },
+  "contact": {
+    "title": "Trabajemos Juntos",
+    "description": "¿Tienes un proyecto en mente o quieres colaborar? Me encantaría escucharte. Envíame un mensaje y te responderé lo antes posible.",
+    "nameLabel": "Tu Nombre",
+    "namePlaceholder": "Cris Dev",
+    "emailLabel": "Tu Correo",
+    "emailPlaceholder": "cris{at}ejemplo.com",
+    "messageLabel": "Tu Mensaje",
+    "messagePlaceholder": "Cuéntame sobre tu proyecto o idea...",
+    "sendButton": "Enviar Mensaje",
+    "sending": "Enviando...",
+    "successMessage": "¡Mensaje enviado con éxito! Te responderé pronto.",
+    "errorMessage": "Hubo un error al enviar el mensaje. Por favor, intenta de nuevo."
+  },
+  "projects": {
+    "description": "Explora algunos de los proyectos en los que he trabajado. Haz clic en cualquier tarjeta para ver más detalles.",
+    "featured": "Destacado",
+    "featuredProject": "Proyecto Destacado",
+    "highlights": "Características destacadas",
+    "technologiesUsed": "Tecnologías utilizadas",
+    "title": "Proyectos Destacados",
+    "viewCodeInGitHub": "Ver Código en GitHub",
+    "viewProject": "Ver Proyecto",
+    "viewProjectLive": "Ver Proyecto en Vivo",
+    "redGlobal": {
+      "fullDescription": "Plataforma para empresa de publicidad que consolida catálogos de 5 proveedores vía APIs. Permite explorar productos, generar cotizaciones, y gestionar el sitio desde admin (banners, categorías, catálogos, colecciones). Incluye carga en Cloudinary, notificaciones por EmailJS y exportes XLSX.",
+      "shortDescription": "Marketplace B2B de productos publicitarios con 5 APIs de proveedores, cotizaciones y panel de administración.",
+      "title": "Red Global Promocional",
+      "highlights": {
+        "highlight1": "Integración de 5 proveedores vía API con normalización de datos",
+        "highlight2": "Buscador, filtros y vistas por categoría/catálogo",
+        "highlight3": "Módulo de cotizaciones con exportación XLSX",
+        "highlight4": "Panel admin: imágenes, categorías, catálogos y contenido",
+        "highlight5": "CDN de medios con Cloudinary y formularios con EmailJS"
+      }
+    },
+    "finControl": {
+      "fullDescription": "FinControl es una herramienta moderna y minimalista para gestionar tus finanzas personales, diseñada para ayudarte a controlar ingresos, gastos, deudas y cuentas en un solo lugar. Incluye transferencias, metas de ahorro, pagos recurrentes, presupuestos, y configuraciones avanzadas de moneda, idioma, temas y seguridad con bloqueo por token.",
+      "shortDescription": "Aplicación moderna y minimalista para gestionar tus finanzas personales",
+      "title": "FinControl",
+      "highlights": {
+        "highlight1": "Dashboard intuitivo y tema oscuro",
+        "highlight2": "Gestión de cuentas, transferencias y deudas",
+        "highlight3": "Metas de ahorro y presupuesto mensual",
+        "highlight4": "Pagos recurrentes y configuraciones de moneda",
+        "highlight5": "Token de bloqueo y soporte multiidioma (ES/EN)"
+      }
+    },
+    "mega": {
+      "fullDescription": "Megapromocionales es una plataforma moderna para la venta de artículos publicitarios, desarrollada para un cliente corporativo. Integra tres APIs de diferentes proveedores para centralizar catálogos y disponibilidades, con un sistema de cotizaciones, administración de productos, y personalización de contenidos. Incluye soporte para imágenes dinámicas, autenticación con Firebase y componentes de la librería TodoVue",
+      "shortDescription": "Plataforma B2B para productos promocionales con integración de múltiples APIs y panel de gestión completo",
+      "title": "Megapromocionales LTDA",
+      "highlights": {
+        "highlight1": "Integración de 3 APIs de proveedores con normalización de datos",
+        "highlight2": "Catálogo dinámico con filtros y buscador avanzado",
+        "highlight3": "Administración de productos",
+        "highlight4": "Interfaz moderna con PrimeVue y Tailwind CSS",
+        "highlight5": "Gestión de contenido e imágenes personalizables para el cliente"
+      }
+    },
+    "todoVue": {
+      "fullDescription": "TodoVue es un proyecto (WIP) que combina un blog técnico sobre Vue.js con una librería de componentes personalizados. Su objetivo es ofrecer artículos, demos y componentes reutilizables con estilos propios y arquitectura basada en Atomic Design. Incluye componentes como TvButton, TvLabel, TvDemo y otros, desarrollados desde cero con Nuxt y Vite, usando Markdown y resaltado de código integrado.",
+      "shortDescription": "Blog técnico y librería de componentes Vue con estilo propio y enfoque en Atomic Design",
+      "title": "Megapromocionales LTDA",
+      "highlights": {
+        "highlight1": "Librería propia con componentes reutilizables (TvButton, TvLabel, TvDemo)",
+        "highlight2": "Blog técnico integrado con soporte Markdown y resaltado de código",
+        "highlight3": "Diseño propio basado en Atomic Design y CSS modular",
+        "highlight4": "Desarrollado con Nuxt y Vite para SSR y rendimiento óptimo",
+        "highlight5": "Publicación progresiva en npm bajo el namespace todovue"
+      }
+    },
+    "portfolio": {
+      "fullDescription": "Portafolio personal diseñado para reflejar mi experiencia como desarrollador frontend. Construido con Vue, Nuxt y Tailwind, incluye secciones para proyectos destacados, experiencia laboral, habilidades técnicas y un formulario de contacto funcional. Su arquitectura se basa en Atomic Design y prioriza el rendimiento, la accesibilidad y un diseño visual limpio y moderno.",
+      "shortDescription": "Sitio web profesional desarrollado con Vue, Nuxt y Tailwind para mostrar proyectos, habilidades y experiencia",
+      "title": "Portafolio Personal - CrisDev",
+      "highlights": {
+        "highlight1": "Diseño minimalista y completamente responsive",
+        "highlight2": "Secciones de proyectos, experiencia, contacto y habilidades",
+        "highlight3": "Optimización de rendimiento y accesibilidad",
+        "highlight4": "Desarrollado con Vue, Nuxt y Tailwind CSS"
+      }
+    }
+  },
+  "experience": {
+    "title": "Experiencia Laboral",
+    "description": "Mi trayectoria profesional en el desarrollo frontend",
+    "present": "Actualidad",
+    "year": "año",
+    "years": "años",
+    "month": "mes",
+    "months": "meses",
+    "company1": {
+      "name": "Neoris / Epam",
+      "position": "Experience Developer",
+      "description": "Desarrollo de componentes reutilizables para plataformas financieras basadas en Web Components (LitElement). Implementación de estándares de accesibilidad, buenas prácticas de rendimiento y participación en formación Cells (Polymer – LitElement) para proyectos bancarios como Transfiya, Pagos QR y Loan Payments."
+    },
+    "company2": {
+      "name": "Global66",
+      "position": "Front End Developer",
+      "description": "Implementación de interfaces responsivas para aplicaciones fintech. Desarrollo de componentes móviles con NativeScript y TypeScript. Optimización de flujos de pago, reduciendo tiempos de carga y mejorando la experiencia del usuario."
+    },
+    "company3": {
+      "name": "Newshore",
+      "position": "Development Software Engineer Semi senior",
+      "description": "Integración de micro frontends escalables en proyectos internacionales. Implementación de pruebas unitarias con Vue Test, aumentando la cobertura de código y asegurando calidad en los despliegues."
+    },
+    "company4": {
+      "name": "Megapromocionales LTDA",
+      "position": "Web Developer",
+      "description": "Desarrollo de un sistema de gestión de inventarios y módulos e-commerce con Firebase, carrito de compras y pasarela de pagos. Automatización de reportes que mejoraron la eficiencia operativa en un 30%."
+    }
+  },
+  "skills": {
+    "title": "Habilidades Técnicas",
+    "description": "Tecnologías y herramientas que domino para crear experiencias web excepcionales",
+    "technologies": "tecnologías",
+    "categories": {
+      "frontend": "Frontend Frameworks",
+      "styling": "Estilos & Diseño",
+      "tools": "Herramientas",
+      "mobile": "Mobile & PWA",
+      "practices": "Buenas Prácticas"
+    }
+  }
+}

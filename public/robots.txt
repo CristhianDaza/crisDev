@@ -1,2 +1,30 @@
-User-Agent: *
-Disallow:
+# Robots.txt para CrisDev Portfolio
+# https://cris-dev.com/
+
+User-agent: *
+Allow: /
+
+# Bloquear rutas que no deben indexarse
+Disallow: /api/
+Disallow: /_nuxt/
+Disallow: /*.json$
+
+# Permitir bots de búsqueda importantes
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap
+Sitemap: https://cris-dev.com/sitemap.xml
+
+# Crawl-delay para evitar sobrecarga (excepto Google)
+User-agent: *
+Crawl-delay: 1
+
+User-agent: Googlebot
+Crawl-delay: 0
