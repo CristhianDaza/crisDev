@@ -1,14 +1,17 @@
 <script setup>
 const selectedProject = ref(null)
 const isProjectDetailOpen = ref(false)
+const { setProjectSeo, resetSeo } = useSeo()
 
 const openProject = (project) => {
   selectedProject.value = project
   isProjectDetailOpen.value = true
+  setProjectSeo(project)
 }
 
 const closeProjectDetail = () => {
   isProjectDetailOpen.value = false
+  resetSeo()
   setTimeout(() => {
     selectedProject.value = null
   }, 300)
@@ -42,4 +45,3 @@ const closeProjectDetail = () => {
     />
   </div>
 </template>
-

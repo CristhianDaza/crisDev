@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://crisdev.netlify.app/</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://crisdev.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://crisdev.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://crisdev.netlify.app/"/>
+    <image:image>
+      <image:loc>https://crisdev.netlify.app/og-image.jpg</image:loc>
+      <image:title>Cristhian Daza - Frontend Developer</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://crisdev.netlify.app/#projects</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://crisdev.netlify.app/#projects"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://crisdev.netlify.app/#projects"/>
+  </url>
+
+  <url>
+    <loc>https://crisdev.netlify.app/#experience</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://crisdev.netlify.app/#experience"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://crisdev.netlify.app/#experience"/>
+  </url>
+
+  <url>
+    <loc>https://crisdev.netlify.app/#skills</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://crisdev.netlify.app/#skills"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://crisdev.netlify.app/#skills"/>
+  </url>
+
+  <url>
+    <loc>https://crisdev.netlify.app/#contact</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://crisdev.netlify.app/#contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://crisdev.netlify.app/#contact"/>
+  </url>
+
+</urlset>

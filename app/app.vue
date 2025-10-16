@@ -1,14 +1,53 @@
 <script setup>
+const { initializeLanguage } = useLanguage()
+const { setSectionSeo, resetSeo } = useSeo()
+const { locale } = useI18n()
+
 useHead({
   htmlAttrs: {
+    lang: locale.value,
     class: 'dark'
   }
 })
 
-const { initializeLanguage } = useLanguage()
+watch(locale, (newLocale) => {
+  useHead({
+    htmlAttrs: {
+      lang: newLocale,
+      class: 'dark'
+    }
+  })
+})
 
 onMounted(() => {
   initializeLanguage()
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5
+  }
+
+  const observerCallback = (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const sectionId = entry.target.id
+        if (sectionId && sectionId !== 'home') {
+          setSectionSeo(sectionId)
+        } else if (sectionId === 'home') {
+          resetSeo()
+        }
+      }
+    })
+  }
+
+  const observer = new IntersectionObserver(observerCallback, observerOptions)
+
+  const sections = document.querySelectorAll('section[id]')
+  sections.forEach(section => observer.observe(section))
+
+  onUnmounted(() => {
+    observer.disconnect()
+  })
 })
 </script>
 
