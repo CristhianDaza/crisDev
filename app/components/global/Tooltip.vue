@@ -50,6 +50,7 @@ const timeoutId = ref(null)
 const tooltipRef = ref(null)
 const triggerRef = ref(null)
 const tooltipPosition = ref({ top: 0, left: 0 })
+const isMobile = ref(true)
 
 const tooltipContent = computed(() => props.content || props.text)
 
@@ -95,7 +96,7 @@ const calculatePosition = () => {
 }
 
 const showTooltip = () => {
-  if (props.disabled) return
+  if (props.disabled || isMobile.value) return
 
   const hasContent = tooltipContent.value || slots.content
   if (!hasContent) return
@@ -152,6 +153,12 @@ const arrowPosition = computed(() => {
 
 onMounted(() => {
   if (typeof window !== 'undefined') {
+    const checkMobile = () => {
+      isMobile.value = window.innerWidth < 768
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+
     window.addEventListener('scroll', () => {
       if (isVisible.value) {
         calculatePosition()
