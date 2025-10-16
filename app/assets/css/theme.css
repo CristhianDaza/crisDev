@@ -18,7 +18,12 @@
   --font-body: 'Inter', sans-serif;
 }
 
-html { color-scheme: light dark; }
+html {
+  color-scheme: light dark;
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
 html.dark { color-scheme: dark; }
 html.light { color-scheme: light; }
 

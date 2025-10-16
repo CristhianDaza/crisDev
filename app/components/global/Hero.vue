@@ -14,6 +14,13 @@ function scrollToId(id) {
   }
 }
 
+function scrollToNextSection() {
+  if (import.meta.client) {
+    const heroHeight = window.innerHeight
+    window.scrollTo({ top: heroHeight, behavior: 'smooth' })
+  }
+}
+
 const experience = computed(() => {
   const start = new Date(2018, 6, 1)
   const now = new Date()
@@ -169,6 +176,27 @@ const sortedSocialMedia = computed(() =>
         </div>
       </div>
     </div>
+
+    <button
+      type="button"
+      aria-label="Scroll down"
+      class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted hover:text-primary transition-colors duration-300 cursor-pointer group animate-fade-in-delay-long z-10"
+      @click="scrollToNextSection"
+    >
+      <span class="text-sm font-medium">{{ $t('hero.scrollDown') }}</span>
+      <div class="relative">
+        <Icon
+          name="mdi:chevron-down"
+          class="w-8 h-8 animate-bounce"
+        />
+        <div class="absolute inset-0 blur-md opacity-0 group-hover:opacity-50 transition-opacity">
+          <Icon
+            name="mdi:chevron-down"
+            class="w-8 h-8 text-primary"
+          />
+        </div>
+      </div>
+    </button>
   </div>
 </template>
 
