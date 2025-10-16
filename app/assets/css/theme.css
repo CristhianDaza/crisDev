@@ -50,6 +50,77 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 8%, var(--bg)), color-mix(in srgb, var(--accent) 5%, var(--bg)));
+  z-index: -1;
+}
+
+.bg-decorative-effects {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-blob-primary {
+  position: absolute;
+  top: -10rem;
+  right: -10rem;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 9999px;
+  opacity: 0.2;
+  filter: blur(96px);
+  background: radial-gradient(circle, var(--primary), transparent 70%);
+}
+
+.bg-blob-accent {
+  position: absolute;
+  bottom: -8rem;
+  left: -8rem;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 9999px;
+  opacity: 0.15;
+  filter: blur(96px);
+  background: radial-gradient(circle, var(--accent), transparent 70%);
+}
+
+.bg-blob-primary-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 9999px;
+  opacity: 0.1;
+  filter: blur(96px);
+  background: radial-gradient(circle, var(--primary), transparent 60%);
+}
+
+.bg-grid-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.03;
+  background-image: repeating-linear-gradient(0deg, var(--text) 0px, var(--text) 1px, transparent 1px, transparent 60px), repeating-linear-gradient(90deg, var(--text) 0px, var(--text) 1px, transparent 1px, transparent 60px);
 }
 
 @keyframes fade-in {

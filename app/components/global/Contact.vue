@@ -64,23 +64,8 @@ const handleSubmit = async () => {
 <template>
   <div
     id="contact-section"
-    class="relative w-full overflow-hidden bg-contact-gradient"
+    class="relative w-full overflow-hidden"
   >
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div
-        class="absolute -top-40 -right-40 w-96 h-96 rounded-full opacity-20 blur-3xl bg-blob-primary"
-      />
-      <div
-        class="absolute -bottom-32 -left-32 w-80 h-80 rounded-full opacity-15 blur-3xl bg-blob-accent"
-      />
-      <div
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-10 blur-3xl bg-blob-primary-center"
-      />
-      <div
-        class="absolute inset-0 opacity-[0.03] bg-grid-pattern"
-      />
-    </div>
-
     <div class="relative mx-auto max-w-5xl px-6 py-24 lg:py-32">
       <div class="text-center mb-16">
         <h2
@@ -230,26 +215,6 @@ const handleSubmit = async () => {
 </template>
 
 <style scoped>
-.bg-contact-gradient {
-  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 8%, var(--bg)), color-mix(in srgb, var(--accent) 5%, var(--bg)));
-}
-
-.bg-blob-primary {
-  background: radial-gradient(circle, var(--primary), transparent 70%);
-}
-
-.bg-blob-accent {
-  background: radial-gradient(circle, var(--accent), transparent 70%);
-}
-
-.bg-blob-primary-center {
-  background: radial-gradient(circle, var(--primary), transparent 60%);
-}
-
-.bg-grid-pattern {
-  background-image: repeating-linear-gradient(0deg, var(--text) 0px, var(--text) 1px, transparent 1px, transparent 60px), repeating-linear-gradient(90deg, var(--text) 0px, var(--text) 1px, transparent 1px, transparent 60px);
-}
-
 .bg-surface-translucent {
   background: color-mix(in srgb, var(--surface) 80%, transparent);
 }

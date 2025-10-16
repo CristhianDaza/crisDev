@@ -9,6 +9,13 @@ const { locales, setLocale } = useI18n()
 </script>
 
 <template>
+  <div class="bg-decorative-effects">
+    <div class="bg-blob-primary" />
+    <div class="bg-blob-accent" />
+    <div class="bg-blob-primary-center" />
+    <div class="bg-grid-pattern" />
+  </div>
+
   <main id="home">
     <CdHeader :menus="mainMenu"/>
   </main>
