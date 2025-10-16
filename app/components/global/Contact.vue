@@ -66,7 +66,7 @@ const handleSubmit = async () => {
     id="contact-section"
     class="relative w-full overflow-hidden"
   >
-    <div class="relative mx-auto max-w-5xl px-6 py-24 lg:py-32">
+    <div class="relative mx-auto max-w-5xl px-6">
       <div class="text-center mb-16">
         <h2
           class="mb-6 text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent transition-all duration-700"
