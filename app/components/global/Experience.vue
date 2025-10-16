@@ -94,18 +94,17 @@ onMounted(() => {
           class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
         >
           <div
-            class="relative transition-all duration-700"
+            class="relative transition-all duration-700 max-w-2xl mx-auto md:mx-0 md:max-w-none"
             :class="[
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0',
-              index % 2 === 0 ? '-translate-x-8' : 'translate-x-8 md:col-start-2'
+              isVisible ? 'opacity-100 md:translate-x-0' : 'opacity-0',
+              index % 2 === 0 ? 'md:-translate-x-8' : 'md:translate-x-8 md:col-start-2'
             ]"
             :style="`transition-delay: ${index * 150}ms`"
           >
             <div
               class="p-6 rounded-2xl backdrop-blur-sm border border-border bg-surface transition-all duration-300 hover:scale-105 hover:shadow-2xl group"
-              :class="index % 2 === 0 ? 'md:text-right' : 'md:text-left'"
             >
-              <div class="mb-3 flex flex-col gap-2" :class="index % 2 === 0 ? 'md:items-end' : 'md:items-start'">
+              <div class="mb-3 flex flex-col gap-2 items-start md:items-start" :class="index % 2 === 0 ? 'md:items-end' : 'md:items-start'">
                 <div
                   class="inline-block px-3 py-1 rounded-full text-sm font-medium transition-colors bg-[color-mix(in_srgb,var(--primary)_15%,transparent)] text-primary"
                 >
@@ -118,21 +117,24 @@ onMounted(() => {
                 </div>
               </div>
               <h3
-                class="text-2xl font-bold mb-2 transition-colors text-text"
+                class="text-2xl font-bold mb-2 transition-colors text-text text-left"
+                :class="index % 2 === 0 ? 'md:text-right' : 'md:text-left'"
               >
                 {{ t(exp.position) }}
               </h3>
               <h4
-                class="text-lg font-semibold mb-3 transition-colors text-primary"
+                class="text-lg font-semibold mb-3 transition-colors text-primary text-left"
+                :class="index % 2 === 0 ? 'md:text-right' : 'md:text-left'"
               >
                 {{ t(exp.company) }}
               </h4>
               <p
-                class="mb-4 leading-relaxed text-muted"
+                class="mb-4 leading-relaxed text-muted text-left"
+                :class="index % 2 === 0 ? 'md:text-right' : 'md:text-left'"
               >
                 {{ t(exp.description) }}
               </p>
-              <div class="flex flex-wrap gap-2" :class="index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'">
+              <div class="flex flex-wrap gap-2 justify-start" :class="index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'">
                 <span
                   v-for="tech in exp.technologies"
                   :key="tech"
