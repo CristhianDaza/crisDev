@@ -1,9 +1,3 @@
-import TODOvue from '@/assets/images/projects/TODOvue.png';
-import crisDev from '@/assets/images/projects/crisDev.png';
-import finControl from '@/assets/images/projects/finControl.png';
-import megapromocionales from '@/assets/images/projects/megapromocionales.png';
-import redGlobalPromo from '@/assets/images/projects/redGlobalPromo.png';
-
 export const siteUrl = 'https://crisdev.netlify.app'
 
 export const calculateYearsOfExperience = () => {
@@ -54,7 +48,7 @@ export const projects = [
     fullDescription: 'projects.redGlobal.fullDescription',
     technologies: [ 'Vue.js', 'Vite', 'TypeScript', 'Pinia', 'Tailwind CSS', 'Firebase (Auth/Firestore/Storage)', 'Cloudinary', 'EmailJS', 'XLSX'
     ],
-    image: redGlobalPromo,
+    image: '/images/projects/redGlobalPromo.png',
     projectUrl: 'https://www.redglobalpromo.com.co/',
     githubUrl: 'https://github.com/CristhianDaza/redGlobal',
     featured: true,
@@ -73,7 +67,7 @@ export const projects = [
     shortDescription: 'projects.finControl.shortDescription',
     fullDescription: 'projects.finControl.fullDescription',
     technologies: ['Vue.js', 'Vite', 'Chart.js', 'Firebase', 'Pinia'],
-    image: finControl,
+    image: '/images/projects/finControl.png',
     projectUrl: 'https://fin-control.netlify.app/',
     featured: true,
     date: '2025',
@@ -91,7 +85,7 @@ export const projects = [
     shortDescription: 'projects.mega.shortDescription',
     fullDescription: 'projects.mega.fullDescription',
     technologies: ['Vue.js', 'Vite', 'TodoVue Components', 'Pinia', 'Firebase', 'PrimeVue', 'Tailwind CSS', 'Lodash', 'vue3-carousel'],
-    image: megapromocionales,
+    image: '/images/projects/megapromocionales.png',
     projectUrl: 'https://megapromocionales.com.co/',
     githubUrl: 'https://github.com/CristhianDaza/megaprom',
     featured: false,
@@ -110,7 +104,7 @@ export const projects = [
     shortDescription: 'projects.todoVue.shortDescription',
     fullDescription: 'projects.todoVue.fullDescription',
     technologies: ['Vue.js', 'Nuxt', 'Vite', 'Sass', 'TodoVue Components'],
-    image: TODOvue,
+    image: '/images/projects/TODOvue.png',
     projectUrl: 'https://tv-demo.netlify.app/',
     githubUrl: 'https://github.com/orgs/TODOvue/repositories',
     featured: false,
@@ -129,7 +123,7 @@ export const projects = [
     shortDescription: 'projects.portfolio.shortDescription',
     fullDescription: 'projects.portfolio.fullDescription',
     technologies: ['Vue.js', 'Nuxt', 'Tailwind CSS'],
-    image: crisDev,
+    image: '/images/projects/crisDev.png',
     githubUrl: 'https://github.com/CristhianDaza/crisDev',
     featured: false,
     date: '2025',
