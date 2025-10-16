@@ -14,6 +14,8 @@
   --chip: #083D56;
   --shadow: 0 8px 24px rgba(0,0,0,.18);
   --radius: 16px;
+  --font-headings: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
 html { color-scheme: light dark; }
@@ -52,6 +54,7 @@ body {
   color: var(--text);
   position: relative;
   overflow-x: hidden;
+  font-family: var(--font-body), serif;
 }
 
 body::before {
@@ -121,6 +124,20 @@ body::before {
   bottom: 0;
   opacity: 0.03;
   background-image: repeating-linear-gradient(0deg, var(--text) 0px, var(--text) 1px, transparent 1px, transparent 60px), repeating-linear-gradient(90deg, var(--text) 0px, var(--text) 1px, transparent 1px, transparent 60px);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headings), serif;
+  font-weight: 600;
+}
+
+button, .btn, a.button {
+  font-family: var(--font-headings), serif;
+  font-weight: 500;
+}
+
+p, span, div, li, td, th, label, input, textarea, select {
+  font-family: var(--font-body), serif;
 }
 
 @keyframes fade-in {
