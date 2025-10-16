@@ -4,53 +4,53 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
-    <loc>https://crisdev.netlify.app/</loc>
+    <loc>https://cris-dev.com/</loc>
     <lastmod>2024-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://crisdev.netlify.app/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://crisdev.netlify.app/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://crisdev.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://cris-dev.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cris-dev.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cris-dev.com/"/>
     <image:image>
-      <image:loc>https://crisdev.netlify.app/og-image.jpg</image:loc>
+      <image:loc>https://cris-dev.com/og-image.jpg</image:loc>
       <image:title>Cristhian Daza - Frontend Developer</image:title>
     </image:image>
   </url>
 
   <url>
-    <loc>https://crisdev.netlify.app/#projects</loc>
+    <loc>https://cris-dev.com/#projects</loc>
     <lastmod>2024-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://crisdev.netlify.app/#projects"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://crisdev.netlify.app/#projects"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://cris-dev.com/#projects"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cris-dev.com/#projects"/>
   </url>
 
   <url>
-    <loc>https://crisdev.netlify.app/#experience</loc>
+    <loc>https://cris-dev.com/#experience</loc>
     <lastmod>2024-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://crisdev.netlify.app/#experience"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://crisdev.netlify.app/#experience"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://cris-dev.com/#experience"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cris-dev.com/#experience"/>
   </url>
 
   <url>
-    <loc>https://crisdev.netlify.app/#skills</loc>
+    <loc>https://cris-dev.com/#skills</loc>
     <lastmod>2024-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://crisdev.netlify.app/#skills"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://crisdev.netlify.app/#skills"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://cris-dev.com/#skills"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cris-dev.com/#skills"/>
   </url>
 
   <url>
-    <loc>https://crisdev.netlify.app/#contact</loc>
+    <loc>https://cris-dev.com/#contact</loc>
     <lastmod>2024-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://crisdev.netlify.app/#contact"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://crisdev.netlify.app/#contact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://cris-dev.com/#contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cris-dev.com/#contact"/>
   </url>
 
 </urlset>

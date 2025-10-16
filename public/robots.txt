@@ -1,5 +1,5 @@
 # Robots.txt para CrisDev Portfolio
-# https://crisdev.netlify.app/
+# https://cris-dev.com/
 
 User-agent: *
 Allow: /
@@ -20,7 +20,7 @@ User-agent: Bingbot
 Allow: /
 
 # Sitemap
-Sitemap: https://crisdev.netlify.app/sitemap.xml
+Sitemap: https://cris-dev.com/sitemap.xml
 
 # Crawl-delay para evitar sobrecarga (excepto Google)
 User-agent: *

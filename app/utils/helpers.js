@@ -1,4 +1,4 @@
-export const siteUrl = 'https://crisdev.netlify.app'
+export const siteUrl = 'https://cris-dev.com/'
 
 export const calculateYearsOfExperience = () => {
   const start = new Date(2018, 6, 1)
@@ -68,7 +68,7 @@ export const projects = [
     fullDescription: 'projects.finControl.fullDescription',
     technologies: ['Vue.js', 'Vite', 'Chart.js', 'Firebase', 'Pinia'],
     image: '/images/projects/finControl.png',
-    projectUrl: 'https://fin-control.netlify.app/',
+    projectUrl: 'https://cris-dev.com/',
     featured: true,
     date: '2025',
     highlights: [
