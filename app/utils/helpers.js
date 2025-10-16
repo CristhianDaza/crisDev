@@ -1,4 +1,4 @@
-export const siteUrl = 'https://cris-dev.com/'
+export const siteUrl = 'https://cris-dev.com'
 
 export const calculateYearsOfExperience = () => {
   const start = new Date(2018, 6, 1)

@@ -1,5 +1,5 @@
 # Robots.txt para CrisDev Portfolio
-# https://cris-dev.com/
+# https://cris-dev.com
 
 User-agent: *
 Allow: /
