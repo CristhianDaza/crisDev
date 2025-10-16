@@ -1,0 +1,4 @@
+# Redirigir cualquier cosa a https://cris-dev.com/
+https://www.cris-dev.com/*  https://cris-dev.com/:splat  301!
+http://www.cris-dev.com/*   https://cris-dev.com/:splat  301!
+http://cris-dev.com/*       https://cris-dev.com/:splat  301!
