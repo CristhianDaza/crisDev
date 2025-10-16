@@ -1,0 +1,241 @@
+<script setup>
+const formData = reactive({
+  name: '',
+  email: '',
+  message: ''
+})
+
+const isSubmitting = ref(false)
+const showSuccess = ref(false)
+const showError = ref(false)
+
+const isVisible = ref(false)
+
+onMounted(() => {
+  if (import.meta.client) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          isVisible.value = true
+        }
+      })
+    }, { threshold: 0.1 })
+
+    const section = document.querySelector('#contact-section')
+    if (section) {
+      observer.observe(section)
+    }
+  }
+})
+
+const handleSubmit = async () => {
+  if (!formData.name || !formData.email || !formData.message) {
+    return
+  }
+
+  isSubmitting.value = true
+  showSuccess.value = false
+  showError.value = false
+
+  try {
+    await new Promise(resolve => setTimeout(resolve, 2000))
+    console.log('Formulario enviado:', formData)
+
+    showSuccess.value = true
+    formData.name = ''
+    formData.email = ''
+    formData.message = ''
+
+    setTimeout(() => {
+      showSuccess.value = false
+    }, 5000)
+  } catch (error) {
+    showError.value = true
+    setTimeout(() => {
+      showError.value = false
+    }, 5000)
+    console.error('Error al enviar el formulario:', error)
+  } finally {
+    isSubmitting.value = false
+  }
+}
+</script>
+
+<template>
+  <div
+    id="contact-section"
+    class="relative w-full overflow-hidden"
+    style="background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 8%, var(--bg)), color-mix(in srgb, var(--accent) 5%, var(--bg)));"
+  >
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div
+        class="absolute -top-40 -right-40 w-96 h-96 rounded-full opacity-20 blur-3xl"
+        style="background: radial-gradient(circle, var(--primary), transparent 70%);"
+      />
+      <div
+        class="absolute -bottom-32 -left-32 w-80 h-80 rounded-full opacity-15 blur-3xl"
+        style="background: radial-gradient(circle, var(--accent), transparent 70%);"
+      />
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-10 blur-3xl"
+        style="background: radial-gradient(circle, var(--primary), transparent 60%);"
+      />
+      <div
+        class="absolute inset-0 opacity-[0.03]"
+        style="background-image: repeating-linear-gradient(0deg, var(--text) 0px, var(--text) 1px, transparent 1px, transparent 60px), repeating-linear-gradient(90deg, var(--text) 0px, var(--text) 1px, transparent 1px, transparent 60px);"
+      />
+    </div>
+
+    <div class="relative mx-auto max-w-5xl px-6 py-24 lg:py-32">
+      <div class="text-center mb-16">
+        <h2
+          class="mb-6 text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent transition-all duration-700"
+          :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+        >
+          {{ $t('contact.title') }}
+        </h2>
+        <p
+          class="text-muted text-lg md:text-xl max-w-2xl mx-auto transition-all duration-700 delay-100"
+          :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+        >
+          {{ $t('contact.description') }}
+        </p>
+      </div>
+      <div
+        class="relative mx-auto max-w-2xl transition-all duration-700 delay-200"
+        :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+      >
+        <div
+          class="relative rounded-3xl p-8 md:p-12 backdrop-blur-xl shadow-2xl border"
+          style="background: color-mix(in srgb, var(--surface) 80%, transparent); border-color: color-mix(in srgb, var(--border) 50%, transparent);"
+        >
+          <div
+            class="absolute inset-0 rounded-3xl opacity-50 blur-xl"
+            style="background: linear-gradient(135deg, var(--primary), var(--accent)); z-index: -1;"
+          />
+
+          <form class="space-y-6" @submit.prevent="handleSubmit">
+            <div class="space-y-2">
+              <label
+                for="name"
+                class="block text-sm font-semibold text-text"
+              >
+                {{ $t('contact.nameLabel') }}
+              </label>
+              <input
+                id="name"
+                v-model="formData.name"
+                type="text"
+                required
+                :placeholder="$t('contact.namePlaceholder')"
+                class="w-full px-4 py-3.5 rounded-xl border-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-surface text-text border-border focus:border-primary focus:ring-primary"
+                :disabled="isSubmitting"
+              >
+            </div>
+
+            <div class="space-y-2">
+              <label
+                for="email"
+                class="block text-sm font-semibold text-text"
+              >
+                {{ $t('contact.emailLabel') }}
+              </label>
+              <input
+                id="email"
+                v-model="formData.email"
+                type="email"
+                required
+                :placeholder="$t('contact.emailPlaceholder', { at: '@' })"
+                class="w-full px-4 py-3.5 rounded-xl border-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-surface text-text border-border focus:border-primary focus:ring-primary"
+                :disabled="isSubmitting"
+              >
+            </div>
+
+            <div class="space-y-2">
+              <label
+                for="message"
+                class="block text-sm font-semibold text-text"
+              >
+                {{ $t('contact.messageLabel') }}
+              </label>
+              <textarea
+                id="message"
+                v-model="formData.message"
+                required
+                rows="6"
+                :placeholder="$t('contact.messagePlaceholder')"
+                class="w-full px-4 py-3.5 rounded-xl border-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 resize-none bg-surface text-text border-border focus:border-primary focus:ring-primary"
+                :disabled="isSubmitting"
+              />
+            </div>
+
+            <button
+              type="submit"
+              :disabled="isSubmitting"
+              class="group relative w-full inline-flex items-center justify-center rounded-xl px-8 py-4 text-base font-semibold shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.02] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed bg-primary text-white"
+            >
+              <span class="relative z-10 flex items-center gap-2">
+                <Icon
+                  v-if="!isSubmitting"
+                  name="mdi-send"
+                  class="w-5 h-5 transition-transform group-hover:translate-x-1"
+                />
+                <Icon
+                  v-else
+                  name="mdi-loading"
+                  class="w-5 h-5 animate-spin"
+                />
+                {{ isSubmitting ? $t('contact.sending') : $t('contact.sendButton') }}
+              </span>
+              <span
+                class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity blur-lg"
+                style="background: var(--primary);"
+              />
+            </button>
+
+            <Transition
+              enter-active-class="transition-all duration-300"
+              enter-from-class="opacity-0 translate-y-2"
+              enter-to-class="opacity-100 translate-y-0"
+              leave-active-class="transition-all duration-300"
+              leave-from-class="opacity-100 translate-y-0"
+              leave-to-class="opacity-0 translate-y-2"
+            >
+              <div
+                v-if="showSuccess"
+                class="flex items-center gap-3 p-4 rounded-xl border-2"
+                style="background: color-mix(in srgb, var(--accent) 10%, transparent); border-color: var(--accent);"
+              >
+                <Icon name="mdi-check-circle" class="w-6 h-6 flex-shrink-0" style="color: var(--accent);" />
+                <p class="text-sm font-medium text-text">
+                  {{ $t('contact.successMessage') }}
+                </p>
+              </div>
+            </Transition>
+
+            <Transition
+              enter-active-class="transition-all duration-300"
+              enter-from-class="opacity-0 translate-y-2"
+              enter-to-class="opacity-100 translate-y-0"
+              leave-active-class="transition-all duration-300"
+              leave-from-class="opacity-100 translate-y-0"
+              leave-to-class="opacity-0 translate-y-2"
+            >
+              <div
+                v-if="showError"
+                class="flex items-center gap-3 p-4 rounded-xl border-2"
+                style="background: color-mix(in srgb, var(--warning) 10%, transparent); border-color: var(--warning);"
+              >
+                <Icon name="mdi-alert-circle" class="w-6 h-6 flex-shrink-0" style="color: var(--warning);" />
+                <p class="text-sm font-medium text-text">
+                  {{ $t('contact.errorMessage') }}
+                </p>
+              </div>
+            </Transition>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+

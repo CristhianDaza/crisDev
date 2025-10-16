@@ -54,7 +54,7 @@
             <div class="flex-1 min-w-0">
               <div class="flex items-baseline justify-between gap-2">
                 <span class="text-sm font-medium text-text truncate">
-                  {{ $t(skill.name) }}
+                  {{ (skill.name) }}
                 </span>
                 <span class="text-xs text-muted whitespace-nowrap flex items-center gap-1">
                   <Icon name="mdi-clock" />

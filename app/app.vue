@@ -28,9 +28,8 @@ const { locales, setLocale } = useI18n()
     <CdSkills />
   </section>
 
-  <section id="contact" class="mx-auto max-w-7xl px-6 pb-24 min-h-screen">
-    <h2 class="mb-4 text-2xl font-semibold">Contacto</h2>
-    <p class="text-[var(--muted)]">Incluye un formulario o tus enlaces de contacto.</p>
+  <section id="contact" class="relative w-full min-h-screen flex items-center">
+    <CdContact />
   </section>
 
   <button
