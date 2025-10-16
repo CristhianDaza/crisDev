@@ -28,7 +28,7 @@ onBeforeUnmount(() => {
 
 <template>
   <Transition name="scroll-fade">
-    <div v-if="isVisible" class="fixed bottom-8 right-8 z-40">
+    <div v-if="isVisible" class="fixed bottom-4 right-4 z-40 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8">
       <CdTooltip
         position="left"
         variant="code"
@@ -42,9 +42,9 @@ onBeforeUnmount(() => {
           aria-label="Volver arriba"
           @click="scrollToTop"
         >
-          <div class="relative w-14 h-14 md:w-16 md:h-16">
+          <div class="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 overflow-hidden">
             <svg
-              class="absolute inset-0 w-full h-full -rotate-90 drop-shadow-2xl"
+              class="absolute inset-0 w-full h-full -rotate-90"
               viewBox="0 0 100 100"
             >
               <defs>
@@ -95,13 +95,13 @@ onBeforeUnmount(() => {
                 'border border-primary/30 shadow-lg',
                 'flex items-center justify-center',
                 'transition-all duration-300 ease-out',
-                'group-hover:scale-110 group-hover:from-primary/30 group-hover:to-accent/30',
-                'group-hover:border-primary/50 group-hover:shadow-2xl group-hover:shadow-primary/20',
+                'sm:group-hover:scale-110 sm:group-hover:from-primary/30 sm:group-hover:to-accent/30',
+                'sm:group-hover:border-primary/50 sm:group-hover:shadow-2xl sm:group-hover:shadow-primary/20',
                 'group-active:scale-95'
               ]"
             >
               <svg
-                class="w-6 h-6 md:w-7 md:h-7 text-primary transition-all duration-300 ease-out group-hover:translate-y-[-3px]"
+                class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-primary transition-all duration-300 ease-out group-hover:translate-y-[-3px]"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -130,7 +130,7 @@ onBeforeUnmount(() => {
             </div>
 
             <div
-              class="absolute inset-0 rounded-full bg-primary/20 animate-ping-slow opacity-0 group-hover:opacity-100"
+              class="absolute inset-0 rounded-full bg-primary/20 animate-ping-slow opacity-0 sm:group-hover:opacity-100"
             />
           </div>
         </button>
@@ -180,11 +180,11 @@ onBeforeUnmount(() => {
     opacity: 0.5;
   }
   50% {
-    transform: scale(1.3);
+    transform: scale(1.2);
     opacity: 0.2;
   }
   100% {
-    transform: scale(1.5);
+    transform: scale(1.4);
     opacity: 0;
   }
 }
@@ -193,16 +193,16 @@ onBeforeUnmount(() => {
   animation: ping-slow 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (min-width: 640px) {
   button:hover {
     filter: drop-shadow(0 0 20px color-mix(in srgb, var(--primary) 40%, transparent));
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 639px) {
   .fixed {
-    bottom: 1.5rem;
-    right: 1.5rem;
+    bottom: 1rem;
+    right: 1rem;
   }
 }
 </style>

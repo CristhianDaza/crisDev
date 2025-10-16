@@ -180,19 +180,19 @@ const sortedSocialMedia = computed(() =>
     <button
       type="button"
       aria-label="Scroll down"
-      class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted hover:text-primary transition-colors duration-300 cursor-pointer group animate-fade-in-delay-long z-10"
+      class="absolute bottom-4 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 text-muted hover:text-primary transition-colors duration-300 cursor-pointer group animate-fade-in-delay-long z-10"
       @click="scrollToNextSection"
     >
-      <span class="text-sm font-medium">{{ $t('hero.scrollDown') }}</span>
+      <span class="text-xs sm:text-sm font-medium">{{ $t('hero.scrollDown') }}</span>
       <div class="relative">
         <Icon
           name="mdi:chevron-down"
-          class="w-8 h-8 animate-bounce"
+          class="w-6 h-6 sm:w-8 sm:h-8 animate-bounce"
         />
         <div class="absolute inset-0 blur-md opacity-0 group-hover:opacity-50 transition-opacity">
           <Icon
             name="mdi:chevron-down"
-            class="w-8 h-8 text-primary"
+            class="w-6 h-6 sm:w-8 sm:h-8 text-primary"
           />
         </div>
       </div>

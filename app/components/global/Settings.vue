@@ -12,7 +12,7 @@ const closeSettings = () => {
 
 <template>
   <div>
-    <div class="fixed bottom-6 left-8 z-40 md:bottom-6">
+    <div class="fixed bottom-4 left-4 z-40 sm:bottom-6 sm:left-6 md:left-8">
       <CdTooltip
         position="right"
         variant="code"
@@ -26,7 +26,7 @@ const closeSettings = () => {
           :aria-label=" $t('settings.openSettings')"
           @click="toggleSettings"
         >
-          <div class="relative w-14 h-14 md:w-16 md:h-16">
+          <div class="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16">
             <div
               :class="[
                 'absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 backdrop-blur-md',
@@ -42,7 +42,7 @@ const closeSettings = () => {
               <Icon
                 name="mdi:cog"
                 :class="[
-                  'w-7 h-7 md:w-8 md:h-8 transition-all duration-300',
+                  'w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 transition-all duration-300',
                   'text-primary drop-shadow-[0_0_8px_rgba(var(--primary-rgb),0.5)]',
                   'group-hover:rotate-90',
                   isSettingsOpen ? 'rotate-90' : ''

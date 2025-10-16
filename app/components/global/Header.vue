@@ -199,13 +199,13 @@ onMounted(() => {
 <template>
   <div
     :class="[
-      'fixed top-0 left-0 right-0 z-50 m-auto text-text px-4 md:px-16 transition-all duration-500 ease-in-out',
+      'fixed top-0 left-0 right-0 z-50 m-auto text-text px-4 sm:px-6 md:px-8 lg:px-16 transition-all duration-500 ease-in-out',
       isScrolled
         ? 'py-2 bg-border/90 backdrop-blur-md shadow-2xl'
         : 'py-4 bg-border shadow-lg'
     ]"
   >
-    <header class="flex items-center justify-between max-w-screen-xl m-auto">
+    <header class="flex items-center justify-between max-w-screen-xl m-auto w-full">
       <div
         :class="[
           'flex items-center gap-3 transition-all duration-500',

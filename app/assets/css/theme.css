@@ -22,6 +22,8 @@ html {
   color-scheme: light dark;
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 html.dark { color-scheme: dark; }
