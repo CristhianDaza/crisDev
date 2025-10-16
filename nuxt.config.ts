@@ -5,19 +5,22 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
     '@nuxt/icon',
-    [
-      '@nuxtjs/i18n',
-      {
-        defaultLocale: 'es',
-        locales: [
-          { code: 'es', name: 'Español', file: 'es.json' },
-          { code: 'en', name: 'English', file: 'en.json' },
-        ],
-      },
-
-    ],
+    '@nuxtjs/i18n',
     '@nuxtjs/tailwindcss'
   ],
+  i18n: {
+    defaultLocale: 'es',
+    locales: [
+      { code: 'es', name: 'Español', file: 'es.json' },
+      { code: 'en', name: 'English', file: 'en.json' },
+    ],
+    strategy: 'no_prefix',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+    }
+  },
   css: ['~/assets/css/theme.css'],
   app: {
     head: {
@@ -46,6 +49,10 @@ export default defineNuxtConfig({
     {
       path: '~/components/projects',
       prefix: 'CdPr'
+    },
+    {
+      path: '~/components/settings',
+      prefix: 'CdSe'
     }
   ]
 })

@@ -29,6 +29,15 @@
     "close": "Close",
     "upToTop": "Back to top"
   },
+  "settings": {
+    "footer": "Changes are saved automatically",
+    "openSettings": "Open settings",
+    "title": "Settings",
+    "language": {
+      "language": "Language",
+      "languageDescription":  "Select your preferred language. It will be saved automatically."
+    }
+  },
   "contact": {
     "title": "Let's Work Together",
     "description": "Have a project in mind or want to collaborate? I'd love to hear from you. Send me a message and I'll get back to you as soon as possible.",

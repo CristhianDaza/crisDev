@@ -29,6 +29,15 @@
     "close": "Cerrar",
     "upToTop": "Volver arriba"
   },
+  "settings": {
+    "footer": "Los cambios se guardan automáticamente",
+    "openSettings": "Abrir configuración",
+    "title": "Configuración",
+    "language": {
+      "language": "Idioma",
+      "languageDescription": "Selecciona el idioma de tu preferencia. Se guardará automáticamente."
+    }
+  },
   "contact": {
     "title": "Trabajemos Juntos",
     "description": "¿Tienes un proyecto en mente o quieres colaborar? Me encantaría escucharte. Envíame un mensaje y te responderé lo antes posible.",
