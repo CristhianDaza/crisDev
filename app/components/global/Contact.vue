@@ -64,25 +64,20 @@ const handleSubmit = async () => {
 <template>
   <div
     id="contact-section"
-    class="relative w-full overflow-hidden"
-    style="background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 8%, var(--bg)), color-mix(in srgb, var(--accent) 5%, var(--bg)));"
+    class="relative w-full overflow-hidden bg-contact-gradient"
   >
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
       <div
-        class="absolute -top-40 -right-40 w-96 h-96 rounded-full opacity-20 blur-3xl"
-        style="background: radial-gradient(circle, var(--primary), transparent 70%);"
+        class="absolute -top-40 -right-40 w-96 h-96 rounded-full opacity-20 blur-3xl bg-blob-primary"
       />
       <div
-        class="absolute -bottom-32 -left-32 w-80 h-80 rounded-full opacity-15 blur-3xl"
-        style="background: radial-gradient(circle, var(--accent), transparent 70%);"
+        class="absolute -bottom-32 -left-32 w-80 h-80 rounded-full opacity-15 blur-3xl bg-blob-accent"
       />
       <div
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-10 blur-3xl"
-        style="background: radial-gradient(circle, var(--primary), transparent 60%);"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-10 blur-3xl bg-blob-primary-center"
       />
       <div
-        class="absolute inset-0 opacity-[0.03]"
-        style="background-image: repeating-linear-gradient(0deg, var(--text) 0px, var(--text) 1px, transparent 1px, transparent 60px), repeating-linear-gradient(90deg, var(--text) 0px, var(--text) 1px, transparent 1px, transparent 60px);"
+        class="absolute inset-0 opacity-[0.03] bg-grid-pattern"
       />
     </div>
 
@@ -106,12 +101,10 @@ const handleSubmit = async () => {
         :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
       >
         <div
-          class="relative rounded-3xl p-8 md:p-12 backdrop-blur-xl shadow-2xl border"
-          style="background: color-mix(in srgb, var(--surface) 80%, transparent); border-color: color-mix(in srgb, var(--border) 50%, transparent);"
+          class="relative rounded-3xl p-8 md:p-12 backdrop-blur-xl shadow-2xl border border-border-translucent bg-surface-translucent"
         >
           <div
-            class="absolute inset-0 rounded-3xl opacity-50 blur-xl"
-            style="background: linear-gradient(135deg, var(--primary), var(--accent)); z-index: -1;"
+            class="absolute inset-0 rounded-3xl opacity-50 blur-xl -z-10 bg-gradient-to-br from-primary to-accent"
           />
 
           <form class="space-y-6" @submit.prevent="handleSubmit">
@@ -188,8 +181,7 @@ const handleSubmit = async () => {
                 {{ isSubmitting ? $t('contact.sending') : $t('contact.sendButton') }}
               </span>
               <span
-                class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity blur-lg"
-                style="background: var(--primary);"
+                class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity blur-lg bg-primary"
               />
             </button>
 
@@ -203,10 +195,9 @@ const handleSubmit = async () => {
             >
               <div
                 v-if="showSuccess"
-                class="flex items-center gap-3 p-4 rounded-xl border-2"
-                style="background: color-mix(in srgb, var(--accent) 10%, transparent); border-color: var(--accent);"
+                class="flex items-center gap-3 p-4 rounded-xl border-2 border-accent bg-accent/10"
               >
-                <Icon name="mdi-check-circle" class="w-6 h-6 flex-shrink-0" style="color: var(--accent);" />
+                <Icon name="mdi-check-circle" class="w-6 h-6 flex-shrink-0 text-accent" />
                 <p class="text-sm font-medium text-text">
                   {{ $t('contact.successMessage') }}
                 </p>
@@ -223,10 +214,9 @@ const handleSubmit = async () => {
             >
               <div
                 v-if="showError"
-                class="flex items-center gap-3 p-4 rounded-xl border-2"
-                style="background: color-mix(in srgb, var(--warning) 10%, transparent); border-color: var(--warning);"
+                class="flex items-center gap-3 p-4 rounded-xl border-2 border-warning bg-warning/10"
               >
-                <Icon name="mdi-alert-circle" class="w-6 h-6 flex-shrink-0" style="color: var(--warning);" />
+                <Icon name="mdi-alert-circle" class="w-6 h-6 flex-shrink-0 text-warning" />
                 <p class="text-sm font-medium text-text">
                   {{ $t('contact.errorMessage') }}
                 </p>
@@ -239,3 +229,32 @@ const handleSubmit = async () => {
   </div>
 </template>
 
+<style scoped>
+.bg-contact-gradient {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 8%, var(--bg)), color-mix(in srgb, var(--accent) 5%, var(--bg)));
+}
+
+.bg-blob-primary {
+  background: radial-gradient(circle, var(--primary), transparent 70%);
+}
+
+.bg-blob-accent {
+  background: radial-gradient(circle, var(--accent), transparent 70%);
+}
+
+.bg-blob-primary-center {
+  background: radial-gradient(circle, var(--primary), transparent 60%);
+}
+
+.bg-grid-pattern {
+  background-image: repeating-linear-gradient(0deg, var(--text) 0px, var(--text) 1px, transparent 1px, transparent 60px), repeating-linear-gradient(90deg, var(--text) 0px, var(--text) 1px, transparent 1px, transparent 60px);
+}
+
+.bg-surface-translucent {
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+}
+
+.border-border-translucent {
+  border-color: color-mix(in srgb, var(--border) 50%, transparent);
+}
+</style>
