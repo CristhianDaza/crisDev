@@ -36,6 +36,13 @@
     "language": {
       "language": "Language",
       "languageDescription":  "Select your preferred language. It will be saved automatically."
+    },
+    "theme": {
+      "theme": "Theme",
+      "themeDescription": "Choose your preferred color theme. It will be saved automatically.",
+      "default": "Default",
+      "dark": "Dark",
+      "light": "Light"
     }
   },
   "contact": {

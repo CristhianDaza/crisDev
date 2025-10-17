@@ -89,6 +89,7 @@ watch(() => props.isOpen, (newVal) => {
 
             <div class="flex-1 px-6 py-6 space-y-8">
               <CdSeLanguage />
+              <CdSeTheme />
             </div>
 
             <div class="px-6 py-4 border-t border-primary/10">

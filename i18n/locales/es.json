@@ -36,6 +36,13 @@
     "language": {
       "language": "Idioma",
       "languageDescription": "Selecciona el idioma de tu preferencia. Se guardará automáticamente."
+    },
+    "theme": {
+      "theme": "Tema",
+      "themeDescription": "Elige tu tema de colores preferido. Se guardará automáticamente.",
+      "default": "Por defecto",
+      "dark": "Oscuro",
+      "light": "Claro"
     }
   },
   "contact": {

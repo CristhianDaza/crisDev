@@ -26,10 +26,11 @@ html {
   width: 100%;
 }
 
+html.default { color-scheme: dark; }
 html.dark { color-scheme: dark; }
 html.light { color-scheme: light; }
 
-.dark {
+.default {
   --bg: #083D56;
   --surface: #0A2F42;
   --text: #F9FAFB;
@@ -39,6 +40,20 @@ html.light { color-scheme: light; }
   --warning: #EAB308;
   --border: #0F3C50;
   --chip: #0B3550;
+  --shadow: 0 8px 24px rgba(0,0,0,.18);
+}
+
+.dark {
+  --bg: #000000;
+  --surface: #0F172A;
+  --text: #F8FAFC;
+  --muted: #94A3B8;
+  --primary: #3AA7E3;
+  --accent: #10B981;
+  --warning: #EAB308;
+  --border: #1E293B;
+  --chip: #1E293B;
+  --shadow: 0 10px 30px rgba(0,0,0,.4);
 }
 
 .light {

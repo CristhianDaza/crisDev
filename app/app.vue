@@ -1,26 +1,26 @@
 <script setup>
 const { initializeLanguage } = useLanguage()
+const { initializeTheme } = useTheme()
 const { setSectionSeo, resetSeo } = useSeo()
 const { locale } = useI18n()
 
 useHead({
   htmlAttrs: {
-    lang: locale.value,
-    class: 'dark'
+    lang: locale.value
   }
 })
 
 watch(locale, (newLocale) => {
   useHead({
     htmlAttrs: {
-      lang: newLocale,
-      class: 'dark'
+      lang: newLocale
     }
   })
 })
 
 onMounted(() => {
   initializeLanguage()
+  initializeTheme()
   const observerOptions = {
     root: null,
     rootMargin: '0px',
