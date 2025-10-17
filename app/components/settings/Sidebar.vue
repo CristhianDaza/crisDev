@@ -8,6 +8,8 @@ const props = defineProps({
 
 const emit = defineEmits(['close'])
 
+let scrollPosition = 0
+
 const handleClose = () => {
   emit('close')
 }
@@ -35,18 +37,17 @@ onBeforeUnmount(() => {
 watch(() => props.isOpen, (newVal) => {
   if (typeof document !== 'undefined') {
     if (newVal) {
-      const scrollY = window.scrollY
-      document.body.style.position = 'fixed'
-      document.body.style.top = `-${scrollY}px`
-      document.body.style.width = '100%'
+      scrollPosition = window.scrollY
+      document.documentElement.style.overflow = 'hidden'
       document.body.style.overflow = 'hidden'
+      document.body.style.paddingRight = `${window.innerWidth - document.documentElement.clientWidth}px`
     } else {
-      const scrollY = document.body.style.top
-      document.body.style.position = ''
-      document.body.style.top = ''
-      document.body.style.width = ''
+      document.documentElement.style.overflow = ''
       document.body.style.overflow = ''
-      window.scrollTo(0, parseInt(scrollY || '0') * -1)
+      document.body.style.paddingRight = ''
+      requestAnimationFrame(() => {
+        window.scrollTo(0, scrollPosition)
+      })
     }
   }
 })
