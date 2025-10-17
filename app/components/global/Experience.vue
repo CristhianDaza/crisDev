@@ -135,7 +135,7 @@ onMounted(() => {
                 {{ t(exp.description) }}
               </p>
               <div class="flex flex-wrap gap-2 justify-start" :class="index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'">
-                <CdUiChip
+                <UIChip
                   v-for="tech in exp.technologies"
                   :key="tech"
                   :content="tech"

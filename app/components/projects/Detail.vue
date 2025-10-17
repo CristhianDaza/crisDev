@@ -125,7 +125,7 @@ onUnmounted(() => {
                   {{ $t('projects.technologiesUsed') }}
                 </h3>
                 <div class="flex flex-wrap gap-3">
-                  <CdUiChip
+                  <UIChip
                     v-for="(tech, index) in project.technologies"
                     :key="index"
                     :content="tech"
@@ -134,26 +134,27 @@ onUnmounted(() => {
               </div>
 
               <div class="flex flex-wrap gap-4 pt-6 border-t border-border">
-                <a
+                <UIButton
                   v-if="project.projectUrl"
+                  variant="primary"
+                  icon="mdi:open-in-new"
                   :href="project.projectUrl"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex items-center gap-2 px-6 py-3 bg-primary text-text font-semibold rounded-lg hover:bg-accent transition-all hover:scale-105 shadow-lg"
                 >
-                  <Icon name="mdi:open-in-new" />
                   {{ $t('projects.viewProjectLive') }}
-                </a>
-                <a
+                </UIButton>
+                <UIButton
                   v-if="project.githubUrl"
+                  variant="secondary"
+                  icon="mdi:github"
+                  icon-position="left"
                   :href="project.githubUrl"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex items-center gap-2 px-6 py-3 bg-chip text-primary font-semibold rounded-lg border-2 border-primary hover:bg-primary hover:text-text transition-all hover:scale-105"
                 >
-                  <Icon name="mdi:github" />
                   {{ $t('projects.viewCodeInGitHub') }}
-                </a>
+                </UIButton>
               </div>
             </div>
           </div>

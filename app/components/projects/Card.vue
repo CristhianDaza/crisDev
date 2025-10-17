@@ -48,7 +48,7 @@ defineEmits(['openProject'])
       </p>
 
       <div class="flex flex-wrap gap-2 mb-4">
-        <CdUiChip
+        <UIChip
           v-for="tech in project.technologies.slice(0, 3)"
           :key="tech"
           :content="tech"

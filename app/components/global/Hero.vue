@@ -77,22 +77,12 @@ const sortedSocialMedia = computed(() =>
           </div>
 
           <div class="flex flex-wrap items-center gap-4 pt-2">
-            <button
-              type="button"
-              class="group relative inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-semibold shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 active:scale-95 bg-primary text-text"
-              @click="scrollToId('contact')"
-            >
-              <span class="relative z-10">{{ $t('hero.contactButton') }}</span>
-              <span class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity blur-lg" style="background: var(--primary);" />
-            </button>
-            <button
-              type="button"
-              class="inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-semibold border-2 transition-all duration-300 hover:scale-105 active:scale-95 border-border bg-surface text-text hover:border-primary"
-              @click="scrollToId('projects')"
-            >
+            <UIButton variant="primary" @click="scrollToId('contact')">
+              {{ $t('hero.contactButton') }}
+            </UIButton>
+            <UIButton variant="secondary" icon="mdi-arrow-right-bold" @click="scrollToId('projects')">
               {{ $t('hero.projectsButton') }}
-              <Icon name="mdi-arrow-right-bold" class="ml-2 w-4 h-4" />
-            </button>
+            </UIButton>
           </div>
 
           <div class="flex flex-wrap gap-2.5 pt-4">
