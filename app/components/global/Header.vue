@@ -252,7 +252,7 @@ onMounted(() => {
               :aria-current="hydrated && isActive(id) ? 'page' : undefined"
               @click.prevent="scrollToSection(id)"
             >
-              <span class="text-primary font-bold">&lt;</span> {{ $t(name) }} <span class="text-primary font-bold" >/&gt;</span>
+              <span class="text-primary font-bold">&lt;</span> {{ $t(name) }} <span class="text-primary font-bold" />/&gt;
             </NuxtLink>
           </li>
         </ul>
@@ -262,12 +262,12 @@ onMounted(() => {
     <Transition name="menu-fade">
       <div
         v-if="isMenuOpen"
-        class="fixed inset-0 z-[100] bg-bg/95 backdrop-blur-xl flex flex-col"
+        class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-xl flex flex-col w-screen h-screen"
         role="dialog"
         aria-modal="true"
         @click.self="toggleMenu"
       >
-        <div class="flex items-center justify-between p-4 bg-border/80 backdrop-blur-sm shadow-lg flex-shrink-0">
+        <div class="flex items-center justify-between p-4 bg-black/70 backdrop-blur-sm shadow-lg flex-shrink-0">
           <div class="flex items-center gap-2">
             <img :src="logoUrl" :alt="$t('global.altLogo')" class="h-7 w-9 drop-shadow-sm">
             <span class="font-bold text-lg">&lt;<span class="text-text">Cris</span><span class="text-primary">Dev</span> /&gt;</span>
@@ -283,16 +283,16 @@ onMounted(() => {
         </div>
 
         <nav class="flex-1 flex items-center justify-center overflow-y-auto">
-          <ul class="flex flex-col items-center gap-8 p-6 my-auto">
+          <ul class="flex flex-col items-center gap-6 p-6 my-auto">
             <li v-for="{ name, id } in menus" :key="id" class="w-full text-center">
               <button
                 type="button"
-                class="text-3xl uppercase font-extrabold tracking-wide text-text hover:text-primary transition-all duration-300 cursor-pointer block py-3 hover:scale-110 transform w-full"
+                class="text-2xl uppercase font-extrabold tracking-wide text-text hover:text-primary transition-all duration-300 cursor-pointer block py-3 hover:scale-110 transform w-full"
                 :class="[ hydrated && isActive(id) ? 'text-primary scale-110' : '' ]"
                 :aria-current="hydrated && isActive(id) ? 'page' : undefined"
                 @click="scrollToSection(id)"
               >
-                <span class="text-primary font-bold">&lt;</span> {{ $t(name) }} <span class="text-primary font-bold" >/&gt;</span>
+                <span class="text-primary font-bold">&lt;</span> {{ $t(name) }} <span class="text-primary font-bold" />/&gt;
               </button>
             </li>
           </ul>
@@ -303,16 +303,18 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.menu-fade-enter-active {
+:global(.menu-fade-enter-active) {
   transition: opacity 200ms ease-out;
 }
 
-.menu-fade-leave-active {
+:global(.menu-fade-leave-active) {
   transition: opacity 150ms ease-in;
 }
 
 .menu-fade-enter-from,
 .menu-fade-leave-to {
+:global(.menu-fade-enter-from),
+:global(.menu-fade-leave-to) {
   opacity: 0;
 }
 </style>
