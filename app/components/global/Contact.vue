@@ -64,12 +64,17 @@ const handleSubmit = async () => {
 <template>
   <div
     id="contact-section"
-    class="relative w-full overflow-hidden"
+    class="relative w-full overflow-hidden py-20"
   >
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse" />
+      <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse delay-1000" />
+    </div>
+
     <div class="relative mx-auto max-w-5xl px-6">
-      <div class="text-center mb-16">
+      <div class="text-center mb-12">
         <h2
-          class="mb-6 text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent transition-all duration-700"
+          class="mb-4 text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent transition-all duration-700"
           :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
         >
           {{ $t('contact.title') }}
@@ -86,89 +91,92 @@ const handleSubmit = async () => {
         :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
       >
         <div
-          class="relative rounded-3xl p-8 md:p-12 backdrop-blur-xl shadow-2xl border border-border-translucent bg-surface-translucent"
+          class="relative rounded-2xl p-8 md:p-10 backdrop-blur-sm shadow-xl border bg-surface/50 border-border/50 hover:shadow-2xl transition-shadow duration-500"
         >
-          <div
-            class="absolute inset-0 rounded-3xl opacity-50 blur-xl -z-10 bg-gradient-to-br from-primary to-accent"
-          />
-
           <form class="space-y-6" @submit.prevent="handleSubmit">
-            <div class="space-y-2">
+            <div class="group space-y-2">
               <label
                 for="name"
-                class="block text-sm font-semibold text-text"
+                class="flex items-center gap-2 text-sm font-semibold text-text"
               >
+                <Icon name="mdi-account" class="w-5 h-5 text-primary" />
                 {{ $t('contact.nameLabel') }}
               </label>
-              <input
-                id="name"
-                v-model="formData.name"
-                type="text"
-                required
-                :placeholder="$t('contact.namePlaceholder')"
-                class="w-full px-4 py-3.5 rounded-xl border-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-surface text-text border-border focus:border-primary focus:ring-primary"
-                :disabled="isSubmitting"
-              >
+              <div class="relative">
+                <input
+                  id="name"
+                  v-model="formData.name"
+                  type="text"
+                  required
+                  :placeholder="$t('contact.namePlaceholder')"
+                  class="w-full px-4 py-3.5 pl-11 rounded-xl border-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-bg bg-surface text-text border-border focus:border-primary focus:ring-primary/20 hover:border-primary/50"
+                  :disabled="isSubmitting"
+                >
+                <Icon name="mdi-account-outline" class="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-muted pointer-events-none" />
+              </div>
             </div>
 
-            <div class="space-y-2">
+            <div class="group space-y-2">
               <label
                 for="email"
-                class="block text-sm font-semibold text-text"
+                class="flex items-center gap-2 text-sm font-semibold text-text"
               >
+                <Icon name="mdi-email" class="w-5 h-5 text-primary" />
                 {{ $t('contact.emailLabel') }}
               </label>
-              <input
-                id="email"
-                v-model="formData.email"
-                type="email"
-                required
-                :placeholder="$t('contact.emailPlaceholder', { at: '@' })"
-                class="w-full px-4 py-3.5 rounded-xl border-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-surface text-text border-border focus:border-primary focus:ring-primary"
-                :disabled="isSubmitting"
-              >
+              <div class="relative">
+                <input
+                  id="email"
+                  v-model="formData.email"
+                  type="email"
+                  required
+                  :placeholder="$t('contact.emailPlaceholder', { at: '@' })"
+                  class="w-full px-4 py-3.5 pl-11 rounded-xl border-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-bg bg-surface text-text border-border focus:border-primary focus:ring-primary/20 hover:border-primary/50"
+                  :disabled="isSubmitting"
+                >
+                <Icon name="mdi-email-outline" class="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-muted pointer-events-none" />
+              </div>
             </div>
 
-            <div class="space-y-2">
+            <div class="group space-y-2">
               <label
                 for="message"
-                class="block text-sm font-semibold text-text"
+                class="flex items-center gap-2 text-sm font-semibold text-text"
               >
+                <Icon name="mdi-message-text" class="w-5 h-5 text-primary" />
                 {{ $t('contact.messageLabel') }}
               </label>
-              <textarea
-                id="message"
-                v-model="formData.message"
-                required
-                rows="6"
-                :placeholder="$t('contact.messagePlaceholder')"
-                class="w-full px-4 py-3.5 rounded-xl border-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 resize-none bg-surface text-text border-border focus:border-primary focus:ring-primary"
-                :disabled="isSubmitting"
-              />
+              <div class="relative">
+                <textarea
+                  id="message"
+                  v-model="formData.message"
+                  required
+                  rows="5"
+                  :placeholder="$t('contact.messagePlaceholder')"
+                  class="w-full px-4 py-3.5 pl-11 rounded-xl border-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-bg resize-none bg-surface text-text border-border focus:border-primary focus:ring-primary/20 hover:border-primary/50"
+                  :disabled="isSubmitting"
+                />
+                <Icon name="mdi-message-outline" class="absolute left-3.5 top-4 w-5 h-5 text-muted pointer-events-none" />
+              </div>
             </div>
 
-            <button
+            <UIButton
               type="submit"
-              :disabled="isSubmitting"
-              class="group relative w-full inline-flex items-center justify-center rounded-xl px-8 py-4 text-base font-semibold shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.02] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed bg-primary text-white"
+              variant="primary"
+              :icon="isSubmitting ? 'mdi-loading' : 'mdi-send'"
+              icon-position="right"
+              class="w-full !py-4"
+              :class="{ 'opacity-50 cursor-not-allowed pointer-events-none': isSubmitting }"
             >
-              <span class="relative z-10 flex items-center gap-2">
+              <span class="flex items-center justify-center gap-2">
                 <Icon
-                  v-if="!isSubmitting"
-                  name="mdi-send"
-                  class="w-5 h-5 transition-transform group-hover:translate-x-1"
-                />
-                <Icon
-                  v-else
+                  v-if="isSubmitting"
                   name="mdi-loading"
                   class="w-5 h-5 animate-spin"
                 />
                 {{ isSubmitting ? $t('contact.sending') : $t('contact.sendButton') }}
               </span>
-              <span
-                class="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity blur-lg bg-primary"
-              />
-            </button>
+            </UIButton>
 
             <Transition
               enter-active-class="transition-all duration-300"
@@ -180,9 +188,9 @@ const handleSubmit = async () => {
             >
               <div
                 v-if="showSuccess"
-                class="flex items-center gap-3 p-4 rounded-xl border-2 border-accent bg-accent/10"
+                class="flex items-start gap-3 p-4 rounded-xl bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-2 border-green-500/30"
               >
-                <Icon name="mdi-check-circle" class="w-6 h-6 flex-shrink-0 text-accent" />
+                <Icon name="mdi-check-circle" class="w-6 h-6 flex-shrink-0 text-green-500 mt-0.5" />
                 <p class="text-sm font-medium text-text">
                   {{ $t('contact.successMessage') }}
                 </p>
@@ -199,9 +207,9 @@ const handleSubmit = async () => {
             >
               <div
                 v-if="showError"
-                class="flex items-center gap-3 p-4 rounded-xl border-2 border-warning bg-warning/10"
+                class="flex items-start gap-3 p-4 rounded-xl bg-gradient-to-r from-red-500/10 to-orange-500/10 border-2 border-red-500/30"
               >
-                <Icon name="mdi-alert-circle" class="w-6 h-6 flex-shrink-0 text-warning" />
+                <Icon name="mdi-alert-circle" class="w-6 h-6 flex-shrink-0 text-red-500 mt-0.5" />
                 <p class="text-sm font-medium text-text">
                   {{ $t('contact.errorMessage') }}
                 </p>
@@ -215,11 +223,7 @@ const handleSubmit = async () => {
 </template>
 
 <style scoped>
-.bg-surface-translucent {
-  background: color-mix(in srgb, var(--surface) 80%, transparent);
-}
-
-.border-border-translucent {
-  border-color: color-mix(in srgb, var(--border) 50%, transparent);
+.delay-1000 {
+  animation-delay: 1s;
 }
 </style>

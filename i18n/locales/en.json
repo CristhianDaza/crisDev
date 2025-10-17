@@ -46,18 +46,18 @@
     }
   },
   "contact": {
-    "title": "Let's Work Together",
-    "description": "Have a project in mind or want to collaborate? I'd love to hear from you. Send me a message and I'll get back to you as soon as possible.",
-    "nameLabel": "Your Name",
-    "namePlaceholder": "Cris Dev",
-    "emailLabel": "Your Email",
-    "emailPlaceholder": "cris{at}example.com",
-    "messageLabel": "Your Message",
-    "messagePlaceholder": "Tell me about your project or idea...",
+    "title": "Get in Touch",
+    "description": "If you have any questions or just want to say hi, I'd be happy to hear from you.",
+    "nameLabel": "Name",
+    "namePlaceholder": "Your name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "your-email{at}example.com",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Write your message here...",
     "sendButton": "Send Message",
     "sending": "Sending...",
-    "successMessage": "Message sent successfully! I'll get back to you soon.",
-    "errorMessage": "There was an error sending the message. Please try again."
+    "successMessage": "Message sent! Thanks for reaching out.",
+    "errorMessage": "Something went wrong. Please try again."
   },
   "projects": {
     "description": "Explore some of the projects I have worked on. Click any card to see more details.",

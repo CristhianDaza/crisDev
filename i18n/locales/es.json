@@ -46,18 +46,18 @@
     }
   },
   "contact": {
-    "title": "Trabajemos Juntos",
-    "description": "¿Tienes un proyecto en mente o quieres colaborar? Me encantaría escucharte. Envíame un mensaje y te responderé lo antes posible.",
-    "nameLabel": "Tu Nombre",
-    "namePlaceholder": "Cris Dev",
-    "emailLabel": "Tu Correo",
-    "emailPlaceholder": "cris{at}ejemplo.com",
-    "messageLabel": "Tu Mensaje",
-    "messagePlaceholder": "Cuéntame sobre tu proyecto o idea...",
+    "title": "Conversemos",
+    "description": "Si tienes alguna pregunta o simplemente quieres decir hola, estaré encantado de leerte.",
+    "nameLabel": "Nombre",
+    "namePlaceholder": "Tu nombre",
+    "emailLabel": "Email",
+    "emailPlaceholder": "tu-email{at}ejemplo.com",
+    "messageLabel": "Mensaje",
+    "messagePlaceholder": "Escribe tu mensaje aquí...",
     "sendButton": "Enviar Mensaje",
     "sending": "Enviando...",
-    "successMessage": "¡Mensaje enviado con éxito! Te responderé pronto.",
-    "errorMessage": "Hubo un error al enviar el mensaje. Por favor, intenta de nuevo."
+    "successMessage": "¡Mensaje enviado! Gracias por escribir.",
+    "errorMessage": "Algo salió mal. Por favor, intenta nuevamente."
   },
   "projects": {
     "description": "Explora algunos de los proyectos en los que he trabajado. Haz clic en cualquier tarjeta para ver más detalles.",
