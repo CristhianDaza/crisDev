@@ -15,7 +15,7 @@ export const useStructuredData = () => {
         url: siteUrl,
         sameAs: [
           'https://github.com/CristhianDaza',
-          'https://www.linkedin.com/in/cristhiandaza'
+          'https://co.linkedin.com/in/cristhiandaza'
         ]
       },
       potentialAction: {

@@ -104,7 +104,7 @@ export default defineNuxtConfig({
             image: `${siteUrl}/og-image.jpg`,
             sameAs: [
               'https://github.com/CristhianDaza',
-              'https://www.linkedin.com/in/cristhiandaza'
+              'https://co.linkedin.com/in/cristhiandaza'
             ],
             knowsAbout: ['Vue.js', 'Nuxt', 'JavaScript', 'TypeScript', 'Tailwind CSS', 'Web Components', 'LitElement'],
             alumniOf: {
