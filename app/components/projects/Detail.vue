@@ -110,11 +110,11 @@ onUnmounted(() => {
                   <li
                     v-for="(highlight, index) in project.highlights"
                     :key="index"
-                    class="flex items-center gap-2 text-muted bg-chip p-3 rounded-lg"
+                    class="flex items-center gap-2 text-muted bg-surface/50 border border-border p-3 rounded-lg hover:bg-surface transition-colors"
                     :style="{ animationDelay: `${index * 0.1}s` }"
                   >
-                    <Icon name="mdi:star" class="self-center text-warning" />
-                    <span class="self-center">{{ $t(highlight) }}</span>
+                    <Icon name="mdi:star" class="flex-shrink-0 w-5 h-5 text-warning" />
+                    <span class="flex-1">{{ $t(highlight) }}</span>
                   </li>
                 </ul>
               </div>
