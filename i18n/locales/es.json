@@ -101,7 +101,7 @@
     "todoVue": {
       "fullDescription": "TodoVue es un proyecto (WIP) que combina un blog técnico sobre Vue.js con una librería de componentes personalizados. Su objetivo es ofrecer artículos, demos y componentes reutilizables con estilos propios y arquitectura basada en Atomic Design. Incluye componentes como TvButton, TvLabel, TvDemo y otros, desarrollados desde cero con Nuxt y Vite, usando Markdown y resaltado de código integrado.",
       "shortDescription": "Blog técnico y librería de componentes Vue con estilo propio y enfoque en Atomic Design",
-      "title": "Megapromocionales LTDA",
+      "title": "TODOVue",
       "highlights": {
         "highlight1": "Librería propia con componentes reutilizables (TvButton, TvLabel, TvDemo)",
         "highlight2": "Blog técnico integrado con soporte Markdown y resaltado de código",

@@ -101,7 +101,7 @@
     "todoVue": {
       "fullDescription": "TodoVue is a (WIP) project that combines a technical blog about Vue.js with a library of custom components. Its goal is to offer articles, demos, and reusable components with a unique style and architecture based on Atomic Design. Includes components like TvButton, TvLabel, and TvDemo, all built from scratch with Nuxt and Vite, using Markdown and integrated code highlighting.",
       "shortDescription": "Technical blog and Vue component library with a custom style and Atomic Design approach.",
-      "title": "TodoVue",
+      "title": "TODOvue",
       "highlights": {
         "highlight1": "Custom library with reusable components (TvButton, TvLabel, TvDemo)",
         "highlight2": "Technical blog integrated with Markdown and code highlighting",

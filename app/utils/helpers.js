@@ -68,7 +68,7 @@ export const projects = [
     fullDescription: 'projects.finControl.fullDescription',
     technologies: ['Vue.js', 'Vite', 'Chart.js', 'Firebase', 'Pinia'],
     image: '/images/projects/finControl.png',
-    projectUrl: 'https://cris-dev.com/',
+    projectUrl: 'https://fin-control.netlify.app',
     featured: true,
     date: '2025',
     highlights: [
