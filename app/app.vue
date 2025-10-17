@@ -68,19 +68,19 @@ onMounted(() => {
       <CdHero />
     </section>
 
-    <section id="projects" class="mx-auto max-w-7xl px-6 my-20 min-h-screen">
+    <section id="projects" class="mx-auto max-w-7xl px-6 pb-16 my-20 min-h-screen">
       <CdProjects />
     </section>
 
-    <section id="experience" class="mx-auto max-w-7xl px-6 my-20 min-h-screen">
+    <section id="experience" class="mx-auto max-w-7xl px-6 pb-16 my-20 min-h-screen">
       <CdExperience />
     </section>
 
-    <section id="skills" class="mx-auto max-w-7xl px-6 my-20 min-h-screen">
+    <section id="skills" class="mx-auto max-w-7xl px-6 pb-16 my-20 min-h-screen">
       <CdSkills />
     </section>
 
-    <section id="contact" class="mx-auto max-w-7xl px-6 my-20 min-h-screen">
+    <section id="contact" class="mx-auto max-w-7xl px-6 pb-16 my-20 min-h-screen">
       <CdContact />
     </section>
 
