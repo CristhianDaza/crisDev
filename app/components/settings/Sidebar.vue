@@ -63,7 +63,7 @@ watch(() => props.isOpen, (newVal) => {
         <Transition name="sidebar">
           <div
             v-if="isOpen"
-            class="fixed left-0 top-0 h-full w-full max-w-md bg-gradient-to-br from-gray-900/95 to-gray-950/95 backdrop-blur-xl border-l border-primary/20 shadow-2xl flex flex-col"
+            class="fixed left-0 top-0 h-full w-full max-w-md bg-gradient-to-br from-gray-900/95 to-gray-950/95 backdrop-blur-xl border-r border-primary/20 shadow-2xl flex flex-col"
             @click.stop
           >
             <div class="flex items-center justify-between px-6 py-5 border-b border-primary/10">
@@ -121,6 +121,6 @@ watch(() => props.isOpen, (newVal) => {
 
 .sidebar-enter-from,
 .sidebar-leave-to {
-  transform: translateX(100%);
+  transform: translateX(-100%);
 }
 </style>
