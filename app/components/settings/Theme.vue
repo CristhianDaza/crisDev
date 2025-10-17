@@ -8,14 +8,15 @@ const handleThemeChange = (newTheme) => {
 
 <template>
   <div class="space-y-3">
-    <div>
-      <h3 class="text-sm font-semibold text-white mb-1">
+    <div class="flex items-center gap-2">
+      <Icon name="mdi:palette" class="w-5 h-5 text-primary" />
+      <h3 class="text-lg font-medium text-white">
         {{ $t('settings.theme.theme') }}
       </h3>
-      <p class="text-xs text-gray-400">
-        {{ $t('settings.theme.themeDescription') }}
-      </p>
     </div>
+    <p class="text-sm text-gray-400">
+      {{ $t('settings.theme.themeDescription') }}
+    </p>
 
     <div class="grid grid-cols-3 gap-3">
       <button
