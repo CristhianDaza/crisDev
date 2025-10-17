@@ -28,7 +28,7 @@ export const socialMediaLinks = [
   },
   {
     name: 'social.linkedin',
-    url: 'https://www.linkedin.com/in/cristhiandaza',
+    url: 'https://co.linkedin.com/in/cristhiandaza',
     icon: 'mdi:linkedin',
     order: 2,
   },
