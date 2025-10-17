@@ -125,14 +125,11 @@ onUnmounted(() => {
                   {{ $t('projects.technologiesUsed') }}
                 </h3>
                 <div class="flex flex-wrap gap-3">
-                  <span
+                  <CdUiChip
                     v-for="(tech, index) in project.technologies"
-                    :key="tech"
-                    class="px-4 py-2 bg-chip text-primary text-sm font-medium rounded-lg hover:bg-primary hover:text-text transition-colors tech-badge"
-                    :style="{ animationDelay: `${index * 0.05}s` }"
-                  >
-                    {{ tech }}
-                  </span>
+                    :key="index"
+                    :content="tech"
+                  />
                 </div>
               </div>
 

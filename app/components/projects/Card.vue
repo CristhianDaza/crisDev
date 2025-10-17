@@ -48,13 +48,11 @@ defineEmits(['openProject'])
       </p>
 
       <div class="flex flex-wrap gap-2 mb-4">
-        <span
+        <CdUiChip
           v-for="tech in project.technologies.slice(0, 3)"
           :key="tech"
-          class="px-2.5 py-1 bg-chip text-primary text-xs font-medium rounded-lg"
-        >
-          {{ tech }}
-        </span>
+          :content="tech"
+        />
         <span
           v-if="project.technologies.length > 3"
           class="px-2.5 py-1 text-muted text-xs font-medium"

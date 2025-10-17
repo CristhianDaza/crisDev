@@ -143,6 +143,10 @@ export default defineNuxtConfig({
     {
       path: '~/components/settings',
       prefix: 'CdSe'
+    },
+    {
+      path: '~/components/UI',
+      prefix: 'CdUi'
     }
   ],
   nitro: {

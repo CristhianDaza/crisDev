@@ -135,13 +135,11 @@ onMounted(() => {
                 {{ t(exp.description) }}
               </p>
               <div class="flex flex-wrap gap-2 justify-start" :class="index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'">
-                <span
+                <CdUiChip
                   v-for="tech in exp.technologies"
                   :key="tech"
-                  class="px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 hover:scale-110 bg-chip text-text opacity-90"
-                >
-                  {{ tech }}
-                </span>
+                  :content="tech"
+                />
               </div>
             </div>
           </div>
