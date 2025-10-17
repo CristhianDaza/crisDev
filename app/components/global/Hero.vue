@@ -96,7 +96,7 @@ const sortedSocialMedia = computed(() =>
                 :href="social.url || '#'"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="group relative w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 hover:scale-110 cursor-pointer animate-slide-up-delay bg-chip text-text/90 hover:text-text"
+                class="group relative w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 hover:scale-110 cursor-pointer animate-slide-up-delay bg-surface/50 dark:bg-chip text-text/90 hover:text-text border border-border/30"
               >
                 <Icon
                   v-if="social.icon"
