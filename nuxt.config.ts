@@ -3,6 +3,7 @@ import { calculateYearsOfExperience, siteUrl } from './app/utils/helpers'
 const years = calculateYearsOfExperience()
 
 export default defineNuxtConfig({
+  ssr: true,
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: [
@@ -150,6 +151,7 @@ export default defineNuxtConfig({
     }
   ],
   nitro: {
+    preset: 'netlify',
     prerender: {
       routes: ['/'],
       crawlLinks: true

@@ -1,0 +1,185 @@
+var menu = {
+	contact: "Contact",
+	experience: "Experience",
+	home: "Home",
+	projects: "Projects",
+	skills: "Skills"
+};
+var hero = {
+	UI: "UI/UX Friendly",
+	codeQuality: "Clean Code",
+	contactButton: "Let's Talk",
+	description: "Frontend developer with over {years} years of experience building modern, accessible, and scalable interfaces using Vue, LitElement, and Tailwind. Passionate about clean code, modular architecture, and user-centered experiences.",
+	greeting: "Hi, I'm",
+	name: "Cristhian Daza",
+	performance: "High Performance",
+	projectsButton: "See Projects",
+	role: "Frontend Developer",
+	scrollDown: "Scroll down"
+};
+var social = {
+	github: "GitHub",
+	linkedin: "LinkedIn",
+	resume: "View Resume"
+};
+var global = {
+	altImagePerfil: "Cristhian's profile picture",
+	altLogo: "CrisDev Logo",
+	close: "Close",
+	upToTop: "Back to top"
+};
+var settings = {
+	footer: "Changes are saved automatically",
+	openSettings: "Open settings",
+	title: "Settings",
+	language: {
+		language: "Language",
+		languageDescription: "Select your preferred language. It will be saved automatically."
+	},
+	theme: {
+		theme: "Theme",
+		themeDescription: "Choose your preferred color theme. It will be saved automatically.",
+		"default": "Default",
+		dark: "Dark",
+		light: "Light"
+	}
+};
+var contact = {
+	title: "Get in Touch",
+	description: "If you have any questions or just want to say hi, I'd be happy to hear from you.",
+	nameLabel: "Name",
+	namePlaceholder: "Your name",
+	emailLabel: "Email",
+	emailPlaceholder: "your-email{at}example.com",
+	messageLabel: "Message",
+	messagePlaceholder: "Write your message here...",
+	sendButton: "Send Message",
+	sending: "Sending...",
+	successMessage: "Message sent! Thanks for reaching out.",
+	errorMessage: "Something went wrong. Please try again."
+};
+var projects = {
+	description: "Explore some of the projects I have worked on. Click any card to see more details.",
+	featured: "Featured",
+	featuredProject: "Featured Project",
+	highlights: "Highlights",
+	technologiesUsed: "Technologies Used",
+	title: "Featured Projects",
+	viewCodeInGitHub: "View Code in GitHub",
+	viewProject: "View Project",
+	viewProjectLive: "View Project Live",
+	redGlobal: {
+		fullDescription: "Platform built for an advertising company that consolidates catalogs from five providers through APIs. It allows users to explore products, generate quotes, and manage the website from an admin panel (banners, categories, catalogs, and collections). Includes Cloudinary uploads, EmailJS notifications, and XLSX exports.",
+		shortDescription: "B2B marketplace for promotional products with five provider APIs, quotation module, and full admin panel.",
+		title: "Red Global Promocional",
+		highlights: {
+			highlight1: "Integration of 5 providers via API with data normalization",
+			highlight2: "Search, filters, and views by category/catalog",
+			highlight3: "Quotation module with XLSX export",
+			highlight4: "Admin panel: images, categories, catalogs, and content management",
+			highlight5: "Media CDN with Cloudinary and forms powered by EmailJS"
+		}
+	},
+	finControl: {
+		fullDescription: "FinControl is a modern and minimalist tool to manage your personal finances, designed to help you control income, expenses, debts, and accounts all in one place. It includes transfers, savings goals, recurring payments, budgeting, and advanced settings for currency, language, themes, and security with screen-lock token.",
+		shortDescription: "Modern and minimalist application for managing personal finances.",
+		title: "FinControl",
+		highlights: {
+			highlight1: "Intuitive dashboard and dark theme",
+			highlight2: "Management of accounts, transfers, and debts",
+			highlight3: "Savings goals and monthly budgeting",
+			highlight4: "Recurring payments and currency configuration",
+			highlight5: "Screen lock token and multilingual support (EN/ES)"
+		}
+	},
+	mega: {
+		fullDescription: "Megapromocionales is a modern platform for selling promotional products, developed for a corporate client. It integrates three APIs from different providers to centralize catalogs and availability, featuring a quotation system, product management, and content customization. Includes support for dynamic images, Firebase authentication, and components from the TodoVue library.",
+		shortDescription: "B2B platform for promotional products with multiple API integrations and a complete management panel.",
+		title: "Megapromocionales LTDA",
+		highlights: {
+			highlight1: "Integration of 3 provider APIs with data normalization",
+			highlight2: "Dynamic catalog with advanced search and filters",
+			highlight3: "Product management system",
+			highlight4: "Modern interface using PrimeVue and Tailwind CSS",
+			highlight5: "Content management and customizable images for clients"
+		}
+	},
+	todoVue: {
+		fullDescription: "TodoVue is a (WIP) project that combines a technical blog about Vue.js with a library of custom components. Its goal is to offer articles, demos, and reusable components with a unique style and architecture based on Atomic Design. Includes components like TvButton, TvLabel, and TvDemo, all built from scratch with Nuxt and Vite, using Markdown and integrated code highlighting.",
+		shortDescription: "Technical blog and Vue component library with a custom style and Atomic Design approach.",
+		title: "TODOvue",
+		highlights: {
+			highlight1: "Custom library with reusable components (TvButton, TvLabel, TvDemo)",
+			highlight2: "Technical blog integrated with Markdown and code highlighting",
+			highlight3: "Unique design based on Atomic Design and modular CSS",
+			highlight4: "Built with Nuxt and Vite for SSR and optimal performance",
+			highlight5: "Progressive publishing on npm under the todovue namespace"
+		}
+	},
+	portfolio: {
+		fullDescription: "Personal portfolio designed to showcase my experience as a frontend developer. Built with Vue, Nuxt, and Tailwind, it includes sections for featured projects, work experience, technical skills, and a functional contact form. Its architecture follows Atomic Design principles, prioritizing performance, accessibility, and a clean modern interface.",
+		shortDescription: "Professional website built with Vue, Nuxt, and Tailwind to showcase projects, experience, and skills.",
+		title: "Personal Portfolio - CrisDev",
+		highlights: {
+			highlight1: "Minimalist and fully responsive design",
+			highlight2: "Sections for projects, experience, contact, and skills",
+			highlight3: "Performance and accessibility optimization",
+			highlight4: "Developed with Vue, Nuxt, and Tailwind CSS"
+		}
+	}
+};
+var experience = {
+	title: "Work Experience",
+	description: "My professional journey in frontend development",
+	present: "Present",
+	year: "year",
+	years: "years",
+	month: "month",
+	months: "months",
+	company1: {
+		name: "Neoris / Epam",
+		position: "Experience Developer",
+		description: "Development of reusable components for financial web platforms based on Web Components (LitElement). Implementation of accessibility standards, performance best practices, and participation in Cells (Polymer – LitElement) training for banking projects such as Transfiya, QR Payments, and Loan Payments."
+	},
+	company2: {
+		name: "Global66",
+		position: "Front End Developer",
+		description: "Implementation of responsive interfaces for fintech applications. Development of mobile components using NativeScript and TypeScript. Optimization of payment flows, reducing loading times and improving user experience."
+	},
+	company3: {
+		name: "Newshore",
+		position: "Software Engineer (Frontend)",
+		description: "Integration of scalable micro frontends in international projects. Implementation of unit testing with Vue Test Utils, increasing code coverage and ensuring deployment quality."
+	},
+	company4: {
+		name: "Megapromocionales LTDA",
+		position: "Web Developer",
+		description: "Development of an inventory management system and e-commerce modules using Firebase, shopping cart, and payment gateway integration. Automated reporting improved operational efficiency by 30%."
+	}
+};
+var skills = {
+	title: "Technical Skills",
+	description: "Technologies and tools I master to create exceptional web experiences",
+	technologies: "technologies",
+	categories: {
+		frontend: "Frontend Frameworks",
+		styling: "Styling & Design",
+		tools: "Tools",
+		mobile: "Mobile & PWA",
+		practices: "Best Practices"
+	}
+};
+const en = {
+	menu: menu,
+	hero: hero,
+	social: social,
+	global: global,
+	settings: settings,
+	contact: contact,
+	projects: projects,
+	experience: experience,
+	skills: skills
+};
+
+export { contact, en as default, experience, global, hero, menu, projects, settings, skills, social };
+//# sourceMappingURL=en.mjs.map
