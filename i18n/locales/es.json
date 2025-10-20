@@ -169,5 +169,20 @@
       "mobile": "Mobile & PWA",
       "practices": "Buenas Prácticas"
     }
+  },
+  "errors": {
+    "404": {
+      "title": "404 - Página no encontrada",
+      "heading": "Ups... Página no encontrada",
+      "description": "Lo sentimos, la página que estás buscando no existe o ha sido movida.",
+      "button": "Volver al inicio"
+    },
+    "500": {
+      "title": "500 - Error del servidor",
+      "heading": "Algo salió mal",
+      "description": "Lo sentimos, estamos teniendo problemas técnicos. Por favor, intenta de nuevo más tarde.",
+      "button": "Volver al inicio"
+    },
+    "technicalDetails": "Detalles técnicos"
   }
 }

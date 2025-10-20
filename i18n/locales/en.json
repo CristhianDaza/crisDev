@@ -169,5 +169,20 @@
       "mobile": "Mobile & PWA",
       "practices": "Best Practices"
     }
+  },
+  "errors": {
+    "404": {
+      "title": "404 - Page not found",
+      "heading": "Oops... Page not found",
+      "description": "Sorry, the page you are looking for does not exist or has been moved.",
+      "button": "Go back home"
+    },
+    "500": {
+      "title": "500 - Server error",
+      "heading": "Something went wrong",
+      "description": "Sorry, we are experiencing technical difficulties. Please try again later.",
+      "button": "Go back home"
+    },
+    "technicalDetails": "Technical details"
   }
 }
