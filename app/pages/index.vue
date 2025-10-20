@@ -56,7 +56,7 @@ onMounted(() => {
       <div class="bg-grid-pattern" />
     </div>
 
-    <main id="home">
+    <main>
       <CdHeader :menus="mainMenu"/>
     </main>
 
@@ -84,4 +84,3 @@ onMounted(() => {
     <CdScrollToTop />
   </div>
 </template>
-

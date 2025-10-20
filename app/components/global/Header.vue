@@ -63,15 +63,7 @@ const detectCurrentSection = () => {
   if (isMenuOpen.value) return
 
   const scrollY = window.scrollY
-
-  if (scrollY < 200) {
-    if (!route.hash || route.hash === '' || route.hash === '#home') {
-      if (route.hash !== '#home') {
-        router.replace({ hash: '#home' })
-      }
-    }
-    return
-  }
+  const windowHeight = window.innerHeight
 
   const menuIds = props.menus.map(item => {
     const id = item.id || ''
@@ -80,7 +72,12 @@ const detectCurrentSection = () => {
 
   if (menuIds.length === 0) return
 
-  const windowHeight = window.innerHeight
+  if (scrollY < 100) {
+    if (route.hash !== '#home') {
+      router.replace({ hash: '#home' })
+    }
+    return
+  }
 
   let currentSection = null
   let maxVisibility = 0
@@ -93,18 +90,22 @@ const detectCurrentSection = () => {
 
     try {
       const rect = section.getBoundingClientRect()
-      const sectionTop = rect.top + scrollY
-      const sectionBottom = sectionTop + rect.height
+      const sectionTop = rect.top
+      const sectionBottom = rect.bottom
 
-      const viewportTop = scrollY
-      const viewportBottom = scrollY + windowHeight
-
-      const visibleTop = Math.max(sectionTop, viewportTop)
-      const visibleBottom = Math.min(sectionBottom, viewportBottom)
+      const visibleTop = Math.max(sectionTop, 0)
+      const visibleBottom = Math.min(sectionBottom, windowHeight)
       const visibleHeight = Math.max(0, visibleBottom - visibleTop)
 
-      if (visibleHeight > maxVisibility && visibleHeight > 100) {
-        maxVisibility = visibleHeight
+      const isNearTop = sectionTop >= -50 && sectionTop <= 150
+
+      let score = visibleHeight
+      if (isNearTop) {
+        score += 200
+      }
+
+      if (score > maxVisibility && visibleHeight > 100) {
+        maxVisibility = score
         currentSection = sectionId
       }
     } catch {
