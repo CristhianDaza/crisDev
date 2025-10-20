@@ -1,4 +1,5 @@
 <script setup>
+const router = useRouter()
 const isVisible = ref(false)
 const scrollProgress = ref(0)
 
@@ -10,10 +11,18 @@ const handleScroll = () => {
 }
 
 const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  })
+  if (!import.meta.client) return
+  router.replace({ hash: '#home' })
+
+  const homeElement = document.getElementById('home')
+  if (homeElement) {
+    homeElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  } else {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
 }
 
 onMounted(() => {

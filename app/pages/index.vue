@@ -1,6 +1,7 @@
 <script setup>
 const { setSectionSeo, resetSeo } = useSeo()
 const { locale } = useI18n()
+const route = useRoute()
 
 useHead({
   htmlAttrs: {
@@ -16,34 +17,21 @@ watch(locale, (newLocale) => {
   })
 })
 
+watch(() => route.hash, (newHash) => {
+  if (!newHash || newHash === '#home') {
+    resetSeo()
+  } else {
+    const sectionId = newHash.replace('#', '')
+    if (sectionId && sectionId !== 'home') {
+      setSectionSeo(sectionId)
+    }
+  }
+}, { immediate: true })
+
 onMounted(() => {
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.5
+  if (!route.hash || route.hash === '#home') {
+    resetSeo()
   }
-
-  const observerCallback = (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const sectionId = entry.target.id
-        if (sectionId && sectionId !== 'home') {
-          setSectionSeo(sectionId)
-        } else if (sectionId === 'home') {
-          resetSeo()
-        }
-      }
-    })
-  }
-
-  const observer = new IntersectionObserver(observerCallback, observerOptions)
-
-  const sections = document.querySelectorAll('section[id]')
-  sections.forEach(section => observer.observe(section))
-
-  onUnmounted(() => {
-    observer.disconnect()
-  })
 })
 </script>
 

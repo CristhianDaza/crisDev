@@ -13,6 +13,9 @@ const router = useRouter()
 const hydrated = ref(false)
 const isMenuOpen = ref(false)
 const isScrolled = ref(false)
+const isManualNavigation = ref(false)
+let manualNavigationTimeout = null
+let scrollDetectionTimeout = null
 
 const ensureHash = (href) => {
   if (!href) return ''
@@ -53,14 +56,20 @@ const toggleMenu = () => {
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 50
-  if (!isMenuOpen.value && hydrated.value) {
-    detectCurrentSection()
+  if (scrollDetectionTimeout) {
+    clearTimeout(scrollDetectionTimeout)
   }
+
+  scrollDetectionTimeout = setTimeout(() => {
+    if (!isMenuOpen.value && hydrated.value && !isManualNavigation.value) {
+      detectCurrentSection()
+    }
+  }, 150)
 }
 
 const detectCurrentSection = () => {
   if (typeof document === 'undefined' || !props.menus) return
-  if (isMenuOpen.value) return
+  if (isMenuOpen.value || isManualNavigation.value) return
 
   const scrollY = window.scrollY
   const windowHeight = window.innerHeight
@@ -120,18 +129,31 @@ const detectCurrentSection = () => {
 
 const scrollToSection = (href) => {
   if (!import.meta.client) return
+
+  isManualNavigation.value = true
+
+  if (manualNavigationTimeout) {
+    clearTimeout(manualNavigationTimeout)
+  }
+
   const hash = href.startsWith('#') ? href : `#${href}`
   const id = hash.slice(1)
+
+  router.replace({ hash })
+
   const el = document.getElementById(id)
   if (el) {
     el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    history.replaceState(null, '', hash)
   }
+
+  manualNavigationTimeout = setTimeout(() => {
+    isManualNavigation.value = false
+  }, 1000)
 }
 
 onMounted(() => {
   hydrated.value = true
-  window.addEventListener('scroll', handleScroll)
+  window.addEventListener('scroll', handleScroll, { passive: true })
 
   const onKeydown = (e) => {
     if (e.key === 'Escape') closeMenu()
@@ -145,6 +167,12 @@ onMounted(() => {
   onBeforeUnmount(() => {
     window.removeEventListener('scroll', handleScroll)
     window.removeEventListener('keydown', onKeydown)
+    if (manualNavigationTimeout) {
+      clearTimeout(manualNavigationTimeout)
+    }
+    if (scrollDetectionTimeout) {
+      clearTimeout(scrollDetectionTimeout)
+    }
     if (typeof document !== 'undefined') {
       document.body.style.overflow = ''
     }
@@ -247,7 +275,7 @@ onMounted(() => {
                 class="text-2xl uppercase font-extrabold tracking-wide text-white hover:text-primary transition-all duration-300 cursor-pointer block py-3 hover:scale-110 transform w-full"
                 :class="[ hydrated && isActive(id) ? 'text-primary scale-110' : '' ]"
                 :aria-current="hydrated && isActive(id) ? 'page' : undefined"
-                @click="closeMenu"
+                @click.prevent="scrollToSection(id); closeMenu()"
               >
                 <span class="text-primary font-bold">&lt;</span> {{ $t(name) }} <span class="text-primary font-bold">/&gt;</span>
               </a>
