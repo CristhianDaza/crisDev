@@ -50,7 +50,7 @@ const handleThemeChange = (newTheme) => {
               : 'text-gray-400 group-hover:text-gray-300'
           ]"
         >
-          {{ $t(`settings.theme.${themeOption.value}`) }}
+          {{ themeOption.label }}
         </span>
 
         <div
