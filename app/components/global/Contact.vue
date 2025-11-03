@@ -1,4 +1,6 @@
 <script setup>
+const { sendEmail } = useEmailJS()
+
 const formData = reactive({
   name: '',
   email: '',
@@ -38,17 +40,26 @@ const handleSubmit = async () => {
   showError.value = false
 
   try {
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    console.log('Formulario enviado:', formData)
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message
+    }
 
-    showSuccess.value = true
-    formData.name = ''
-    formData.email = ''
-    formData.message = ''
+    const result = await sendEmail(templateParams)
 
-    setTimeout(() => {
-      showSuccess.value = false
-    }, 5000)
+    if (result.success) {
+      showSuccess.value = true
+      formData.name = ''
+      formData.email = ''
+      formData.message = ''
+
+      setTimeout(() => {
+        showSuccess.value = false
+      }, 5000)
+    } else {
+      throw new Error('Failed to send email')
+    }
   } catch (error) {
     showError.value = true
     setTimeout(() => {

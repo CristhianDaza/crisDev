@@ -152,5 +152,16 @@ export default defineNuxtConfig({
   ],
   nitro: {
     preset: 'netlify'
+  },
+  runtimeConfig: {
+    public: {
+      emailjs: {
+        serviceId: '',
+        templateId: '',
+        publicKey: '',
+        toEmail: '',
+        templateQuoteId: ''
+      }
+    }
   }
 })

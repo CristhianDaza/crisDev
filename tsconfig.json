@@ -2,7 +2,8 @@
   // https://nuxt.com/docs/guide/concepts/typescript
   "compilerOptions": {
     "moduleResolution": "Bundler",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["node"]
   },
   "files": [],
   "references": [
