@@ -34,7 +34,7 @@ export const socialMediaLinks = [
   },
   {
     name: 'social.resume',
-    url: 'https://drive.google.com/file/d/1ygUfd7dZINlcOrJOQF96nH7qIx0PlZK7/view',
+    url: 'https://drive.google.com/file/d/1vKYbOVo51-pgX0JnarCKLEi1nahgBTiz/view?usp=sharing',
     icon: 'mdi:file-account',
     order: 3,
   },

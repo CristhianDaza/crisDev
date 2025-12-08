@@ -237,7 +237,7 @@ onMounted(() => {
               :aria-current="hydrated && isActive(id) ? 'page' : undefined"
               @click.prevent="scrollToSection(id)"
             >
-              <span class="text-primary font-bold">&lt;</span> {{ $t(name) }} <span class="text-primary font-bold" />/&gt;
+              <span class="text-primary font-bold">&lt;</span> {{ $t(name) }} <span class="text-primary font-bold"> /&gt; </span>
             </NuxtLink>
           </li>
         </ul>
