@@ -117,6 +117,18 @@
         "highlight5": "Progressive publishing on npm under the todovue namespace"
       }
     },
+    "publistandPados": {
+      "fullDescription": "Publistandados is a web platform for managing and selling promotional items, designed to optimize the user experience and simplify product administration. Developed with Vue.js and Tailwind CSS, the application offers a dynamic catalog, a quotation system, an admin panel, and advanced features such as image uploads with Cloudinary and notifications via EmailJS.",
+      "shortDescription": "Web platform for managing and selling promotional items with a dynamic catalog and admin panel",
+      "title": "Publistandados",
+      "highlights": {
+        "highlight1": "Dynamic catalog with filters and advanced search",
+        "highlight2": "Quotation system with XLSX export",
+        "highlight3": "Admin panel for product and content management",
+        "highlight4": "Optimized image uploads with Cloudinary",
+        "highlight5": "Email notifications via EmailJS"
+      }
+    },
     "portfolio": {
       "fullDescription": "Personal portfolio designed to showcase my experience as a frontend developer. Built with Vue, Nuxt, and Tailwind, it includes sections for featured projects, work experience, technical skills, and a functional contact form. Its architecture follows Atomic Design principles, prioritizing performance, accessibility, and a clean modern interface.",
       "shortDescription": "Professional website built with Vue, Nuxt, and Tailwind to showcase projects, experience, and skills.",

@@ -108,13 +108,25 @@
     "todoVue": {
       "fullDescription": "TodoVue es un proyecto (WIP) que combina un blog técnico sobre Vue.js con una librería de componentes personalizados. Su objetivo es ofrecer artículos, demos y componentes reutilizables con estilos propios y arquitectura basada en Atomic Design. Incluye componentes como TvButton, TvLabel, TvDemo y otros, desarrollados desde cero con Nuxt y Vite, usando Markdown y resaltado de código integrado.",
       "shortDescription": "Blog técnico y librería de componentes Vue con estilo propio y enfoque en Atomic Design",
-      "title": "TODOVue",
+      "title": "TODOvue",
       "highlights": {
         "highlight1": "Librería propia con componentes reutilizables (TvButton, TvLabel, TvDemo)",
         "highlight2": "Blog técnico integrado con soporte Markdown y resaltado de código",
         "highlight3": "Diseño propio basado en Atomic Design y CSS modular",
         "highlight4": "Desarrollado con Nuxt y Vite para SSR y rendimiento óptimo",
         "highlight5": "Publicación progresiva en npm bajo el namespace todovue"
+      }
+    },
+    "publistandPados": {
+      "fullDescription": "Publistandados es una plataforma web para la gestión y venta de artículos publicitarios, diseñada para optimizar la experiencia del usuario y facilitar la administración de productos. Desarrollada con Vue.js y Tailwind CSS, la aplicación ofrece un catálogo dinámico, sistema de cotizaciones, panel administrativo y funcionalidades avanzadas como carga de imágenes con Cloudinary y notificaciones por EmailJS.",
+      "shortDescription": "Plataforma web para la gestión y venta de artículos publicitarios con catálogo dinámico y panel administrativo",
+      "title": "Publistandados",
+      "highlights": {
+        "highlight1": "Catálogo dinámico con filtros y buscador avanzado",
+        "highlight2": "Sistema de cotizaciones con exportación XLSX",
+        "highlight3": "Panel administrativo para gestión de productos y contenido",
+        "highlight4": "Carga de imágenes optimizada con Cloudinary",
+        "highlight5": "Notificaciones por correo electrónico con EmailJS"
       }
     },
     "portfolio": {
