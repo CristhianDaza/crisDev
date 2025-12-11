@@ -1,5 +1,5 @@
 {
-  "menu":{
+  "menu": {
     "contact": "Contact",
     "experience": "Experience",
     "home": "Home",
@@ -29,13 +29,16 @@
     "close": "Close",
     "upToTop": "Back to top"
   },
+  "footer": {
+    "allRightsReserved": "All rights reserved."
+  },
   "settings": {
     "footer": "Changes are saved automatically",
     "openSettings": "Open settings",
     "title": "Settings",
     "language": {
       "language": "Language",
-      "languageDescription":  "Select your preferred language. It will be saved automatically."
+      "languageDescription": "Select your preferred language. It will be saved automatically."
     },
     "theme": {
       "theme": "Theme",

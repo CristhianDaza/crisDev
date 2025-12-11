@@ -86,10 +86,11 @@ onUnmounted(() => {
       <CdSkills />
     </section>
 
-    <section id="contact" class="mx-auto max-w-7xl px-6 pb-16 my-20 min-h-screen">
+    <section id="contact" class="mx-auto max-w-7xl px-6 mt-20 min-h-screen">
       <CdContact />
     </section>
 
+    <CdFooter />
     <CdSettings />
     <CdScrollToTop />
   </div>

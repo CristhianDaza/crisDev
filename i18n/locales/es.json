@@ -1,5 +1,5 @@
 {
-  "menu":{
+  "menu": {
     "contact": "Contacto",
     "experience": "Experiencia",
     "home": "Inicio",
@@ -28,6 +28,9 @@
     "altLogo": "Logo de CrisDev",
     "close": "Cerrar",
     "upToTop": "Volver arriba"
+  },
+  "footer": {
+    "allRightsReserved": "Todos los derechos reservados."
   },
   "settings": {
     "footer": "Los cambios se guardan automáticamente",
