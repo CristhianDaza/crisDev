@@ -29,11 +29,12 @@ const sortedSocialMedia = computed(() =>
         </a>
       </div>
 
-      <div class="text-xs text-muted flex items-center gap-1">
-        <span>Built with</span>
-        <Icon name="logos:nuxt-icon" class="w-4 h-4" />
-        <span>&</span>
-        <Icon name="logos:tailwindcss-icon" class="w-4 h-4" />
+      <div class="text-sm text-muted flex items-center gap-1">
+        <span>Designed & Developed by</span>
+        <a href="https://cris-dev.com" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-primary/80 transition-colors font-medium">
+          cris-dev.com
+        </a>
+        <span>| Made with 💙</span>
       </div>
     </div>
   </footer>
