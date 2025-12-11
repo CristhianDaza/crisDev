@@ -259,6 +259,37 @@ p, span, div, li, td, th, label, input, textarea, select {
   }
 }
 
+@keyframes move-blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -50px) scale(1.1); }
+  50% { transform: translate(-20px, 20px) scale(0.9); }
+  75% { transform: translate(-40px, -20px) scale(1.05); }
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blob {
+  animation: move-blob 20s infinite alternate;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+.typewriter-cursor::after {
+  content: '|';
+  animation: cursor-blink 1s step-end infinite;
+  margin-left: 2px;
+  color: var(--primary);
+}
+
 .animate-fade-in {
   animation: fade-in 0.6s ease-out;
 }

@@ -4,6 +4,41 @@ import { socialMediaLinks } from '~/data/constants'
 
 const router = useRouter()
 
+const roles = ['Frontend Developer', 'Vue.js Enthusiast', 'Open Source Contributor']
+const displayText = ref('')
+const currentRoleIndex = ref(0)
+const isDeleting = ref(false)
+const typingSpeed = ref(100)
+
+const type = () => {
+  if (typeof window === 'undefined') return
+
+  const currentRole = roles[currentRoleIndex.value]
+
+  if (isDeleting.value) {
+    displayText.value = currentRole.substring(0, displayText.value.length - 1)
+    typingSpeed.value = 50
+  } else {
+    displayText.value = currentRole.substring(0, displayText.value.length + 1)
+    typingSpeed.value = 150
+  }
+
+  if (!isDeleting.value && displayText.value === currentRole) {
+    isDeleting.value = true
+    typingSpeed.value = 2000
+  } else if (isDeleting.value && displayText.value === '') {
+    isDeleting.value = false
+    currentRoleIndex.value = (currentRoleIndex.value + 1) % roles.length
+    typingSpeed.value = 500
+  }
+
+  setTimeout(type, typingSpeed.value)
+}
+
+onMounted(() => {
+  type()
+})
+
 function scrollToId(id) {
   if (import.meta.client) {
     const el = document.getElementById(id)
@@ -59,7 +94,7 @@ const sortedSocialMedia = computed(() =>
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-accent"/>
               <span class="relative inline-flex rounded-full h-2.5 w-2.5  bg-accent" />
             </span>
-            {{ $t('hero.role') }}
+            <span class="typewriter-cursor min-w-[10px]">{{ displayText || '&nbsp;' }}</span>
           </div>
 
           <div class="space-y-3">

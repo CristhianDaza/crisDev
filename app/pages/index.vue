@@ -4,6 +4,14 @@ import { mainMenu } from '~/data/constants'
 const { setSectionSeo, resetSeo } = useSeo()
 const { locale } = useI18n()
 const route = useRoute()
+const scrollProgress = ref(0)
+
+const updateScrollProgress = () => {
+  if (typeof window === 'undefined') return
+  const scrollTop = window.scrollY
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight
+  scrollProgress.value = (scrollTop / docHeight) * 100
+}
 
 useHead({
   htmlAttrs: {
@@ -31,18 +39,30 @@ watch(() => route.hash, (newHash) => {
 }, { immediate: true })
 
 onMounted(() => {
+  window.addEventListener('scroll', updateScrollProgress, { passive: true })
   if (!route.hash || route.hash === '#home') {
     resetSeo()
   }
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', updateScrollProgress)
 })
 </script>
 
 <template>
   <div class="overflow-x-hidden w-full">
+    <div class="fixed top-0 left-0 w-full h-1 z-[60] pointer-events-none">
+      <div
+        class="h-full bg-gradient-to-r from-primary to-accent transition-all duration-100 ease-out"
+        :style="{ width: `${scrollProgress}%` }"
+      />
+    </div>
+
     <div class="bg-decorative-effects">
-      <div class="bg-blob-primary" />
-      <div class="bg-blob-accent" />
-      <div class="bg-blob-primary-center" />
+      <div class="bg-blob-primary animate-blob" />
+      <div class="bg-blob-accent animate-blob animation-delay-2000" />
+      <div class="bg-blob-primary-center animate-blob animation-delay-4000" />
       <div class="bg-grid-pattern" />
     </div>
 
