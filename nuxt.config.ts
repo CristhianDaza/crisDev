@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { calculateYearsOfExperience, siteUrl } from './app/utils/helpers'
+import { siteUrl } from './app/data/constants'
+import { calculateYearsOfExperience } from './app/utils/helpers'
 const years = calculateYearsOfExperience()
 
 export default defineNuxtConfig({
@@ -39,9 +40,9 @@ export default defineNuxtConfig({
         { name: 'keywords', content: 'frontend developer, vue.js, nuxt, javascript, typescript, tailwind css, web development, desarrollador frontend, cristhian daza' },
         { name: 'author', content: 'Cristhian Daza' },
         { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
-
         { name: 'format-detection', content: 'telephone=no' },
 
+        { name: 'mobile-web-app-capable', content: 'yes' },
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
         { name: 'apple-mobile-web-app-title', content: 'CrisDev' },

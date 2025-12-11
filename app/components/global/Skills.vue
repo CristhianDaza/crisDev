@@ -1,4 +1,5 @@
 <script setup>
+import { skillCategories } from '~/data/constants'
 </script>
 
 <template>

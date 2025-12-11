@@ -1,4 +1,6 @@
 <script setup>
+import { mainMenu } from '~/data/constants'
+
 const { setSectionSeo, resetSeo } = useSeo()
 const { locale } = useI18n()
 const route = useRoute()

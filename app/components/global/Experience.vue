@@ -1,4 +1,5 @@
 <script setup>
+import { experiences } from '~/data/constants'
 const { t } = useI18n()
 
 const sortedExperiences = computed(() =>

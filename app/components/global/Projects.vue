@@ -1,4 +1,6 @@
 <script setup>
+import { projects } from '~/data/constants'
+
 const selectedProject = ref(null)
 const isProjectDetailOpen = ref(false)
 const { setProjectSeo, resetSeo } = useSeo()

@@ -1,4 +1,5 @@
-import { calculateYearsOfExperience, siteUrl } from '@/utils/helpers'
+import { calculateYearsOfExperience } from '@/utils/helpers'
+import { siteUrl } from '@/data/constants'
 
 export const useSeo = () => {
   const { t, locale } = useI18n()
@@ -19,7 +20,7 @@ export const useSeo = () => {
       meta: [
         { name: 'description', content: projectDescription },
         { name: 'keywords', content: `${project.technologies.join(', ')}, frontend developer, cristhian daza, portfolio` },
-        
+
         { property: 'og:title', content: `${projectTitle} | Cristhian Daza` },
         { property: 'og:description', content: projectDescription },
         { property: 'og:url', content: projectUrl },
@@ -28,7 +29,7 @@ export const useSeo = () => {
         { property: 'og:image:alt', content: projectTitle },
         { property: 'og:type', content: 'website' },
         { property: 'og:locale', content: locale.value === 'es' ? 'es_ES' : 'en_US' },
-        
+
         { name: 'twitter:title', content: `${projectTitle} | Cristhian Daza` },
         { name: 'twitter:description', content: projectDescription },
         { name: 'twitter:image', content: imageUrl },
@@ -78,7 +79,7 @@ export const useSeo = () => {
       meta: [
         { name: 'description', content: defaultDescription },
         { name: 'keywords', content: 'frontend developer, vue.js, nuxt, javascript, typescript, tailwind css, web development, cristhian daza' },
-        
+
         { property: 'og:title', content: defaultTitle },
         { property: 'og:description', content: defaultDescription },
         { property: 'og:url', content: siteUrl },
@@ -86,7 +87,7 @@ export const useSeo = () => {
         { property: 'og:image:secure_url', content: `${siteUrl}/og-image.jpg` },
         { property: 'og:image:alt', content: 'Cristhian Daza - Frontend Developer Portfolio' },
         { property: 'og:locale', content: locale.value === 'es' ? 'es_ES' : 'en_US' },
-        
+
         { name: 'twitter:title', content: defaultTitle },
         { name: 'twitter:description', content: defaultDescription },
         { name: 'twitter:image', content: `${siteUrl}/og-image.jpg` },

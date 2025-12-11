@@ -1,4 +1,4 @@
-import { siteUrl } from '@/utils/helpers'
+import { siteUrl } from '@/data/constants'
 
 export const useStructuredData = () => {
   const generateWebsiteSchema = () => {

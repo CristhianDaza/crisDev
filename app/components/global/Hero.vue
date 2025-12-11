@@ -1,5 +1,6 @@
 <script setup>
 import photoUrl from '../../assets/images/image-cris.png'
+import { socialMediaLinks } from '~/data/constants'
 
 const router = useRouter()
 
@@ -96,6 +97,7 @@ const sortedSocialMedia = computed(() =>
                 :href="social.url || '#'"
                 target="_blank"
                 rel="noopener noreferrer"
+                :aria-label="$t(social.name)"
                 class="group relative w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 hover:scale-110 cursor-pointer animate-slide-up-delay bg-surface/50 dark:bg-chip text-text/90 hover:text-text border border-border/30"
               >
                 <Icon
