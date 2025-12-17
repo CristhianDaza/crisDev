@@ -29,17 +29,24 @@ onMounted(() => {
   })
 })
 
-watch(() => props.isOpen, (isOpen) => {
+watch(() => props.isOpen, async (isOpen) => {
+  await nextTick()
   if (isOpen) {
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+    document.documentElement.style.overflow = 'hidden'
     document.body.style.overflow = 'hidden'
-    document.body.style.paddingRight = `${window.innerWidth - document.documentElement.clientWidth}px`
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`
+    }
   } else {
+    document.documentElement.style.overflow = ''
     document.body.style.overflow = ''
     document.body.style.paddingRight = ''
   }
 }, { immediate: true })
 
 onUnmounted(() => {
+  document.documentElement.style.overflow = ''
   document.body.style.overflow = ''
   document.body.style.paddingRight = ''
 })
@@ -54,42 +61,42 @@ onUnmounted(() => {
         @click.self="closeModal"
       >
         <div
-          class="project-detail relative w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-radius bg-surface shadow-2xl"
+          class="project-detail relative w-full max-w-6xl max-h-[90vh] overflow-hidden rounded-radius bg-surface shadow-2xl flex flex-col md:flex-row"
           @click.stop
         >
-          <CdTooltip :content="$t('global.close')" position="left" variant="primary">
+          <CdTooltip :content="$t('global.close')" position="top" variant="primary">
             <button
-              class="absolute top-4 right-4 z-20 p-2 w-10 h-10 flex items-center justify-center rounded-full bg-chip text-text hover:bg-primary hover:text-text transition-colors shadow-lg"
+              class="absolute top-2 right-2 md:top-4 md:right-4 z-20 p-2 w-10 h-10 flex items-center justify-center rounded-full bg-chip text-text hover:bg-primary hover:text-text transition-colors shadow-lg"
               @click="closeModal"
             >
               <Icon name="mdi:close" />
             </button>
           </CdTooltip>
-          <div class="overflow-y-auto max-h-[90vh] project-detail-scroll">
-            <div class="relative h-64 overflow-hidden">
-              <img
-                v-if="project.image"
-                :src="project.image"
-                :alt="project.title"
-                class="w-full h-full object-cover"
-              >
-              <div
-                v-else
-                class="w-full h-full bg-gradient-to-br from-primary to-accent"
-              >
-                <div class="absolute inset-0 flex items-center justify-center text-9xl text-text/20 font-bold">
-                  {{ project.title.charAt(0) }}
-                </div>
-              </div>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"/>
-              <div v-if="project.featured" class="absolute top-6 left-6 px-4 py-2 bg-accent text-text text-sm font-semibold rounded-full shadow-lg">
-                ⭐ {{ $t('projects.featuredProject') }}
+          <div class="relative w-full md:w-2/5 h-64 md:h-auto overflow-hidden flex-shrink-0">
+            <img
+              v-if="project.imageDetail || project.image_mobile || project.image"
+              :src="project.imageDetail || project.image_mobile || project.image"
+              :alt="project.title"
+              class="w-full h-full object-cover"
+            >
+            <div
+              v-else
+              class="w-full h-full bg-gradient-to-br from-primary to-accent"
+            >
+              <div class="absolute inset-0 flex items-center justify-center text-9xl text-text/20 font-bold">
+                {{ project.title.charAt(0) }}
               </div>
             </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"/>
+            <div v-if="project.featured" class="absolute top-6 left-6 px-4 py-2 bg-accent text-text text-sm font-semibold rounded-full shadow-lg">
+              ⭐ {{ $t('projects.featuredProject') }}
+            </div>
+          </div>
 
-            <div class="p-8">
-              <div class="flex items-start justify-between gap-4 mb-4">
-                <h2 class="text-3xl md:text-4xl font-bold text-text">
+          <div class="flex-1 overflow-y-auto project-detail-scroll">
+            <div class="p-6 md:p-8 pt-12 md:pt-8">
+              <div class="flex items-start justify-between gap-4 mb-4 pr-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-text">
                   {{ $t(project.title) }}
                 </h2>
                 <span class="px-3 py-1 bg-chip text-primary text-sm font-semibold rounded-lg whitespace-nowrap">
@@ -97,34 +104,34 @@ onUnmounted(() => {
                 </span>
               </div>
 
-              <p class="text-muted text-lg leading-relaxed mb-8">
+              <p class="text-muted text-base leading-relaxed mb-6">
                 {{ $t(project.fullDescription) }}
               </p>
 
-              <div v-if="project.highlights && project.highlights.length" class="mb-8">
-                <h3 class="text-xl font-semibold text-text mb-4 flex items-center gap-2">
+              <div v-if="project.highlights && project.highlights.length" class="mb-6">
+                <h3 class="text-lg font-semibold text-text mb-3 flex items-center gap-2">
                   <Icon name="mdi:lightbulb" class="text-accent" />
                   {{ $t('projects.highlights') }}
                 </h3>
-                <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <ul class="grid grid-cols-1 gap-2">
                   <li
                     v-for="(highlight, index) in project.highlights"
                     :key="index"
-                    class="flex items-center gap-2 text-muted bg-surface/50 border border-border p-3 rounded-lg hover:bg-surface transition-colors"
+                    class="flex items-center gap-2 text-muted bg-surface/50 border border-border p-2.5 rounded-lg hover:bg-surface transition-colors text-sm"
                     :style="{ animationDelay: `${index * 0.1}s` }"
                   >
-                    <Icon name="mdi:star" class="flex-shrink-0 w-5 h-5 text-warning" />
+                    <Icon name="mdi:star" class="flex-shrink-0 w-4 h-4 text-warning" />
                     <span class="flex-1">{{ $t(highlight) }}</span>
                   </li>
                 </ul>
               </div>
 
-              <div class="mb-8">
-                <h3 class="text-xl font-semibold text-text mb-4 flex items-center gap-2">
+              <div class="mb-6">
+                <h3 class="text-lg font-semibold text-text mb-3 flex items-center gap-2">
                   <Icon name="mdi:code-tags" class="text-primary" />
                   {{ $t('projects.technologiesUsed') }}
                 </h3>
-                <div class="flex flex-wrap gap-3">
+                <div class="flex flex-wrap gap-2">
                   <UIChip
                     v-for="(tech, index) in project.technologies"
                     :key="index"
@@ -169,31 +176,6 @@ onUnmounted(() => {
   animation: slide-up 0.3s ease-out;
 }
 
-.tech-badge {
-  animation: fade-in 0.5s ease-out backwards;
-}
-
-.modal-enter-active,
-.modal-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.modal-enter-active .project-detail,
-.modal-leave-active .project-detail {
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.modal-enter-from,
-.modal-leave-to {
-  opacity: 0;
-}
-
-.modal-enter-from .project-detail,
-.modal-leave-to .project-detail {
-  transform: scale(0.9);
-  opacity: 0;
-}
-
 .project-detail-scroll::-webkit-scrollbar {
   width: 8px;
 }
@@ -212,14 +194,20 @@ onUnmounted(() => {
   background: var(--accent);
 }
 
-@keyframes fade-in {
+@keyframes slide-up {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.fixed.inset-0 {
+  position: fixed;
+  touch-action: none;
+  overscroll-behavior: none;
 }
 </style>
