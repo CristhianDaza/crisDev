@@ -83,7 +83,6 @@ export const projects = [
     image: '/images/projects/publistandPados.png',
     projectUrl: 'https://publistandpados.com',
     githubUrl: 'https://github.com/CristhianDaza/publistandPados',
-    featured: true,
     date: '2025',
     highlights: [
       'projects.publistandPados.highlights.highlight1',
@@ -120,7 +119,6 @@ export const projects = [
     image: '/images/projects/megapromocionales.png',
     projectUrl: 'https://megapromocionales.com.co/',
     githubUrl: 'https://github.com/CristhianDaza/megaprom',
-    featured: false,
     date: '2024',
     highlights: [
       'projects.mega.highlights.highlight1',
@@ -138,7 +136,6 @@ export const projects = [
     technologies: ['Vue.js', 'Nuxt', 'Tailwind CSS'],
     image: '/images/projects/crisDev.png',
     githubUrl: 'https://github.com/CristhianDaza/crisDev',
-    featured: false,
     date: '2025',
     highlights: [
       'projects.portfolio.highlights.highlight1',
