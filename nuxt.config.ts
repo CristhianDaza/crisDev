@@ -151,9 +151,6 @@ export default defineNuxtConfig({
       prefix: 'UI'
     }
   ],
-  nitro: {
-    preset: 'netlify'
-  },
   runtimeConfig: {
     public: {
       emailjs: {
