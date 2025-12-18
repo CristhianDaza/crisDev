@@ -6,7 +6,7 @@ RewriteRule ^ https://cris-dev.com%{REQUEST_URI} [L,R=301]
 
 # Block directory browsing of Nuxt internals but allow hashed assets
 RewriteRule ^_nuxt/?$ - [F,L]
-RewriteRule ^_i18n(?:/.*)?$ - [F,L]
+RewriteRule ^_i18n/?$ - [F,L]
 
 # Serve existing files and directories normally
 RewriteCond %{REQUEST_FILENAME} -f [OR]
