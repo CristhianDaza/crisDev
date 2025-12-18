@@ -4,8 +4,9 @@ RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} !^cris-dev\.com$ [NC]
 RewriteRule ^ https://cris-dev.com%{REQUEST_URI} [L,R=301]
 
-# Block direct access to Nuxt build internals
-RewriteRule ^_(nuxt|i18n)/ - [F,L]
+# Block directory browsing of Nuxt internals but allow hashed assets
+RewriteRule ^_nuxt/?$ - [F,L]
+RewriteRule ^_i18n(?:/.*)?$ - [F,L]
 
 # Serve existing files and directories normally
 RewriteCond %{REQUEST_FILENAME} -f [OR]
@@ -15,4 +16,3 @@ RewriteRule ^ - [L]
 # Custom 404 page for unknown routes
 ErrorDocument 404 /404.html
 RewriteRule ^.*$ /404.html [L,R=404]
-
