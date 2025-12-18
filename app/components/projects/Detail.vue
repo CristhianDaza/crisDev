@@ -76,7 +76,7 @@ onUnmounted(() => {
             <img
               v-if="project.imageDetail || project.image_mobile || project.image"
               :src="project.imageDetail || project.image_mobile || project.image"
-              :alt="project.title"
+              :alt="$t(project.title)"
               class="w-full h-full object-cover"
             >
             <div
