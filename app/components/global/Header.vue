@@ -14,8 +14,10 @@ const hydrated = ref(false)
 const isMenuOpen = ref(false)
 const isScrolled = ref(false)
 const isManualNavigation = ref(false)
+const skipHomeDetection = ref(false)
 let manualNavigationTimeout = null
 let scrollDetectionTimeout = null
+let skipHomeDetectionTimeout = null
 
 const ensureHash = (href) => {
   if (!href) return ''
@@ -82,6 +84,7 @@ const detectCurrentSection = () => {
   if (menuIds.length === 0) return
 
   if (scrollY < 100) {
+    if (skipHomeDetection.value) return
     if (route.hash !== '#home') {
       router.replace({ hash: '#home' })
     }
@@ -127,28 +130,58 @@ const detectCurrentSection = () => {
   }
 }
 
-const scrollToSection = (href) => {
-  if (!import.meta.client) return
-
+const scheduleManualNavigationReset = (duration = 1000) => {
   isManualNavigation.value = true
-
   if (manualNavigationTimeout) {
     clearTimeout(manualNavigationTimeout)
   }
+  manualNavigationTimeout = setTimeout(() => {
+    isManualNavigation.value = false
+    detectCurrentSection()
+  }, duration)
+}
+
+const scrollIntoViewById = (id, behavior = 'smooth') => {
+  if (!id || typeof document === 'undefined') return false
+  const el = document.getElementById(id)
+  if (!el) return false
+  el.scrollIntoView({ behavior, block: 'start' })
+  return true
+}
+
+const handleInitialHashNavigation = () => {
+  if (!import.meta.client) return
+  const hash = route.hash
+  if (!hash || hash === '#home') return
+
+  if (skipHomeDetectionTimeout) {
+    clearTimeout(skipHomeDetectionTimeout)
+  }
+  skipHomeDetection.value = true
+  skipHomeDetectionTimeout = setTimeout(() => {
+    skipHomeDetection.value = false
+  }, 2000)
+
+  scheduleManualNavigationReset(1200)
+  nextTick(() => {
+    requestAnimationFrame(() => {
+      scrollIntoViewById(hash.slice(1), 'auto')
+    })
+  })
+}
+
+const scrollToSection = (href) => {
+  if (!import.meta.client || !href) return
 
   const hash = href.startsWith('#') ? href : `#${href}`
   const id = hash.slice(1)
 
-  router.replace({ hash })
-
-  const el = document.getElementById(id)
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  if (route.hash !== hash) {
+    router.replace({ hash })
   }
 
-  manualNavigationTimeout = setTimeout(() => {
-    isManualNavigation.value = false
-  }, 1000)
+  scheduleManualNavigationReset()
+  scrollIntoViewById(id)
 }
 
 onMounted(() => {
@@ -160,6 +193,7 @@ onMounted(() => {
   }
   window.addEventListener('keydown', onKeydown)
 
+  handleInitialHashNavigation()
   setTimeout(() => {
     detectCurrentSection()
   }, 100)
@@ -172,6 +206,9 @@ onMounted(() => {
     }
     if (scrollDetectionTimeout) {
       clearTimeout(scrollDetectionTimeout)
+    }
+    if (skipHomeDetectionTimeout) {
+      clearTimeout(skipHomeDetectionTimeout)
     }
     if (typeof document !== 'undefined') {
       document.body.style.overflow = ''
