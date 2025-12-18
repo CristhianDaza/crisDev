@@ -120,10 +120,10 @@
         "highlight5": "Progressive publishing on npm under the todovue namespace"
       }
     },
-    "publistandPados": {
-      "fullDescription": "Publistandados is a web platform for managing and selling promotional items, designed to optimize the user experience and simplify product administration. Developed with Vue.js and Tailwind CSS, the application offers a dynamic catalog, a quotation system, an admin panel, and advanced features such as image uploads with Cloudinary and notifications via EmailJS.",
+    "publistandpados": {
+      "fullDescription": "Publistandpados is a web platform for managing and selling promotional items, designed to optimize the user experience and simplify product administration. Developed with Vue.js and Tailwind CSS, the application offers a dynamic catalog, a quotation system, an admin panel, and advanced features such as image uploads with Cloudinary and notifications via EmailJS.",
       "shortDescription": "Web platform for managing and selling promotional items with a dynamic catalog and admin panel",
-      "title": "Publistandados",
+      "title": "Publistandpados",
       "highlights": {
         "highlight1": "Dynamic catalog with filters and advanced search",
         "highlight2": "Quotation system with XLSX export",

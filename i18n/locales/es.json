@@ -120,10 +120,10 @@
         "highlight5": "Publicación progresiva en npm bajo el namespace todovue"
       }
     },
-    "publistandPados": {
-      "fullDescription": "Publistandados es una plataforma web para la gestión y venta de artículos publicitarios, diseñada para optimizar la experiencia del usuario y facilitar la administración de productos. Desarrollada con Vue.js y Tailwind CSS, la aplicación ofrece un catálogo dinámico, sistema de cotizaciones, panel administrativo y funcionalidades avanzadas como carga de imágenes con Cloudinary y notificaciones por EmailJS.",
+    "publistandpados": {
+      "fullDescription": "Publistandpados es una plataforma web para la gestión y venta de artículos publicitarios, diseñada para optimizar la experiencia del usuario y facilitar la administración de productos. Desarrollada con Vue.js y Tailwind CSS, la aplicación ofrece un catálogo dinámico, sistema de cotizaciones, panel administrativo y funcionalidades avanzadas como carga de imágenes con Cloudinary y notificaciones por EmailJS.",
       "shortDescription": "Plataforma web para la gestión y venta de artículos publicitarios con catálogo dinámico y panel administrativo",
-      "title": "Publistandados",
+      "title": "Publistandpados",
       "highlights": {
         "highlight1": "Catálogo dinámico con filtros y buscador avanzado",
         "highlight2": "Sistema de cotizaciones con exportación XLSX",
