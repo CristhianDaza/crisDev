@@ -11,16 +11,16 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
-    "nuxt": "^4.2.2"
+    "nuxt": "^4.4.2"
   },
   "devDependencies": {
-    "@nuxt/eslint": "^1.12.1",
-    "@nuxt/icon": "^2.1.1",
-    "@nuxtjs/i18n": "^10.2.1",
+    "@nuxt/eslint": "^1.15.2",
+    "@nuxt/icon": "^2.2.1",
+    "@nuxtjs/i18n": "^10.2.4",
     "@nuxtjs/tailwindcss": "^6.14.0",
-    "@types/node": "^25.0.3",
-    "autoprefixer": "^10.4.23",
-    "eslint": "^9.39.2"
+    "@types/node": "^25.6.0",
+    "autoprefixer": "^10.5.0",
+    "eslint": "^10.2.1"
   },
   "packageManager": "pnpm@10.26.0"
 }
