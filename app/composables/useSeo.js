@@ -9,7 +9,7 @@ export const useSeo = () => {
 
     const projectTitle = t(project.title)
     const projectDescription = t(project.shortDescription)
-    const projectUrl = `${siteUrl}/blog/${project.id}`
+    const projectUrl = `${siteUrl}/#project-${project.id}`
     const imageUrl = project.image || `${siteUrl}/og-image.jpg`
 
     useHead({
