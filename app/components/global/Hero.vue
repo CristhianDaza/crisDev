@@ -146,16 +146,16 @@ const normalizeIconName = icon => {
               </div>
             </div>
 
-            <div class="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-3 lg:absolute lg:-bottom-6 lg:left-1/2 lg:mt-0 lg:w-[112%] lg:-translate-x-1/2">
+            <div class="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-3 lg:absolute lg:-bottom-6 lg:left-1/2 lg:mt-0 lg:w-[128%] lg:-translate-x-1/2 xl:w-[120%]">
               <div
                 v-for="pill in heroPills"
                 :key="pill.key"
-                class="flex items-center gap-2 rounded-full border border-card bg-card px-3 py-2.5 text-xs font-semibold text-text shadow-card backdrop-blur"
+                class="flex items-center justify-center gap-2 rounded-full border border-card bg-card px-2.5 py-2.5 text-xs font-semibold text-text shadow-card backdrop-blur"
               >
                 <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-primary/20 bg-primary/10 text-primary">
                   <Icon :name="pill.icon" class="h-4 w-4" />
                 </span>
-                <span class="min-w-0 truncate">{{ $t(pill.key) }}</span>
+                <span class="whitespace-nowrap">{{ $t(pill.key) }}</span>
               </div>
             </div>
           </div>
