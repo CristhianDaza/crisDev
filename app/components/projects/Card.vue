@@ -15,7 +15,7 @@ const openProject = (project) => {
 
 <template>
   <article
-    class="project-card group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-[var(--radius)] border border-border bg-surface/90 shadow-sm outline-none backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary/70 hover:shadow-shadow focus-visible:-translate-y-1 focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/40"
+    class="project-card group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-[var(--radius)] border border-card bg-card shadow-card outline-none backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary/80 focus-visible:-translate-y-1 focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/40"
     role="button"
     tabindex="0"
     @click="openProject(project)"

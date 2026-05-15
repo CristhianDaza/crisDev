@@ -13,6 +13,9 @@
   --border: #E5E7EB;
   --chip: #083D56;
   --shadow: 0 8px 24px rgba(0,0,0,.18);
+  --card-surface: #FFFFFF;
+  --card-border: #D1D5DB;
+  --card-shadow: 0 14px 35px rgba(17, 24, 39, 0.12);
   --radius: 16px;
   --font-headings: 'Poppins', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -41,6 +44,9 @@ html.light { color-scheme: light; }
   --border: #0F3C50;
   --chip: #0B3550;
   --shadow: 0 8px 24px rgba(0,0,0,.18);
+  --card-surface: #0D4961;
+  --card-border: #2A6D85;
+  --card-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
 }
 
 .dark {
@@ -54,6 +60,9 @@ html.light { color-scheme: light; }
   --border: #1E293B;
   --chip: #1E293B;
   --shadow: 0 10px 30px rgba(0,0,0,.4);
+  --card-surface: #111C31;
+  --card-border: #27364D;
+  --card-shadow: 0 14px 38px rgba(0, 0, 0, 0.36);
 }
 
 .light {
@@ -67,6 +76,9 @@ html.light { color-scheme: light; }
   --border: #E5E7EB;
   --chip: #083D56;
   --shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  --card-surface: #FFFFFF;
+  --card-border: #D1D5DB;
+  --card-shadow: 0 14px 35px rgba(17, 24, 39, 0.12);
   --radius: 16px;
 }
 

@@ -112,7 +112,7 @@ onMounted(() => {
           :style="`transition-delay: ${index * 120}ms`"
         >
           <div
-            class="group rounded-[var(--radius)] border border-border bg-surface/90 p-5 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary/70 hover:shadow-shadow md:p-6"
+            class="group rounded-[var(--radius)] border border-card bg-card p-5 shadow-card backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary/80 md:p-6"
           >
             <div class="mb-5 flex flex-wrap gap-2">
               <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
