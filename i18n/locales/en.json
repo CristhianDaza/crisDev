@@ -72,6 +72,30 @@
     "viewCodeInGitHub": "View Code in GitHub",
     "viewProject": "View Project",
     "viewProjectLive": "View Project Live",
+    "bookMemory": {
+      "title": "BookMemory",
+      "shortDescription": "Web application to manage your personal library, log reading sessions, and track your daily progress.",
+      "fullDescription": "BookMemory is a Vue 3 SPA designed to organize a personal library and turn reading into a measurable process. It lets users search and save books, log timed sessions, calculate pages read and remaining, maintain daily streaks, and review reading metrics. It also includes Firebase authentication, cloud sync, offline support, conflict resolution, a mobile-first interface, and internationalization in Spanish and English.",
+      "highlights": {
+        "highlight1": "Firebase authentication and route guards to protect user-specific private sections.",
+        "highlight2": "Personal library with book search, manual entries, favorites, and detailed progress view.",
+        "highlight3": "Reading timer to log sessions, pages read, and completion of each book.",
+        "highlight4": "Dashboard with statistics, streaks, goals, daily activity, and CSV export.",
+        "highlight5": "Offline mode with sync queue, conflict center, and PWA support."
+      }
+    },
+    "streakCalendar": {
+      "title": "Streak Calendar",
+      "shortDescription": "PWA to track daily habits, maintain streaks, and visualize progress with a monthly calendar.",
+      "fullDescription": "Streak Calendar is a progressive web app to track daily habits, create multiple streaks, and stay consistent with a clear monthly view. It allows users to mark and unmark days, edit past records with notes, recover missed days, check current streak and best streak stats, and unlock achievements at progress milestones. It also includes JSON backup export/import, selectable visual themes, and offline functionality through a service worker.",
+      "highlights": {
+        "highlight1": "Daily habit tracking with quick marking for the current day.",
+        "highlight2": "Support for multiple streaks with switching between active streaks.",
+        "highlight3": "Monthly calendar to edit past days and add notes.",
+        "highlight4": "Achievement system, accumulated progress, and missed-day recovery.",
+        "highlight5": "JSON backup export/import and offline PWA operation."
+      }
+    },
     "redGlobal": {
       "fullDescription": "Platform built for an advertising company that consolidates catalogs from five providers through APIs. It allows users to explore products, generate quotes, and manage the website from an admin panel (banners, categories, catalogs, and collections). Includes Cloudinary uploads, EmailJS notifications, and XLSX exports.",
       "shortDescription": "B2B marketplace for promotional products with five provider APIs, quotation module, and full admin panel.",

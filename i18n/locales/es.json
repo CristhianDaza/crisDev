@@ -72,6 +72,30 @@
     "viewCodeInGitHub": "Ver Código en GitHub",
     "viewProject": "Ver Proyecto",
     "viewProjectLive": "Ver Proyecto en Vivo",
+    "bookMemory": {
+      "title": "BookMemory",
+      "shortDescription": "Aplicación web para gestionar tu biblioteca personal, registrar sesiones de lectura y seguir tu progreso diario.",
+      "fullDescription": "BookMemory es una SPA en Vue 3 pensada para organizar una biblioteca personal y convertir la lectura en un proceso medible. Permite buscar y guardar libros, registrar sesiones con temporizador, calcular páginas leídas y restantes, seguir rachas diarias y revisar métricas de lectura. Además, incluye autenticación con Firebase, sincronización en la nube, soporte offline, resolución de conflictos, interfaz mobile-first e internacionalización en español e inglés.",
+      "highlights": {
+        "highlight1": "Autenticación con Firebase y guards de ruta para proteger las secciones privadas por usuario.",
+        "highlight2": "Biblioteca personal con búsqueda de libros, alta manual, favoritos y vista de detalle de progreso.",
+        "highlight3": "Temporizador de lectura para registrar sesiones, páginas leídas y cierre de cada lectura.",
+        "highlight4": "Dashboard con estadísticas, rachas, objetivos, actividad diaria y exportación CSV.",
+        "highlight5": "Modo offline con cola de sincronización, centro de conflictos y soporte PWA."
+      }
+    },
+    "streakCalendar": {
+      "title": "Calendario de Rachas",
+      "shortDescription": "PWA para registrar hábitos diarios, sostener rachas y visualizar tu progreso con un calendario mensual.",
+      "fullDescription": "Calendario de Rachas es una aplicación web progresiva para dar seguimiento a hábitos diarios, crear varias rachas y mantener tu constancia con una vista mensual clara. Permite marcar y desmarcar días, editar registros pasados con notas, recuperar días omitidos, consultar estadísticas de racha actual y mejor marca, y desbloquear logros por hitos de progreso. Además, incluye exportación e importación de respaldos JSON, temas visuales seleccionables y funcionamiento offline mediante service worker.",
+      "highlights": {
+        "highlight1": "Registro diario de hábitos con marcación rápida del día actual.",
+        "highlight2": "Soporte para múltiples rachas con cambio entre rachas activas.",
+        "highlight3": "Calendario mensual para editar días pasados y añadir notas.",
+        "highlight4": "Sistema de logros, progreso acumulado y recuperación de días omitidos.",
+        "highlight5": "Exportación e importación de respaldos JSON y funcionamiento offline como PWA."
+      }
+    },
     "redGlobal": {
       "fullDescription": "Plataforma para empresa de publicidad que consolida catálogos de 5 proveedores vía APIs. Permite explorar productos, generar cotizaciones, y gestionar el sitio desde admin (banners, categorías, catálogos, colecciones). Incluye carga en Cloudinary, notificaciones por EmailJS y exportes XLSX.",
       "shortDescription": "Marketplace B2B de productos publicitarios con 5 APIs de proveedores, cotizaciones y panel de administración.",
