@@ -64,64 +64,50 @@ const experience = computed(() => {
 const sortedSocialMedia = computed(() =>
   socialMediaLinks.slice().sort((a, b) => a.order - b.order)
 )
+
+const heroPills = [
+  { key: 'hero.UI', icon: 'mdi:palette-outline' },
+  { key: 'hero.performance', icon: 'mdi:speedometer' },
+  { key: 'hero.codeQuality', icon: 'mdi:shield-check' },
+]
+
+const normalizeIconName = icon => {
+  if (!icon) return ''
+  return icon.includes(':') ? icon : icon.replace(/^mdi-/, 'mdi:')
+}
 </script>
 
 <template>
-  <div
-    class="relative overflow-hidden min-h-screen flex items-center"
-    style="background: radial-gradient(ellipse 1400px 800px at 60% 20%, color-mix(in srgb, var(--primary) 15%, transparent), transparent);"
-  >
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div
-        class="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-20 blur-3xl"
-        style="background: radial-gradient(circle, var(--accent), transparent 70%);"
-      />
-      <div
-        class="absolute top-1/2 -left-32 w-80 h-80 rounded-full opacity-10 blur-3xl"
-        style="background: radial-gradient(circle, var(--primary), transparent 70%);"
-      />
-    </div>
-
-    <div class="relative mx-auto max-w-7xl px-6 py-16 w-full mt-12">
-      <div
-        class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16"
-      >
-        <div class="space-y-6 lg:space-y-8">
-          <div
-            class="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium backdrop-blur-sm animate-fade-in border-border bg-[color-mix(in_srgb,_var(--surface),_transparent_40%)] text-text"
-          >
-            <span class="relative flex h-2.5 w-2.5">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-accent"/>
-              <span class="relative inline-flex rounded-full h-2.5 w-2.5  bg-accent" />
-            </span>
-            <span class="typewriter-cursor min-w-[10px]">{{ displayText || '&nbsp;' }}</span>
+  <div class="relative flex min-h-screen items-center overflow-hidden">
+    <div class="relative mx-auto mt-12 w-full max-w-7xl px-6 py-20 md:py-24">
+      <div class="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+        <div class="max-w-3xl space-y-7">
+          <div class="inline-flex max-w-full items-center gap-2 rounded-full border border-card bg-card px-4 py-2 text-sm font-semibold text-muted shadow-card backdrop-blur">
+            <span class="h-2 w-2 shrink-0 rounded-full bg-accent" />
+            <span class="typewriter-cursor min-w-0 truncate">{{ displayText || '&nbsp;' }}</span>
           </div>
 
-          <div class="space-y-3">
-            <h1 class="text-5xl font-bold leading-tight tracking-tight sm:text-6xl lg:text-7xl">
-              <span class="block text-text animate-slide-up">{{ $t('hero.greeting') }}</span>
-              <span
-                class="block bg-clip-text text-transparent animate-slide-up-delay"
-                style="background-image: linear-gradient(120deg, var(--primary), var(--accent));"
-              >
-                {{ $t('hero.name') }}.
-              </span>
+          <div class="space-y-5">
+            <h1 class="text-5xl font-bold leading-tight tracking-tight text-text sm:text-6xl lg:text-7xl">
+              <span class="block text-muted">{{ $t('hero.greeting') }}</span>
+              <span class="block text-text">{{ $t('hero.name') }}.</span>
             </h1>
-            <p class="text-lg sm:text-xl lg:text-2xl text-muted max-w-xl leading-relaxed animate-fade-in-delay">
+            <div class="h-1.5 w-24 rounded-full bg-gradient-to-r from-primary to-accent" />
+            <p class="max-w-2xl text-lg leading-8 text-muted sm:text-xl">
               {{ $t('hero.description', { years: experience }) }}
             </p>
           </div>
 
-          <div class="flex flex-wrap items-center gap-4 pt-2">
+          <div class="flex flex-wrap items-center gap-3 pt-1">
             <UIButton variant="primary" @click="scrollToId('contact')">
               {{ $t('hero.contactButton') }}
             </UIButton>
-            <UIButton variant="secondary" icon="mdi-arrow-right-bold" @click="scrollToId('projects')">
+            <UIButton variant="secondary" icon="mdi:arrow-right-bold" @click="scrollToId('projects')">
               {{ $t('hero.projectsButton') }}
             </UIButton>
           </div>
 
-          <div class="flex flex-wrap gap-2.5 pt-4">
+          <div class="flex flex-wrap items-center gap-2.5 pt-2">
             <CdTooltip
               v-for="social in sortedSocialMedia"
               :key="social.name"
@@ -133,63 +119,44 @@ const sortedSocialMedia = computed(() =>
                 target="_blank"
                 rel="noopener noreferrer"
                 :aria-label="$t(social.name)"
-                class="group relative w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 hover:scale-110 cursor-pointer animate-slide-up-delay bg-surface/50 dark:bg-chip text-text/90 hover:text-text border border-border/30"
+                class="group relative flex h-10 w-10 items-center justify-center rounded-full border border-card bg-card text-text/85 shadow-sm transition-colors duration-300 hover:border-primary/70 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
               >
                 <Icon
                   v-if="social.icon"
-                  :name="social.icon"
-                  class="w-5 h-5"
-                />
-                <span
-                  class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-20 transition-opacity"
-                  style="background: linear-gradient(135deg, var(--primary), var(--accent));"
+                  :name="normalizeIconName(social.icon)"
+                  class="h-5 w-5 text-primary transition-colors duration-300 group-hover:text-accent"
                 />
               </a>
             </CdTooltip>
           </div>
         </div>
 
-        <div class="relative lg:pl-8">
-          <div class="relative group">
-            <div
-              class="absolute inset-0 rounded-3xl opacity-30 blur-2xl transition-opacity duration-500 group-hover:opacity-50"
-              style="background: linear-gradient(135deg, var(--primary), var(--accent));"
-            />
-            <div
-              class="relative mx-auto w-full max-w-lg overflow-hidden rounded-3xl border-4 shadow-2xl transition-all duration-500 group-hover:scale-[1.02] border-border bg-gradient-to-br from-surface to-transparent"
-            >
-              <img
-                :src="photoUrl"
-                :alt="$t('global.altImagePerfil')"
-                class="h-full w-full object-cover"
-              >
-              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: linear-gradient(180deg, transparent 60%, color-mix(in srgb, var(--primary) 20%, transparent));" />
-            </div>
-
-            <div class="pointer-events-none absolute -left-6 -top-6 hidden select-none lg:block animate-float">
-              <div
-                class="rounded-2xl border-2 px-4 py-2.5 text-sm font-semibold backdrop-blur-md shadow-xl border-border text-text"
-                style="background: color-mix(in srgb, var(--surface) 80%, transparent);"
-              >
-                ✨ {{ $t('hero.UI') }}
+        <div class="relative">
+          <div class="relative mx-auto max-w-sm lg:max-w-md">
+            <div class="overflow-hidden rounded-[calc(var(--radius)+10px)] border border-card bg-card p-2 shadow-card">
+              <div class="relative overflow-hidden rounded-[calc(var(--radius)+2px)]">
+                <img
+                  :src="photoUrl"
+                  :alt="$t('global.altImagePerfil')"
+                  class="aspect-[4/5] h-full w-full object-cover"
+                >
+                <div
+                  class="absolute inset-x-0 bottom-0 h-1/3"
+                  style="background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--bg) 50%, transparent));"
+                />
               </div>
             </div>
 
-            <div class="pointer-events-none absolute -right-6 top-1/3 hidden select-none lg:block animate-float-delay">
+            <div class="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-3 lg:absolute lg:-bottom-6 lg:left-1/2 lg:mt-0 lg:w-[112%] lg:-translate-x-1/2">
               <div
-                class="rounded-2xl border-2 px-4 py-2.5 text-sm font-semibold backdrop-blur-md shadow-xl border-border text-text"
-                style="background: color-mix(in srgb, var(--surface) 80%, transparent);"
+                v-for="pill in heroPills"
+                :key="pill.key"
+                class="flex items-center gap-2 rounded-full border border-card bg-card px-3 py-2.5 text-xs font-semibold text-text shadow-card backdrop-blur"
               >
-                🚀 {{ $t('hero.performance') }}
-              </div>
-            </div>
-
-            <div class="pointer-events-none absolute -left-8 bottom-12 hidden select-none lg:block animate-float">
-              <div
-                class="rounded-2xl border-2 px-4 py-2.5 text-sm font-semibold backdrop-blur-md shadow-xl border-border text-text"
-                style="background: color-mix(in srgb, var(--surface) 80%, transparent);"
-              >
-                💎 {{ $t('hero.codeQuality') }}
+                <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-primary/20 bg-primary/10 text-primary">
+                  <Icon :name="pill.icon" class="h-4 w-4" />
+                </span>
+                <span class="min-w-0 truncate">{{ $t(pill.key) }}</span>
               </div>
             </div>
           </div>
@@ -200,21 +167,15 @@ const sortedSocialMedia = computed(() =>
     <button
       type="button"
       aria-label="Scroll down"
-      class="absolute bottom-4 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 text-muted hover:text-primary transition-colors duration-300 cursor-pointer group animate-fade-in-delay-long z-10"
+      class="absolute bottom-4 left-1/2 z-10 hidden -translate-x-1/2 cursor-pointer flex-col items-center gap-2 text-muted transition-colors duration-300 hover:text-primary sm:flex"
       @click="scrollToNextSection"
     >
       <span class="text-xs sm:text-sm font-medium">{{ $t('hero.scrollDown') }}</span>
       <div class="relative">
         <Icon
           name="mdi:chevron-down"
-          class="w-6 h-6 sm:w-8 sm:h-8 animate-bounce"
+          class="h-6 w-6 sm:h-8 sm:w-8"
         />
-        <div class="absolute inset-0 blur-md opacity-0 group-hover:opacity-50 transition-opacity">
-          <Icon
-            name="mdi:chevron-down"
-            class="w-6 h-6 sm:w-8 sm:h-8 text-primary"
-          />
-        </div>
       </div>
     </button>
   </div>

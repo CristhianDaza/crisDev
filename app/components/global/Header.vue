@@ -220,30 +220,37 @@ onMounted(() => {
 <template>
   <div
     :class="[
-      'fixed top-0 left-0 right-0 z-50 m-auto text-text px-4 sm:px-6 md:px-8 lg:px-16 transition-all duration-500 ease-in-out',
+      'fixed left-0 right-0 top-0 z-50 m-auto px-4 text-text transition-all duration-300 ease-in-out sm:px-6 md:px-8 lg:px-16',
       isScrolled
-        ? 'py-2 bg-border/90 backdrop-blur-md shadow-2xl'
-        : 'py-4 bg-border shadow-lg'
+        ? 'py-2'
+        : 'py-3'
     ]"
   >
-    <header class="flex items-center justify-between max-w-screen-xl m-auto w-full">
+    <header
+      :class="[
+        'm-auto flex w-full max-w-screen-xl items-center justify-between rounded-full border px-4 backdrop-blur-xl transition-all duration-300',
+        isScrolled
+          ? 'border-card bg-card py-2 shadow-card'
+          : 'border-card bg-card py-2.5 shadow-sm'
+      ]"
+    >
       <div
         :class="[
-          'flex items-center gap-3 transition-all duration-500',
-          isScrolled ? 'scale-90' : 'scale-100'
+          'flex min-w-0 items-center gap-3 transition-all duration-300',
+          isScrolled ? 'scale-[0.96]' : 'scale-100'
         ]"
       >
         <img
           :src="logoUrl"
           :alt="$t('global.altLogo')"
           :class="[
-            'drop-shadow-sm transition-all duration-500',
+            'drop-shadow-sm transition-all duration-300',
             isScrolled ? 'h-6 w-8' : 'h-7 w-9'
           ]"
         >
         <h2
           :class="[
-            'tracking-wider text-text flex items-center font-bold transition-all duration-500',
+            'flex items-center truncate tracking-wider text-text font-bold transition-all duration-300',
             isScrolled ? 'text-lg md:text-xl' : 'text-xl md:text-2xl'
           ]"
         >
@@ -253,7 +260,7 @@ onMounted(() => {
 
       <button
         type="button"
-        class="md:hidden inline-flex items-center justify-center rounded-md p-2 text-text hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+        class="inline-flex items-center justify-center rounded-full border border-transparent p-2 text-primary transition-colors hover:border-primary/40 hover:text-accent focus:outline-none focus:ring-2 focus:ring-primary md:hidden"
         :aria-expanded="isMenuOpen ? 'true' : 'false'"
         aria-label="Abrir menú"
         @click="toggleMenu"
@@ -263,12 +270,12 @@ onMounted(() => {
       </button>
 
       <nav class="hidden md:flex flex-1 justify-end">
-        <ul class="flex flex-wrap gap-5">
+        <ul class="flex flex-wrap gap-2">
           <li v-for="{ name, id  } in menus" :key="id">
             <NuxtLink
               :to="ensureHash(id)"
               :class="[
-                'relative inline-block text-text transition-colors duration-300 after:content-[\'\'] after:absolute after:left-0 after:-bottom-1.5 after:w-full after:h-0.5 after:bg-primary after:origin-right after:scale-x-0 hover:after:origin-left hover:after:scale-x-100 font-bold after:transition-transform after:duration-500 after:ease-in-out uppercase cursor-pointer',
+                'relative inline-flex rounded-full px-3 py-2 text-xs font-bold uppercase text-text transition-colors duration-300 after:absolute after:bottom-1.5 after:left-3 after:h-0.5 after:w-[calc(100%-1.5rem)] after:origin-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-in-out after:content-[\'\'] hover:bg-primary/10 hover:text-primary hover:after:origin-left hover:after:scale-x-100',
                 activeClassFor(id)
               ]"
               :aria-current="hydrated && isActive(id) ? 'page' : undefined"
@@ -284,19 +291,19 @@ onMounted(() => {
     <Transition name="menu-fade">
       <div
         v-if="isMenuOpen"
-        class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-xl flex flex-col w-screen h-screen"
+        class="fixed inset-0 z-[100] flex h-screen w-screen flex-col bg-black/90 backdrop-blur-xl"
         role="dialog"
         aria-modal="true"
         @click.self="closeMenu"
       >
-        <div class="flex items-center justify-between p-4 bg-black/70 backdrop-blur-sm shadow-lg flex-shrink-0">
+        <div class="flex flex-shrink-0 items-center justify-between border-b border-white/10 bg-black/70 p-4 shadow-lg backdrop-blur-sm">
           <div class="flex items-center gap-2">
             <img :src="logoUrl" :alt="$t('global.altLogo')" class="h-7 w-9 drop-shadow-sm">
-            <span class="font-bold text-lg">&lt;<span class="text-text">Cris</span><span class="text-primary">Dev</span> /&gt;</span>
+            <span class="font-bold text-lg">&lt;<span class="text-white">Cris</span><span class="text-primary">Dev</span> /&gt;</span>
           </div>
           <button
             type="button"
-            class="inline-flex items-center justify-center rounded-md p-2 text-white hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary transition-colors duration-200"
+            class="inline-flex items-center justify-center rounded-md p-2 text-primary transition-colors duration-200 hover:text-accent focus:outline-none focus:ring-2 focus:ring-primary"
             aria-label="Cerrar menú"
             @click="closeMenu"
           >
@@ -309,8 +316,8 @@ onMounted(() => {
             <li v-for="{ name, id } in menus" :key="id" class="w-full text-center">
               <a
                 :href="ensureHash(id)"
-                class="text-2xl uppercase font-extrabold tracking-wide text-white hover:text-primary transition-all duration-300 cursor-pointer block py-3 hover:scale-110 transform w-full"
-                :class="[ hydrated && isActive(id) ? 'text-primary scale-110' : '' ]"
+                class="block w-full rounded-full py-3 text-2xl font-extrabold uppercase tracking-wide text-white transition-colors duration-300 hover:bg-white/5 hover:text-primary"
+                :class="[ hydrated && isActive(id) ? 'text-primary' : '' ]"
                 :aria-current="hydrated && isActive(id) ? 'page' : undefined"
                 @click.prevent="scrollToSection(id); closeMenu()"
               >

@@ -12,7 +12,7 @@ const closeSettings = () => {
 
 <template>
   <div>
-    <div class="fixed bottom-4 left-4 z-40 sm:bottom-6 sm:left-6 md:left-8">
+    <div class="fixed bottom-4 left-4 z-[60] sm:bottom-6 sm:left-6 md:left-8">
       <CdTooltip
         position="right"
         variant="code"
@@ -29,21 +29,20 @@ const closeSettings = () => {
           <div class="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16">
             <div
               :class="[
-                'absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 backdrop-blur-md',
-                'border border-primary/30 shadow-lg',
+                'absolute inset-0 rounded-full bg-card backdrop-blur-md',
+                'border border-card shadow-card',
                 'flex items-center justify-center',
                 'transition-all duration-300 ease-out',
-                'group-hover:scale-110 group-hover:from-primary/30 group-hover:to-accent/30',
-                'group-hover:border-primary/50 group-hover:shadow-2xl group-hover:shadow-primary/20',
+                'group-hover:border-primary/60 group-hover:shadow-card',
                 'group-active:scale-95',
-                isSettingsOpen && 'scale-110 from-primary/30 to-accent/30 border-primary/50'
+                isSettingsOpen && 'border-primary/60'
               ]"
             >
               <Icon
                 name="mdi:cog"
                 :class="[
                   'w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 transition-all duration-300',
-                  'text-primary drop-shadow-[0_0_8px_rgba(var(--primary-rgb),0.5)]',
+                  'text-primary drop-shadow-sm',
                   'group-hover:rotate-90',
                   isSettingsOpen ? 'rotate-90' : ''
                 ]"
