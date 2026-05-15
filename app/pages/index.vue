@@ -86,9 +86,11 @@ onUnmounted(() => {
       <CdSkills />
     </section>
 
+    <!-- Contact temporarily disabled while EmailJS issues are being handled.
     <section id="contact" class="mx-auto max-w-7xl px-6 mt-20 min-h-screen">
       <CdContact />
     </section>
+    -->
 
     <CdFooter />
     <CdSettings />

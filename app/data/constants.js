@@ -12,7 +12,7 @@ export const mainMenu = [
   { name: 'menu.projects', id: '#projects', order: 2 },
   { name: 'menu.experience', id: '#experience', order: 3 },
   { name: 'menu.skills', id: '#skills', order: 4 },
-  { name: 'menu.contact', id: '#contact', order: 5 },
+  // { name: 'menu.contact', id: '#contact', order: 5 }, // Temporarily disabled
 ];
 
 export const socialMediaLinks = [
