@@ -66,120 +66,84 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="experience-section" class="w-full">
-    <div class="text-center mb-16">
+  <div id="experience-section" class="relative w-full">
+    <div class="mb-12 max-w-3xl">
+      <div
+        class="mb-4 h-1.5 w-20 rounded-full bg-gradient-to-r from-primary to-accent transition-all duration-500"
+        :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+      />
       <h2
-        class="mb-4 text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent transition-all duration-700"
-        :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+        class="text-4xl font-bold tracking-normal text-text transition-all duration-500 md:text-5xl"
+        :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
       >
         {{ t('experience.title') }}
       </h2>
       <p
-        class="text-muted text-lg max-w-2xl mx-auto transition-all duration-700 delay-100"
-        :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+        class="mt-4 max-w-2xl text-base leading-8 text-muted transition-all delay-100 duration-500 md:text-lg"
+        :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
       >
         {{ t('experience.description') }}
       </p>
     </div>
-    <div class="relative max-w-5xl mx-auto">
+
+    <div class="relative mx-auto max-w-5xl">
       <div
-        class="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full transition-all duration-1000 bg-gradient-to-b from-primary to-accent origin-top"
+        class="absolute bottom-0 left-4 top-0 w-px origin-top bg-gradient-to-b from-primary/70 via-border to-accent/70 transition-all duration-700 md:left-1/2 md:-translate-x-1/2"
         :class="isVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'"
       />
+
       <div
         v-for="(exp, index) in sortedExperiences"
         :key="exp.id"
-        class="relative mb-16 last:mb-0"
+        class="relative mb-8 pl-10 last:mb-0 md:mb-10 md:grid md:grid-cols-2 md:gap-10 md:pl-0"
       >
         <div
-          class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
-        >
-          <div
-            class="relative transition-all duration-700 max-w-2xl mx-auto md:mx-0 md:max-w-none"
-            :class="[
-              isVisible ? 'opacity-100 md:translate-x-0' : 'opacity-0',
-              index % 2 === 0 ? 'md:-translate-x-8' : 'md:translate-x-8 md:col-start-2'
-            ]"
-            :style="`transition-delay: ${index * 150}ms`"
-          >
-            <div
-              class="p-6 rounded-2xl backdrop-blur-sm border border-border bg-surface transition-all duration-300 hover:scale-105 hover:shadow-2xl group"
-            >
-              <div class="mb-3 flex flex-col gap-2 items-start md:items-start" :class="index % 2 === 0 ? 'md:items-end' : 'md:items-start'">
-                <div
-                  class="inline-block px-3 py-1 rounded-full text-sm font-medium transition-colors bg-[color-mix(in_srgb,var(--primary)_15%,transparent)] text-primary"
-                >
-                  {{ formatDate(exp.startDate) }} - {{ exp.endDate ? formatDate(exp.endDate) : t('experience.present') }}
-                </div>
-                <div
-                  class="inline-block px-3 py-1 rounded-full text-xs font-medium transition-colors bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-accent"
-                >
-                  {{ calculateDuration(exp.startDate, exp.endDate) }}
-                </div>
-              </div>
-              <h3
-                class="text-2xl font-bold mb-2 transition-colors text-text text-left"
-                :class="index % 2 === 0 ? 'md:text-right' : 'md:text-left'"
-              >
-                {{ t(exp.position) }}
-              </h3>
-              <h4
-                class="text-lg font-semibold mb-3 transition-colors text-primary text-left"
-                :class="index % 2 === 0 ? 'md:text-right' : 'md:text-left'"
-              >
-                {{ t(exp.company) }}
-              </h4>
-              <p
-                class="mb-4 leading-relaxed text-muted text-left"
-                :class="index % 2 === 0 ? 'md:text-right' : 'md:text-left'"
-              >
-                {{ t(exp.description) }}
-              </p>
-              <div class="flex flex-wrap gap-2 justify-start" :class="index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'">
-                <UIChip
-                  v-for="tech in exp.technologies"
-                  :key="tech"
-                  :content="tech"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+          class="absolute left-4 top-7 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full border-2 border-primary bg-surface shadow-sm transition-all duration-500 md:left-1/2"
+          :class="isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-75'"
+          :style="`transition-delay: ${index * 120 + 120}ms`"
+        />
+
         <div
-          class="absolute left-1/2 top-8 transform -translate-x-1/2 -translate-y-1/2 hidden md:block transition-all duration-500 z-10"
-          :class="isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'"
-          :style="`transition-delay: ${index * 150 + 200}ms`"
+          class="relative max-w-2xl transition-all duration-500 md:max-w-none"
+          :class="[
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5',
+            index % 2 === 0 ? 'md:col-start-1' : 'md:col-start-2'
+          ]"
+          :style="`transition-delay: ${index * 120}ms`"
         >
           <div
-            class="w-4 h-4 rounded-full border-4 border-primary bg-surface transition-all duration-300 hover:scale-150"
+            class="group rounded-[var(--radius)] border border-border bg-surface/90 p-5 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary/70 hover:shadow-shadow md:p-6"
           >
-            <div
-              class="absolute inset-0 rounded-full animate-ping opacity-75 text-primary"
-            />
+            <div class="mb-5 flex flex-wrap gap-2">
+              <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                <Icon name="mdi:calendar-range" class="h-3.5 w-3.5" />
+                {{ formatDate(exp.startDate) }} - {{ exp.endDate ? formatDate(exp.endDate) : t('experience.present') }}
+              </span>
+              <span class="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">
+                <Icon name="mdi:timer-sand" class="h-3.5 w-3.5" />
+                {{ calculateDuration(exp.startDate, exp.endDate) }}
+              </span>
+            </div>
+
+            <h3 class="text-2xl font-bold leading-tight text-text transition-colors group-hover:text-primary">
+              {{ t(exp.position) }}
+            </h3>
+            <h4 class="mt-2 text-base font-semibold text-primary md:text-lg">
+              {{ t(exp.company) }}
+            </h4>
+            <p class="mt-4 text-sm leading-7 text-muted md:text-base">
+              {{ t(exp.description) }}
+            </p>
+            <div class="mt-5 flex flex-wrap gap-2 border-t border-border pt-5">
+              <UIChip
+                v-for="tech in exp.technologies"
+                :key="tech"
+                :content="tech"
+              />
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-      <div
-        class="absolute top-1/4 -left-32 w-96 h-96 rounded-full opacity-5 blur-3xl bg-[radial-gradient(circle,var(--accent),transparent_70%)]"
-      />
-      <div
-        class="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full opacity-5 blur-3xl bg-[radial-gradient(circle,var(--primary),transparent_70%)]"
-      />
-    </div>
   </div>
 </template>
-
-<style scoped>
-@keyframes ping {
-  75%, 100% {
-    transform: scale(2);
-    opacity: 0;
-  }
-}
-
-.animate-ping {
-  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-</style>
