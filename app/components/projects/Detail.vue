@@ -57,78 +57,84 @@ onUnmounted(() => {
     <Transition name="modal">
       <div
         v-if="isOpen"
-        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-3 backdrop-blur-sm md:p-6"
         @click.self="closeModal"
       >
         <div
-          class="project-detail relative w-full max-w-6xl max-h-[90vh] overflow-hidden rounded-radius bg-surface shadow-2xl flex flex-col md:flex-row"
+          class="project-detail relative flex max-h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-[var(--radius)] border border-border bg-surface shadow-2xl md:max-h-[88vh] md:flex-row"
           @click.stop
         >
           <CdTooltip :content="$t('global.close')" position="top" variant="primary">
             <button
-              class="absolute top-2 right-2 md:top-4 md:right-4 z-20 p-2 w-10 h-10 flex items-center justify-center rounded-full bg-chip text-text hover:bg-primary hover:text-text transition-colors shadow-lg"
+              class="absolute right-3 top-3 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface/90 text-text shadow-sm backdrop-blur transition-colors hover:border-primary hover:bg-primary hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 md:right-4 md:top-4"
+              type="button"
               @click="closeModal"
             >
-              <Icon name="mdi:close" />
+              <Icon name="mdi:close" class="h-5 w-5" />
             </button>
           </CdTooltip>
-          <div class="relative w-full md:w-2/5 h-64 md:h-auto overflow-hidden flex-shrink-0">
+          <div class="relative h-64 w-full flex-shrink-0 overflow-hidden bg-chip/40 md:h-auto md:w-[42%]">
             <img
               v-if="project.imageDetail || project.image_mobile || project.image"
               :src="project.imageDetail || project.image_mobile || project.image"
               :alt="$t(project.title)"
-              class="w-full h-full object-cover"
+              class="h-full w-full object-cover"
             >
             <div
               v-else
-              class="w-full h-full bg-gradient-to-br from-primary to-accent"
+              class="h-full w-full bg-gradient-to-br from-primary to-accent"
             >
-              <div class="absolute inset-0 flex items-center justify-center text-9xl text-text/20 font-bold">
+              <div class="absolute inset-0 flex items-center justify-center text-9xl font-bold text-text/20">
                 {{ project.title.charAt(0) }}
               </div>
             </div>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"/>
-            <div v-if="project.featured" class="absolute top-6 left-6 px-4 py-2 bg-accent text-text text-sm font-semibold rounded-full shadow-lg">
-              ⭐ {{ $t('projects.featuredProject') }}
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent md:bg-gradient-to-r md:from-transparent md:to-black/20" />
+            <div v-if="project.featured" class="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/75 px-4 py-2 text-sm font-semibold text-white shadow-lg backdrop-blur-md md:bottom-6 md:left-6">
+              <Icon name="mdi:star-four-points" class="h-4 w-4 text-accent drop-shadow" />
+              {{ $t('projects.featuredProject') }}
             </div>
           </div>
 
-          <div class="flex-1 overflow-y-auto project-detail-scroll">
-            <div class="p-6 md:p-8 pt-12 md:pt-8">
-              <div class="flex items-start justify-between gap-4 mb-4 pr-8">
-                <h2 class="text-2xl md:text-3xl font-bold text-text">
+          <div class="flex-1 overflow-y-auto project-detail-scroll bg-surface">
+            <div class="p-5 pt-14 md:p-8 md:pt-8">
+              <div class="mb-6 flex flex-col gap-3 pr-10 sm:flex-row sm:items-start sm:justify-between">
+                <h2 class="text-2xl font-bold leading-tight text-text md:text-3xl">
                   {{ $t(project.title) }}
                 </h2>
-                <span class="px-3 py-1 bg-chip text-primary text-sm font-semibold rounded-lg whitespace-nowrap">
+                <span class="w-fit rounded-full border border-border bg-bg/50 px-3 py-1 text-sm font-semibold text-primary">
                   {{ project.date }}
                 </span>
               </div>
 
-              <p class="text-muted text-base leading-relaxed mb-6">
+              <p class="mb-7 rounded-[calc(var(--radius)-4px)] border border-border bg-bg/30 p-4 text-base leading-8 text-muted">
                 {{ $t(project.fullDescription) }}
               </p>
 
-              <div v-if="project.highlights && project.highlights.length" class="mb-6">
-                <h3 class="text-lg font-semibold text-text mb-3 flex items-center gap-2">
-                  <Icon name="mdi:lightbulb" class="text-accent" />
+              <section v-if="project.highlights && project.highlights.length" class="mb-7">
+                <h3 class="mb-3 flex items-center gap-2 text-lg font-semibold text-text">
+                  <span class="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10 text-accent">
+                    <Icon name="mdi:lightbulb" class="h-4 w-4" />
+                  </span>
                   {{ $t('projects.highlights') }}
                 </h3>
-                <ul class="grid grid-cols-1 gap-2">
+                <ul class="grid grid-cols-1 gap-2.5">
                   <li
                     v-for="(highlight, index) in project.highlights"
                     :key="index"
-                    class="flex items-center gap-2 text-muted bg-surface/50 border border-border p-2.5 rounded-lg hover:bg-surface transition-colors text-sm"
+                    class="flex items-start gap-3 rounded-xl border border-border bg-bg/25 p-3 text-sm leading-6 text-muted transition-colors hover:bg-bg/45"
                     :style="{ animationDelay: `${index * 0.1}s` }"
                   >
-                    <Icon name="mdi:star" class="flex-shrink-0 w-4 h-4 text-warning" />
+                    <Icon name="mdi:check-circle" class="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" />
                     <span class="flex-1">{{ $t(highlight) }}</span>
                   </li>
                 </ul>
-              </div>
+              </section>
 
-              <div class="mb-6">
-                <h3 class="text-lg font-semibold text-text mb-3 flex items-center gap-2">
-                  <Icon name="mdi:code-tags" class="text-primary" />
+              <section class="mb-7">
+                <h3 class="mb-3 flex items-center gap-2 text-lg font-semibold text-text">
+                  <span class="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <Icon name="mdi:code-tags" class="h-4 w-4" />
+                  </span>
                   {{ $t('projects.technologiesUsed') }}
                 </h3>
                 <div class="flex flex-wrap gap-2">
@@ -138,9 +144,9 @@ onUnmounted(() => {
                     :content="tech"
                   />
                 </div>
-              </div>
+              </section>
 
-              <div class="flex flex-wrap gap-4 pt-6 border-t border-border">
+              <div class="flex flex-wrap gap-3 border-t border-border pt-6">
                 <UIButton
                   v-if="project.projectUrl"
                   variant="primary"
@@ -173,7 +179,7 @@ onUnmounted(() => {
 
 <style scoped>
 .project-detail {
-  animation: slide-up 0.3s ease-out;
+  animation: slide-up 0.24s ease-out;
 }
 
 .project-detail-scroll::-webkit-scrollbar {

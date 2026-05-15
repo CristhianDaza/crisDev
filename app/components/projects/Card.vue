@@ -6,48 +6,59 @@ defineProps({
   }
 })
 
-defineEmits(['openProject'])
+const emit = defineEmits(['openProject'])
+
+const openProject = (project) => {
+  emit('openProject', project)
+}
 </script>
 
 <template>
   <article
-    class="project-card group cursor-pointer overflow-hidden rounded-radius bg-surface border border-border transition-all duration-300 hover:shadow-shadow hover:-translate-y-2"
-    @click="$emit('openProject', project)"
+    class="project-card group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-[var(--radius)] border border-border bg-surface/90 shadow-sm outline-none backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary/70 hover:shadow-shadow focus-visible:-translate-y-1 focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/40"
+    role="button"
+    tabindex="0"
+    @click="openProject(project)"
+    @keydown.enter="openProject(project)"
+    @keydown.space.prevent="openProject(project)"
   >
-    <div class="relative h-48 overflow-hidden">
+    <div class="relative aspect-[16/10] overflow-hidden bg-chip/40">
       <img
         v-if="project.image"
         :src="project.image"
         :alt="$t(project.title)"
-        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
       >
       <div
         v-else
-        class="w-full h-full bg-gradient-to-br from-primary to-accent opacity-80"
+        class="h-full w-full bg-gradient-to-br from-primary/90 to-accent/90"
       >
-        <div class="absolute inset-0 flex items-center justify-center text-6xl text-text/30 font-bold">
+        <div class="absolute inset-0 flex items-center justify-center text-6xl font-bold text-text/30">
           {{ project.title.charAt(0) }}
         </div>
       </div>
-      <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"/>
-      <div v-if="project.featured" class="absolute top-3 right-3 px-3 py-1 bg-accent text-text text-xs font-semibold rounded-full">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent opacity-70 transition-opacity group-hover:opacity-55" />
+      <div v-if="project.featured" class="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-white/30 bg-black/75 px-3 py-1 text-xs font-semibold text-white shadow-lg backdrop-blur-md">
+        <Icon name="mdi:star-four-points" class="h-3.5 w-3.5 text-accent drop-shadow" />
         {{ $t('projects.featured') }}
       </div>
+      <span class="absolute bottom-3 right-3 rounded-full border border-white/20 bg-black/45 px-2.5 py-1 text-xs font-semibold text-white backdrop-blur">
+        {{ project.date }}
+      </span>
     </div>
 
-    <div class="p-6">
-      <div class="flex items-start justify-between gap-2 mb-3">
-        <h3 class="text-xl font-bold text-text group-hover:text-primary transition-colors line-clamp-1">
+    <div class="flex flex-1 flex-col p-5">
+      <div class="mb-3">
+        <h3 class="line-clamp-1 text-xl font-bold text-text transition-colors group-hover:text-primary">
           {{ $t(project?.title) }}
         </h3>
-        <span class="text-sm text-muted whitespace-nowrap">{{ project.date }}</span>
       </div>
 
-      <p class="text-muted text-sm mb-4 line-clamp-2 leading-relaxed">
+      <p class="mb-5 line-clamp-2 min-h-[3.5rem] text-sm leading-7 text-muted">
         {{ $t(project.shortDescription) }}
       </p>
 
-      <div class="flex flex-wrap gap-2 mb-4">
+      <div class="mb-5 flex flex-wrap gap-2">
         <UIChip
           v-for="tech in project.technologies.slice(0, 3)"
           :key="tech"
@@ -55,22 +66,22 @@ defineEmits(['openProject'])
         />
         <span
           v-if="project.technologies.length > 3"
-          class="px-2.5 py-1 text-muted text-xs font-medium"
+          class="inline-flex items-center rounded-full border border-border bg-bg/40 px-2.5 py-1 text-xs font-semibold text-muted"
         >
           +{{ project.technologies.length - 3 }}
         </span>
       </div>
 
-      <div class="flex gap-3 pt-4 border-t border-border">
+      <div class="mt-auto flex flex-wrap gap-2 border-t border-border pt-4">
         <a
           v-if="project.projectUrl"
           :href="project.projectUrl"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center gap-1.5 text-sm text-primary hover:text-accent transition-colors font-medium"
+          class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-sm font-semibold text-primary transition-colors hover:bg-primary/10 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
           @click.stop
         >
-          <Icon name="mdi:open-in-new" />
+          <Icon name="mdi:open-in-new" class="h-4 w-4" />
           {{ $t('projects.viewProject') }}
         </a>
         <a
@@ -78,22 +89,19 @@ defineEmits(['openProject'])
           :href="project.githubUrl"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center gap-1.5 text-sm text-primary hover:text-accent transition-colors font-medium"
+          class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-sm font-semibold text-primary transition-colors hover:bg-primary/10 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
           @click.stop
         >
-          <Icon name="mdi:github" />
+          <Icon name="mdi:github" class="h-4 w-4" />
           {{ $t('social.github') }}
         </a>
       </div>
     </div>
-
-    <div class="absolute inset-0 border-2 border-primary opacity-0 group-hover:opacity-100 rounded-radius transition-opacity pointer-events-none" />
   </article>
 </template>
 
 <style scoped>
 .project-card {
-  position: relative;
   animation: slide-up 0.5s ease-out;
 }
 
