@@ -40,14 +40,13 @@ onMounted(() => {
 })
 
 function scrollToId(id) {
-  if (import.meta.client) {
-    const el = document.getElementById(id)
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      window.history.pushState({}, '', `#${id}`)
-      router.replace({ hash: `#${id}` })
-    }
-  }
+  if (!import.meta.client) return
+
+  const el = document.getElementById(id)
+  if (!el) return
+
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  router.replace({ hash: `#${id}` })
 }
 
 function scrollToNextSection() {

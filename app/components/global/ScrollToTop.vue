@@ -12,11 +12,11 @@ const handleScroll = () => {
 
 const scrollToTop = () => {
   if (!import.meta.client) return
-  router.replace({ hash: '#home' })
 
   const homeElement = document.getElementById('home')
   if (homeElement) {
     homeElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    router.replace({ hash: '#home' })
   } else {
     window.scrollTo({
       top: 0,

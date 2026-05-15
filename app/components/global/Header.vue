@@ -14,6 +14,7 @@ const hydrated = ref(false)
 const isMenuOpen = ref(false)
 const isScrolled = ref(false)
 const isManualNavigation = ref(false)
+const activeSection = ref(route.hash ? route.hash.slice(1) : 'home')
 const skipHomeDetection = ref(false)
 let manualNavigationTimeout = null
 let scrollDetectionTimeout = null
@@ -26,8 +27,8 @@ const ensureHash = (href) => {
 
 const isActive = (href) => {
   if (!href) return false
-  const hash = href.startsWith('#') ? href : `#${href}`
-  return route.hash === hash
+  const sectionId = href.startsWith('#') ? href.slice(1) : href
+  return activeSection.value === sectionId
 }
 
 const activeClassFor = (href) => {
@@ -85,9 +86,7 @@ const detectCurrentSection = () => {
 
   if (scrollY < 100) {
     if (skipHomeDetection.value) return
-    if (route.hash !== '#home') {
-      router.replace({ hash: '#home' })
-    }
+    activeSection.value = 'home'
     return
   }
 
@@ -125,8 +124,8 @@ const detectCurrentSection = () => {
     }
   })
 
-  if (currentSection && route.hash !== `#${currentSection}`) {
-    router.replace({ hash: `#${currentSection}` })
+  if (currentSection) {
+    activeSection.value = currentSection
   }
 }
 
@@ -154,6 +153,10 @@ const handleInitialHashNavigation = () => {
   const hash = route.hash
   if (!hash || hash === '#home') return
 
+  const sectionId = hash.slice(1)
+  if (!document.getElementById(sectionId)) return
+  activeSection.value = sectionId
+
   if (skipHomeDetectionTimeout) {
     clearTimeout(skipHomeDetectionTimeout)
   }
@@ -165,7 +168,7 @@ const handleInitialHashNavigation = () => {
   scheduleManualNavigationReset(1200)
   nextTick(() => {
     requestAnimationFrame(() => {
-      scrollIntoViewById(hash.slice(1), 'auto')
+      scrollIntoViewById(sectionId, 'auto')
     })
   })
 }
@@ -175,6 +178,10 @@ const scrollToSection = (href) => {
 
   const hash = href.startsWith('#') ? href : `#${href}`
   const id = hash.slice(1)
+
+  if (!document.getElementById(id)) return
+
+  activeSection.value = id
 
   if (route.hash !== hash) {
     router.replace({ hash })
