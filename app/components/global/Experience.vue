@@ -46,21 +46,132 @@ const calculateDuration = (startDate, endDate) => {
 }
 
 const isVisible = ref(false)
+const activeExperienceId = ref(sortedExperiences.value[0]?.id || null)
+const visibleExperienceIds = ref(new Set())
+const timelineRef = ref(null)
+const timelineProgress = ref(0)
+const experienceElements = new Map()
+let sectionObserver = null
+let itemObserver = null
+let scrollTicking = false
 
-onMounted(() => {
-  if (import.meta.client) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          isVisible.value = true
-        }
-      })
-    }, { threshold: 0.1 })
+const setExperienceElement = (id, element) => {
+  if (element) {
+    experienceElements.set(id, element)
+  } else {
+    experienceElements.delete(id)
+  }
+}
 
-    const section = document.querySelector('#experience-section')
-    if (section) {
-      observer.observe(section)
+const revealExperience = (id) => {
+  if (visibleExperienceIds.value.has(id)) return
+
+  visibleExperienceIds.value = new Set([...visibleExperienceIds.value, id])
+}
+
+const isActiveExperience = (id) => activeExperienceId.value === id
+const isVisibleExperience = (id) => visibleExperienceIds.value.has(id)
+
+const updateActiveExperience = () => {
+  if (!import.meta.client || experienceElements.size === 0) return
+
+  const anchor = window.innerHeight * 0.42
+  let closestId = activeExperienceId.value
+  let closestDistance = Number.POSITIVE_INFINITY
+
+  experienceElements.forEach((element, id) => {
+    const rect = element.getBoundingClientRect()
+    const elementAnchor = rect.top + rect.height * 0.3
+    const distance = Math.abs(elementAnchor - anchor)
+
+    if (rect.bottom > 0 && rect.top < window.innerHeight && distance < closestDistance) {
+      closestDistance = distance
+      closestId = id
     }
+  })
+
+  if (closestId) {
+    activeExperienceId.value = closestId
+  }
+}
+
+const updateTimelineProgress = () => {
+  if (!import.meta.client || !timelineRef.value) return
+
+  const rect = timelineRef.value.getBoundingClientRect()
+  const anchor = window.innerHeight * 0.42
+  const scrollableDistance = Math.max(rect.height - anchor, 1)
+  const progress = ((anchor - rect.top) / scrollableDistance) * 100
+
+  timelineProgress.value = Math.min(100, Math.max(0, progress))
+}
+
+const updateScrollState = () => {
+  if (scrollTicking) return
+
+  scrollTicking = true
+  window.requestAnimationFrame(() => {
+    updateTimelineProgress()
+    updateActiveExperience()
+    scrollTicking = false
+  })
+}
+
+const getExperienceCardStyle = (exp, index) => ({
+  transitionDelay: `${index * 120}ms`,
+  borderColor: isActiveExperience(exp.id) ? 'color-mix(in srgb, var(--primary) 78%, var(--accent))' : undefined,
+  boxShadow: isActiveExperience(exp.id)
+    ? '0 24px 60px color-mix(in srgb, var(--primary) 22%, transparent)'
+    : undefined,
+})
+
+onMounted(async () => {
+  if (!import.meta.client) return
+
+  await nextTick()
+
+  sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        isVisible.value = true
+      }
+    })
+  }, { threshold: 0.1 })
+
+  itemObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        revealExperience(Number(entry.target.dataset.experienceId))
+      }
+    })
+
+    updateActiveExperience()
+  }, {
+    rootMargin: '-24% 0px -40% 0px',
+    threshold: [0.18, 0.35, 0.55, 0.75],
+  })
+
+  const section = document.querySelector('#experience-section')
+  if (section) {
+    sectionObserver.observe(section)
+  }
+
+  experienceElements.forEach((element) => {
+    itemObserver.observe(element)
+  })
+
+  updateScrollState()
+  window.addEventListener('scroll', updateScrollState, { passive: true })
+  window.addEventListener('resize', updateScrollState)
+})
+
+onUnmounted(() => {
+  sectionObserver?.disconnect()
+  itemObserver?.disconnect()
+
+  if (import.meta.client) {
+    window.removeEventListener('scroll', updateScrollState)
+    window.removeEventListener('resize', updateScrollState)
   }
 })
 </script>
@@ -86,33 +197,45 @@ onMounted(() => {
       </p>
     </div>
 
-    <div class="relative mx-auto max-w-5xl">
+    <div ref="timelineRef" class="relative mx-auto max-w-5xl">
       <div
-        class="absolute bottom-0 left-4 top-0 w-px origin-top bg-gradient-to-b from-primary/70 via-border to-accent/70 transition-all duration-700 md:left-1/2 md:-translate-x-1/2"
+        class="absolute bottom-0 left-4 top-0 w-px origin-top bg-border transition-all duration-700 md:left-1/2 md:-translate-x-1/2"
         :class="isVisible ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0'"
+      />
+      <div
+        class="absolute left-4 top-0 w-px origin-top bg-gradient-to-b from-primary via-accent to-primary transition-[height,opacity] duration-300 md:left-1/2 md:-translate-x-1/2"
+        :class="isVisible ? 'opacity-100' : 'opacity-0'"
+        :style="{ height: `${timelineProgress}%` }"
       />
 
       <div
         v-for="(exp, index) in sortedExperiences"
         :key="exp.id"
+        :ref="(element) => setExperienceElement(exp.id, element)"
+        :data-experience-id="exp.id"
         class="relative mb-8 pl-10 last:mb-0 md:mb-10 md:grid md:grid-cols-2 md:gap-10 md:pl-0"
       >
         <div
-          class="absolute left-4 top-7 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full border-2 border-primary bg-surface shadow-sm transition-all duration-500 md:left-1/2"
-          :class="isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-75'"
+          class="absolute left-4 top-7 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full border-2 bg-surface shadow-sm transition-all duration-500 md:left-1/2"
+          :class="[
+            isVisibleExperience(exp.id) ? 'opacity-100 scale-100' : 'opacity-0 scale-75',
+            isActiveExperience(exp.id) ? 'border-accent shadow-[0_0_0_8px_color-mix(in_srgb,var(--accent)_16%,transparent)]' : 'border-primary'
+          ]"
           :style="`transition-delay: ${index * 120 + 120}ms`"
         />
 
         <div
           class="relative max-w-2xl transition-all duration-500 md:max-w-none"
           :class="[
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5',
+            isVisibleExperience(exp.id) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5',
             index % 2 === 0 ? 'md:col-start-1' : 'md:col-start-2'
           ]"
           :style="`transition-delay: ${index * 120}ms`"
         >
           <div
             class="group rounded-[var(--radius)] border border-card bg-card p-5 shadow-card backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-primary/80 md:p-6"
+            :class="isActiveExperience(exp.id) ? 'ring-1 ring-primary/20' : ''"
+            :style="getExperienceCardStyle(exp, index)"
           >
             <div class="mb-5 flex flex-wrap gap-2">
               <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
