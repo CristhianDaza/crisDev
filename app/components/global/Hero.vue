@@ -1,5 +1,5 @@
 <script setup>
-import photoUrl from '../../assets/images/image-cris.png'
+import photoUrl from '../../assets/images/image-cris_old.png'
 import { socialMediaLinks } from '~/data/constants'
 
 const router = useRouter()
