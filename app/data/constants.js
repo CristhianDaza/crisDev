@@ -38,6 +38,33 @@ export const socialMediaLinks = [
 
 export const projects = [
   {
+    id: 9,
+    title: 'projects.coffeeRecipePlanner.title',
+    shortDescription: 'projects.coffeeRecipePlanner.shortDescription',
+    fullDescription: 'projects.coffeeRecipePlanner.fullDescription',
+    technologies: [
+      'Next.js 16',
+      'React 19',
+      'TypeScript',
+      'Tailwind CSS',
+      'LocalStorage',
+      'GitHub Actions',
+    ],
+    image: '/images/projects/coffee.png',
+    imageDetail: '/images/projects/coffee_mobile.png',
+    projectUrl: 'https://coffee.cris-dev.com/',
+    githubUrl: 'https://github.com/CristhianDaza/coffee-recipe-planner',
+    featured: true,
+    date: '2026',
+    highlights: [
+      'projects.coffeeRecipePlanner.highlights.highlight1',
+      'projects.coffeeRecipePlanner.highlights.highlight2',
+      'projects.coffeeRecipePlanner.highlights.highlight3',
+      'projects.coffeeRecipePlanner.highlights.highlight4',
+      'projects.coffeeRecipePlanner.highlights.highlight5',
+    ],
+  },
+  {
     id: 7,
     title: 'projects.bookMemory.title',
     shortDescription: 'projects.bookMemory.shortDescription',

@@ -72,6 +72,18 @@
     "viewCodeInGitHub": "Ver Código en GitHub",
     "viewProject": "Ver Proyecto",
     "viewProjectLive": "Ver Proyecto en Vivo",
+    "coffeeRecipePlanner": {
+      "title": "Coffee Recipe Planner",
+      "shortDescription": "Planificador interactivo para crear recetas de café filtrado y bebidas con espresso.",
+      "fullDescription": "Aplicación web interactiva para diseñar recetas de café personalizadas. Permite configurar el método de preparación, la cantidad de café, la proporción, la temperatura y el perfil de sabor. Genera cantidades, tiempos e instrucciones paso a paso, incluye un temporizador de preparación, recetas con espresso y una colección persistente de recetas guardadas.",
+      "highlights": {
+        "highlight1": "Recetas dinámicas para V60, Chemex, AeroPress y prensa francesa.",
+        "highlight2": "Temporizador interactivo con instrucciones guiadas paso a paso.",
+        "highlight3": "Planificador de espresso con diferentes extracciones y bebidas con leche.",
+        "highlight4": "Colección persistente para guardar, cargar y eliminar recetas.",
+        "highlight5": "Diseño responsive con temas claro y oscuro, optimizado para dispositivos móviles."
+      }
+    },
     "bookMemory": {
       "title": "BookMemory",
       "shortDescription": "Aplicación web para gestionar tu biblioteca personal, registrar sesiones de lectura y seguir tu progreso diario.",
