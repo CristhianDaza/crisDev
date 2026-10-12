@@ -183,6 +183,19 @@
         "highlight3": "Optimización de rendimiento y accesibilidad",
         "highlight4": "Desarrollado con Vue, Nuxt y Tailwind CSS"
       }
+    },
+    "alceraPerfumes": {
+      "title": "Alcéra Perfumes",
+      "shortDescription": "Tienda en línea de perfumería con catálogo de fragancias, decants, carrito de compras y herramientas para gestionar ventas e inventario.",
+      "fullDescription": "Alcéra Perfumes es una experiencia de comercio electrónico desarrollada con Nuxt y Vue para descubrir y comprar fragancias. Incluye un catálogo organizado por marcas, familias y colecciones, páginas de producto con información detallada, un buscador de perfumes y una sección de decants. El flujo de compra permite gestionar el carrito, consultar pedidos y reportar pagos por Bre-B. También cuenta con una consola privada para administrar productos, ventas, compras, inventario, proveedores, cupones y estadísticas.",
+      "highlights": {
+        "highlight1": "Catálogo de fragancias organizado por marcas, familias olfativas y colecciones.",
+        "highlight2": "Buscador de perfumes y páginas de producto con notas, presentaciones, disponibilidad y precios.",
+        "highlight3": "Tienda adaptable a móviles con carrito, creación de pedidos y consulta de compras.",
+        "highlight4": "Flujo de pago por Bre-B con reporte del cliente y verificación manual del pago.",
+        "highlight5": "Consola de administración para gestionar productos, ventas, compras, proveedores e inventario, incluidos los decants.",
+        "highlight6": "Cupones, estadísticas de ventas y visitas, y herramientas de medición con Google Analytics y Google Ads."
+      }
     }
   },
   "experience": {
