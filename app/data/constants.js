@@ -121,7 +121,7 @@ export const projects = [
     imageDetail: '/images/projects/coffee_mobile.png',
     projectUrl: 'https://coffee.cris-dev.com/',
     githubUrl: 'https://github.com/CristhianDaza/coffee-recipe-planner',
-    featured: true,
+    featured: false,
     date: '2026',
     highlights: [
       'projects.coffeeRecipePlanner.highlights.highlight1',
@@ -141,7 +141,7 @@ export const projects = [
     imageDetail: '/images/projects/streakCalendar_mobile.png',
     projectUrl: 'https://calendar.cris-dev.com/index.html',
     githubUrl: 'https://github.com/CristhianDaza/streak-calendar',
-    featured: true,
+    featured: false,
     date: '2026',
     highlights: [
       'projects.streakCalendar.highlights.highlight1',
@@ -180,6 +180,7 @@ export const projects = [
     imageDetail: '/images/projects/publistandpados_mobile.png',
     projectUrl: 'https://publistandpados.com',
     githubUrl: 'https://github.com/CristhianDaza/publistandpados',
+    featured: false,
     date: '2025',
     highlights: [
       'projects.publistandpados.highlights.highlight1',
